@@ -12,7 +12,7 @@ public class LogAnalyserApplication {
         ExperimentInfo info = new ExperimentInfo();
         List<String> conds = Arrays.asList("meS", "meV", "deV", "deS");
         info.setConditions(conds);
-        LogParser parser = new LogParser(filename, info);
+        LogParser parser = new LogParser(filename, info, 3);
         parser.ParseIntoTrials();
     }
 }
