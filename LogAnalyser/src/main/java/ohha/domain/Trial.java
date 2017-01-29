@@ -1,27 +1,33 @@
 package ohha.domain;
 
-import java.util.Map;
+import java.util.List;
 
 public class Trial {
     private String subject;
     private int trialNum;
     private String condition;
     private int condTime;
-    private String response;
-    private String responseCode;
-    private int respTime;
-    private int reactionTime;
+    private List<String> responses;
+    private List<String> responseCodes;
+    private List<Integer> respTimes;
+    private List<Integer> reactionTimes;
     private boolean correct;
 
-    public Trial(String subject, int trialNum, String condition, String response, String responseCode, int reactionTime) {
+    public Trial(String subject, int trialNum, String condition, List<String> responses, List<String> responseCodes, List<Integer> reactionTimes) {
         this.subject = subject;
         this.trialNum = trialNum;
         this.condition = condition;
-        this.response = response;
-        this.responseCode = responseCode;
-        this.reactionTime = reactionTime;
+        this.responses = responses;
+        this.responseCodes = responseCodes;
+        this.reactionTimes = reactionTimes;
     }
 
+    public Trial(String subject, int trialNum, String condition) {
+        this.subject = subject;
+        this.trialNum = trialNum;
+        this.condition = condition;
+    }
+    
     
     public String getSubject() {
         return subject;
@@ -47,28 +53,46 @@ public class Trial {
         this.condition = condition;
     }
 
-    public String getResponse() {
-        return response;
+    public List<String> getResponses() {
+        return responses;
     }
 
-    public void setResponse(String response) {
-        this.response = response;
+    public void setResponses(List<String> responses) {
+        this.responses = responses;
+    }
+    
+    public void setSingleResponse(int i, String response) {
+        if (i < responses.size()) {
+            responses.set(i, response);
+        }
     }
 
-    public String getResponseCode() {
-        return responseCode;
+    public List<String> getResponseCodes() {
+        return responseCodes;
     }
 
-    public void setResponseCode(String responseCode) {
-        this.responseCode = responseCode;
+    public void setResponseCodes(List<String> responseCodes) {
+        this.responseCodes = responseCodes;
+    }
+    
+    public void setSingleResponseCode(int i, String response) {
+        if (i < responseCodes.size()) {
+            responseCodes.set(i, response);
+        }
     }
 
-    public int getReactionTime() {
-        return reactionTime;
+    public List<Integer> getReactionTimes() {
+        return reactionTimes;
     }
 
-    public void setReactionTime(int reactionTime) {
-        this.reactionTime = reactionTime;
+    public void setReactionTimes(List<Integer> reactionTimes) {
+        this.reactionTimes = reactionTimes;
+    }
+    
+    public void setSingleReactionTime(int i, int rt) {
+        if (i < reactionTimes.size()) {
+            reactionTimes.set(i, rt);
+        }
     }
 
     public int getCondTime() {
@@ -79,12 +103,18 @@ public class Trial {
         this.condTime = condTime;
     }
 
-    public int getRespTime() {
-        return respTime;
+    public List<Integer> getRespTimes() {
+        return respTimes;
     }
 
-    public void setRespTime(int respTime) {
-        this.respTime = respTime;
+    public void setRespTimes(List<Integer> respTimes) {
+        this.respTimes = respTimes;
+    }
+    
+    public void setSingleRespTime(int i, int respTime) {
+        if (i < respTimes.size()) {
+            respTimes.set(i, respTime);
+        }
     }
 
     public boolean isCorrect() {
@@ -97,7 +127,7 @@ public class Trial {
 
     @Override
     public String toString() {
-        return "Trial{" + "subject=" + subject + ", trialNum=" + trialNum + ", condition=" + condition + ", response=" + response + ", responseCode=" + responseCode + ", reactionTime=" + reactionTime + ", correct=" + correct + '}';
+        return "Trial{" + "subject=" + subject + ", trialNum=" + trialNum + ", condition=" + condition + ", responses=" + responses + ", responseCodes=" + responseCodes + ", reactionTimes=" + reactionTimes + ", correct=" + correct + '}';
     }
     
     

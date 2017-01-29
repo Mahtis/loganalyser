@@ -10,9 +10,9 @@ import java.util.List;
 
 // Class for reading logfiles.
 
-public class LogReader {
+public class FileReader {
     
-    public List<String> readLog(String filename) {
+    public static List<String> readFile(String filename) {
         try {
             Path path = Paths.get(filename);
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
