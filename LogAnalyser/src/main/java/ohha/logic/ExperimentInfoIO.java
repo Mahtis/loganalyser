@@ -78,11 +78,16 @@ public class ExperimentInfoIO {
             line.append("\t");
             line.append(mapping.getnOfResponses());
             line.append("\t");
-            for(String corr : mapping.getCorrectResponses().get(mappings.indexOf(mapping))) {
-                line.append(corr);
-                line.append(",");
+            List<List<String>> corrs = mapping.getCorrectResponses();
+            for (int i = 0; i < corrs.size(); i++) {
+                for (int j = 0; j < corrs.get(i).size(); j++) {
+                    line.append(corrs.get(i).get(j));
+                    line.append(",");
+                }
+
             }
-            line.deleteCharAt(line.length()-1);
+            line.deleteCharAt(line.length() - 1);
+            lines.add(line.toString());
         }
         Path file = Paths.get(location + expName + ".txt");
         Files.write(file, lines, Charset.forName("UTF-8"));
