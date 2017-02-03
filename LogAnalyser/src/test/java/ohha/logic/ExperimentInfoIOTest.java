@@ -1,6 +1,8 @@
 
 package ohha.logic;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -15,8 +17,11 @@ public class ExperimentInfoIOTest {
     
     private ExperimentInfo info;
     
+    private ExperimentInfoIO io;
+    
     @Before
     public void setUp() {
+        io = new ExperimentInfoIO();
         info = new ExperimentInfo();
         
         List<String> conds = Arrays.asList("meS", "meV", "deV", "deS");
@@ -37,7 +42,7 @@ public class ExperimentInfoIOTest {
 
     @Test
     public void loadingASimpleFileSucceeds() {
-        String filename = "/Users/mikkotiainen/Documents/test2.txt";
+        String filename = "src/main/resources/ExpTest.txt";
         ExperimentInfoIO instance = new ExperimentInfoIO();
         System.out.println(instance.loadFromFile(filename));
         int expResult = 4;
@@ -48,44 +53,84 @@ public class ExperimentInfoIOTest {
 
     @Test
     public void savingAFileSucceeds() throws Exception {
-        String location = "/Users/mikkotiainen/Documents/";
+        String location = "src/main/resources/";
         String expName = "test3";
         ExperimentInfoIO instance = new ExperimentInfoIO();
         instance.saveToFile(info, location, expName);
-        assertTrue(Files.exists(Paths.get("/Users/mikkotiainen/Documents/test3.txt")));
+        assertTrue(Files.exists(Paths.get("src/main/resources/test3.txt")));
+        Files.deleteIfExists(Paths.get("src/main/resources/test3.txt"));
     }
     
     @Test
     public void fileStaysSameAfterSaveAndLoad() throws Exception {
-        String location = "/Users/mikkotiainen/Documents/";
+        String location = "src/main/resources/";
         String expName = "test3";
         ExperimentInfoIO instance = new ExperimentInfoIO();
         instance.saveToFile(info, location, expName);
-        ExperimentInfo info2 = instance.loadFromFile("/Users/mikkotiainen/Documents/test3.txt");
+        ExperimentInfo info2 = instance.loadFromFile("src/main/resources/test3.txt");
         assertTrue(info.getConditions().containsAll(info2.getConditions()));
         assertTrue(info.getResponseCodes().containsAll(info2.getResponseCodes()));
         assertTrue(info.getResponseNames().containsAll(info2.getResponseNames()));
+        Files.deleteIfExists(Paths.get("src/main/resources/test3.txt"));
     }
     
     @Test
     public void fileWithSameFilenameIsOverWritten() throws Exception {
-        String location = "/Users/mikkotiainen/Documents/";
+        String location = "src/main/resources/";
         String expName = "test3";
         ExperimentInfoIO instance = new ExperimentInfoIO();
         instance.saveToFile(info, location, expName);
-        int len = Files.readAllLines(Paths.get("/Users/mikkotiainen/Documents/test3.txt")).size();
+        int len = Files.readAllLines(Paths.get("src/main/resources/test3.txt")).size();
         instance.saveToFile(info, location, expName);
-        int len2 = Files.readAllLines(Paths.get("/Users/mikkotiainen/Documents/test3.txt")).size();
+        int len2 = Files.readAllLines(Paths.get("src/main/resources/test3.txt")).size();
         assertEquals(len, len2);
+        Files.deleteIfExists(Paths.get("src/main/resources/test3.txt"));
     }
     
     @Test
     public void loadingNonExistingFileResultsInNull() {
-        String filename = "/Users/mikkotiainen/Documents/derpderp.derp";
+        String filename = "src/main/resources/derpderp.derp";
         ExperimentInfoIO instance = new ExperimentInfoIO();
         System.out.println(instance.loadFromFile(filename));
         ExperimentInfo result = instance.loadFromFile(filename);
         assertEquals(null, result);
+    }
+    
+    @Test
+    public void loadingSimpleJsonSucceeds() {
+        String filename = "src/main/resources/Experiment2.json";
+        ExperimentInfo info2 = io.loadFromJson(filename);
+        int condSize = info2.getConditions().size();
+        assertEquals(condSize, 4);
+    }
+    
+    @Test
+    public void savingSimpleJsonCreatesAFile() throws FileNotFoundException, IOException {
+        String location = "src/main/resources/";
+        String exp = "JUnitTest";
+        io.saveToJson(info, location, exp);
+        assertTrue(Files.exists(Paths.get("src/main/resources/JUnitTest.json")));
+        Files.deleteIfExists(Paths.get("src/main/resources/JUnitTest.json"));
+    }
+    
+    @Test
+    public void jsonStaysSameAfterSaveAndLoad() throws FileNotFoundException, IOException {
+        String location = "src/main/resources/";
+        String exp = "JUnitTest";
+        io.saveToJson(info, location, exp);
+        ExperimentInfo info2 = io.loadFromJson(location + exp + ".json");
+        assertTrue(info.getConditions().containsAll(info2.getConditions()));
+        assertTrue(info.getResponseCodes().containsAll(info2.getResponseCodes()));
+        assertTrue(info.getResponseNames().containsAll(info2.getResponseNames()));
+        Files.deleteIfExists(Paths.get("src/main/resources/JUnitTest.json"));
+    }
+    
+    @Test
+    public void savingAnEmptyJsonExpResultsInNothing() throws IOException {
+        String location = "src/main/resources/";
+        String exp = "EmptyTest";
+        assertFalse(io.saveToJson(new ExperimentInfo(), location, exp));
+        Files.deleteIfExists(Paths.get("src/main/resources/EmptyTest.json"));
     }
     
 }

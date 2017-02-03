@@ -143,11 +143,18 @@ public class ExperimentInfoIO {
 //Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.APPEND);
     }
 
-    public void saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
+    public boolean saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
         JSONObject json = new JSONObject();
+        if (info.getConditions().isEmpty()) {
+            return false;
+        }
         json.put("conditions", info.getConditions());
         json.put("responseCodes", info.getResponseCodes());
-        json.put("responseNames", info.getResponseNames());
+        if (info.getResponseNames().isEmpty()) {
+            json.put("responseNames", info.getResponseCodes());
+        } else {
+            json.put("responseNames", info.getResponseNames());
+        }
         List<JSONObject> corrects = new ArrayList<>();
         for (ResponseMapping map : info.getResponseMappings()) {
             JSONObject curCond = new JSONObject();
@@ -160,6 +167,7 @@ public class ExperimentInfoIO {
         try (PrintWriter out = new PrintWriter(location + expName + ".json")) {
             json.write(out, 4, 0);
         }
+        return true;
     }
 
 }
