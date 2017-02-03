@@ -1,6 +1,9 @@
 package ohha.logic;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,8 +11,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.ResponseMapping;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ExperimentInfoIO {
 
@@ -55,6 +62,48 @@ public class ExperimentInfoIO {
         return null;
     }
 
+    public ExperimentInfo loadFromJson(String filename) {
+        List<String> lines = FileReader.readFile(filename);
+        String join = String.join("", lines);
+        JSONObject json = new JSONObject(join);
+
+        List<String> conditions = jsonListToStringList(json.getJSONArray("conditions"));
+        List<String> responseCodes = jsonListToStringList(json.getJSONArray("responseCodes"));
+        List<String> responseNames = jsonListToStringList(json.getJSONArray("responseNames"));
+
+        ExperimentInfo info = new ExperimentInfo();
+        info.setConditions(conditions);
+        info.setResponseCodes(responseCodes);
+        info.setResponseNames(responseNames);
+
+        JSONArray responseMappings = json.getJSONArray("responseMappings");
+        for (int j = 0; j < responseMappings.length(); j++) {
+            JSONObject mapping = responseMappings.getJSONObject(j);
+            String cond = mapping.getString("condition");
+            List<List<String>> correctResponses = new ArrayList<>();
+            JSONArray corrResps = mapping.getJSONArray("correctResponses");
+            for (int i = 0; i < corrResps.length(); i++) {
+                correctResponses.add(new ArrayList<>());
+                JSONArray respN = corrResps.getJSONArray(i);
+                for (int k = 0; k < respN.length(); k++) {
+                    String corrForN = respN.getString(k);
+                    correctResponses.get(i).add(corrForN);
+                }
+            }
+            int nResps = mapping.getInt("nOfResponses");
+            info.addResponseMapping(new ResponseMapping(cond, correctResponses, nResps));
+        }
+        return info;
+    }
+
+    private List<String> jsonListToStringList(JSONArray json) {
+        List<Object> objectList = json.toList();
+        List<String> strings = objectList.stream()
+                .map(object -> Objects.toString(object, null))
+                .collect(Collectors.toList());
+        return strings;
+    }
+
     public void saveToFile(ExperimentInfo info, String location, String expName) throws IOException {
         List<String> lines = new ArrayList<>();
         List<ResponseMapping> mappings = info.getResponseMappings();
@@ -92,6 +141,25 @@ public class ExperimentInfoIO {
         Path file = Paths.get(location + expName + ".txt");
         Files.write(file, lines, Charset.forName("UTF-8"));
 //Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.APPEND);
+    }
+
+    public void saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
+        JSONObject json = new JSONObject();
+        json.put("conditions", info.getConditions());
+        json.put("responseCodes", info.getResponseCodes());
+        json.put("responseNames", info.getResponseNames());
+        List<JSONObject> corrects = new ArrayList<>();
+        for (ResponseMapping map : info.getResponseMappings()) {
+            JSONObject curCond = new JSONObject();
+            curCond.put("condition", map.getCondition());
+            curCond.put("correctResponses", map.getCorrectResponses());
+            curCond.put("nOfResponses", map.getnOfResponses());
+            corrects.add(curCond);
+        }
+        json.put("responseMappings", corrects);
+        try (PrintWriter out = new PrintWriter(location + expName + ".json")) {
+            json.write(out, 4, 0);
+        }
     }
 
 }

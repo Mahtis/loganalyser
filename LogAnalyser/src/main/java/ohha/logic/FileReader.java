@@ -9,18 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Class for reading logfiles.
-
 public class FileReader {
-    
+
     public static List<String> readFile(String filename) {
         try {
             Path path = Paths.get(filename);
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
             return lines;
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
-
     }
 }

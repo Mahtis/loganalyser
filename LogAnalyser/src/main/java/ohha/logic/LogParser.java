@@ -2,9 +2,7 @@ package ohha.logic;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.Trial;
 
@@ -51,7 +49,9 @@ public class LogParser {
                 trialN++;
                 searchingResponse = true;
             } // if looking for a response, then check line for valid response code
-            else if (searchingResponse && words.length > 3 && responseCodes.contains(words[codePos])) {
+            else if (searchingResponse && 
+                    words.length > 3 && 
+                    responseCodes.contains(words[codePos])) {
                 Trial trial = trials.get(trials.size() - 1);
                 setResponseInfo(trial, words, currResp);
                 currResp++;
@@ -64,16 +64,11 @@ public class LogParser {
         }
         return trials;
     }
-
-    private void addTrialResponses(Trial trial, String[] words, List<String> codes, List<Integer> times) {
-        String code = words[codePos];
-        codes.add(code);
-        times.add(Integer.parseInt(words[timePos]));
-    }
     
     private void setResponseInfo(Trial trial, String[] words, int i) {
         String code = words[codePos];
         trial.setSingleResponseCode(i, code);
+        trial.setSingleResponseName(i, info.getResponseNameForCode(code));
         int respTime = Integer.parseInt(words[timePos]);
         trial.setSingleRespTime(i, respTime);
         trial.setSingleReactionTime(i, (respTime - trial.getCondTime()) / 10);
@@ -88,7 +83,7 @@ public class LogParser {
             codes.add("0");
             rts.add(0);
         }
-        trial.setResponses(resps);
+        trial.setResponseNames(resps);
         trial.setResponseCodes(codes);
         trial.setReactionTimes(rts);
         trial.setRespTimes(rts);

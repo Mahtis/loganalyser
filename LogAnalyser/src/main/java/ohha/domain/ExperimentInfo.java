@@ -2,10 +2,7 @@ package ohha.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class ExperimentInfo {
 
@@ -55,6 +52,10 @@ public class ExperimentInfo {
 
     public void setResponseNames(List<String> responseNames) {
         this.responseNames = responseNames;
+    }
+    
+    public String getResponseNameForCode(String code) {
+        return responseNames.get(responseCodes.indexOf(code));
     }
 
     public ResponseMapping getConditionMapping(String condition) {

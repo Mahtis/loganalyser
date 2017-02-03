@@ -1,0 +1,27 @@
+{
+    "conditions": ["meS", "deS", "meV", "deV"],
+    "responseCodes": [1, 2],
+    "responseNames": ["power", "precision"],
+    "responseMappings": [
+        {
+            "condition": "meS",
+            "correctResponses": [["1"]],
+            "nOfResponses": 1
+        },
+        {
+            "condition": "deS",
+            "correctResponses": [["1"]],
+            "nOfResponses": 1
+        },
+        {
+            "condition": "meV",
+            "correctResponses": [["2"]],
+            "nOfResponses": 1
+        },
+        {
+            "condition": "deV",
+            "correctResponses": [["1","2"], ["2"]],
+            "nOfResponses": 2
+        }
+    ]
+}

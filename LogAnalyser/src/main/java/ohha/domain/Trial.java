@@ -7,17 +7,17 @@ public class Trial {
     private int trialNum;
     private String condition;
     private int condTime;
-    private List<String> responses;
+    private List<String> responseNames;
     private List<String> responseCodes;
     private List<Integer> respTimes;
     private List<Integer> reactionTimes;
     private boolean correct;
 
-    public Trial(String subject, int trialNum, String condition, List<String> responses, List<String> responseCodes, List<Integer> reactionTimes) {
+    public Trial(String subject, int trialNum, String condition, List<String> responseNames, List<String> responseCodes, List<Integer> reactionTimes) {
         this.subject = subject;
         this.trialNum = trialNum;
         this.condition = condition;
-        this.responses = responses;
+        this.responseNames = responseNames;
         this.responseCodes = responseCodes;
         this.reactionTimes = reactionTimes;
     }
@@ -53,17 +53,17 @@ public class Trial {
         this.condition = condition;
     }
 
-    public List<String> getResponses() {
-        return responses;
+    public List<String> getResponseNames() {
+        return responseNames;
     }
 
-    public void setResponses(List<String> responses) {
-        this.responses = responses;
+    public void setResponseNames(List<String> responseNames) {
+        this.responseNames = responseNames;
     }
     
-    public void setSingleResponse(int i, String response) {
-        if (i < responses.size()) {
-            responses.set(i, response);
+    public void setSingleResponseName(int i, String responseName) {
+        if (i < responseNames.size()) {
+            responseNames.set(i, responseName);
         }
     }
 
@@ -127,7 +127,7 @@ public class Trial {
 
     @Override
     public String toString() {
-        return "Trial{" + "subject=" + subject + ", trialNum=" + trialNum + ", condition=" + condition + ", responses=" + responses + ", responseCodes=" + responseCodes + ", reactionTimes=" + reactionTimes + ", correct=" + correct + '}';
+        return "Trial{" + "subject=" + subject + ", trialNum=" + trialNum + ", condition=" + condition + ", responses=" + responseNames + ", responseCodes=" + responseCodes + ", reactionTimes=" + reactionTimes + ", correct=" + correct + '}';
     }
     
     
