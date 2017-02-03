@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ResponseMapping {
+
     private String condition;
     private List<List<String>> correctResponses;
     private int nOfResponses;
@@ -18,8 +19,7 @@ public class ResponseMapping {
         this.correctResponses = correctResponses;
         this.nOfResponses = nOfResponses;
     }
-    
-    
+
     public String getCondition() {
         return condition;
     }
@@ -27,14 +27,14 @@ public class ResponseMapping {
     public void setCondition(String condition) {
         this.condition = condition;
     }
-    
+
     public boolean isCorrect(int nResp, String resp) {
         return correctResponses.get(nResp).contains(resp);
     }
-    
+
     public boolean isCorrect(List<String> resps) {
-        for(int i=0; i<correctResponses.size(); i++) {
-            if(!correctResponses.get(i).contains(resps.get(i))) {
+        for (int i = 0; i < correctResponses.size(); i++) {
+            if (!correctResponses.get(i).contains(resps.get(i))) {
                 return false;
             }
         }
@@ -72,5 +72,5 @@ public class ResponseMapping {
         }
         return true;
     }
-    
+
 }

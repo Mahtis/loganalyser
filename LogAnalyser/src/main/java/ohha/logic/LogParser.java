@@ -26,7 +26,7 @@ public class LogParser {
         trials = new ArrayList<>();
     }
 
-    public List<Trial> ParseIntoTrials() {
+    public List<Trial> parseIntoTrials() {
         int trialN = 1;
         List<String> conds = info.getConditions();
         List<String> responseCodes = info.getResponseCodes();
@@ -48,8 +48,8 @@ public class LogParser {
                 trials.add(trial);
                 trialN++;
                 searchingResponse = true;
-            } // if looking for a response, then check line for valid response code
-            else if (searchingResponse && 
+                // if looking for a response, then check line for valid response code∫
+            } else if (searchingResponse && 
                     words.length > 3 && 
                     responseCodes.contains(words[codePos])) {
                 Trial trial = trials.get(trials.size() - 1);
@@ -78,7 +78,7 @@ public class LogParser {
         List<String> resps = new ArrayList<>();
         List<String> codes = new ArrayList<>();
         List<Integer> rts = new ArrayList<>();
-        for (int i=0; i<wantedResponses; i++) {
+        for (int i = 0; i < wantedResponses; i++) {
             resps.add("none");
             codes.add("0");
             rts.add(0);

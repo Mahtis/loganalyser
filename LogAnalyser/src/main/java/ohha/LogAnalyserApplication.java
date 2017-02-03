@@ -18,7 +18,7 @@ public class LogAnalyserApplication {
         ExperimentInfo info = expIO.loadFromJson(expFile);
 
         LogParser parser = new LogParser(logfile, info, 3);
-        List<Trial> trials = parser.ParseIntoTrials();
+        List<Trial> trials = parser.parseIntoTrials();
         LogWriter.writeLogfile(trials, destination);
         
         int sum = 0;

@@ -37,7 +37,7 @@ public class LogParserTest {
         info.setSimpleCorrectResponses("deV", Arrays.asList("1"));
         
         parser = new LogParser("/Users/mikkotiainen/Documents/test.log", info, 3);
-        trials = parser.ParseIntoTrials();
+        trials = parser.parseIntoTrials();
     }
 
     @Test
