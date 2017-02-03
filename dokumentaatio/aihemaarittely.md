@@ -16,5 +16,6 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 * reaktioaikojen visualisoiminen histogrammina
 * vastausosuuksien visualisoiminen pylväsdiagrammeilla
 
-**Määrittelyvaiheen luokkakaavio**
+###Määrittelyvaiheen luokkakaavio
+
 ![luokkakaavio](/dokumentaatio/luokkakaavio.png)
