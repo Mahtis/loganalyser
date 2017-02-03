@@ -15,3 +15,6 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 * selkeämmän lokitiedoston tulostaminen
 * reaktioaikojen visualisoiminen histogrammina
 * vastausosuuksien visualisoiminen pylväsdiagrammeilla
+
+**Määrittelyvaiheen luokkakaavio**
+![luokkakaavio](/dokumentaatio/luokkakaavio.png)
