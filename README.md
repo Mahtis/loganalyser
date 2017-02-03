@@ -3,7 +3,7 @@
 Application for analysing default [Presentation](http://www.neurobs.com) logfiles into more manageable form.
 
 ## Dokumentaatio
-[aiheen kuvaus](dokumentaatio/aihemaarittely.md)
+[aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 
 [tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
 
