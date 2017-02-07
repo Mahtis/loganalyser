@@ -9,4 +9,4 @@ Päivä | Tunnit | Kuvaus
 27.01.2017 | 5h | Ohjelmointia, testejä
 29.01.2017 | 6h | Laaja olemassaolevan koodin refaktorointi, deadlinen testit
 03.02.2017 | 7h | Muutettu experiment-tallennusmuoto jsoniksi. Lisätty lokitiedostojen kirjoittaja. Testit Json-metodeille puuttuvat.
-
+07.02.2017 | 5h | GUI:n työstäminen aloitettu.

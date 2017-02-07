@@ -1,5 +1,7 @@
 package ohha.gui;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,27 +18,49 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileFilter;
 
 public class FileOpenHandler extends JPanel implements ActionListener {
-
+    private JLabel fileLabel;
+    private JButton fileButton;
     private JFileChooser fileChooser;
     private List<File> files;
     private JTextArea area;
     private JScrollPane scroll;
 
     public FileOpenHandler() {
-        this.fileChooser = new JFileChooser();
-        this.fileChooser.setFileFilter(new LogFilter());
-        this.fileChooser.setMultiSelectionEnabled(true);
-        this.files = new ArrayList<>();
-        JLabel text = new JLabel("Selected files:");
-        this.add(text);
-        JButton button1 = new JButton("Files");
-        button1.addActionListener(this);
-        this.add(button1);
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        files = new ArrayList<>();
+        
+        fileLabel = new JLabel("Selected files:");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx=0;
+        c.gridy=0;
+        c.weightx = 0.0;
+        this.add(fileLabel, c);
+        
+        fileButton = new JButton("Files");
+        fileButton.addActionListener(this);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 0;
+        c.weightx = 0.0;
+        this.add(fileButton, c);
         area = new  JTextArea(10, 20);
         area.setEditable(false);
         scroll = new JScrollPane(area);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        this.add(scroll);
+        c.fill = GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 3;
+        c.weighty = 0.0;
+        c.weightx = 0.0;
+        this.add(scroll, c);
+        
+        fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new LogFilter());
+        fileChooser.setMultiSelectionEnabled(true);
+        
     }
     
 
