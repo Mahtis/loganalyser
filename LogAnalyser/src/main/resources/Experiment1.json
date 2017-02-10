@@ -1,4 +1,5 @@
 {
+    "name": "exp1",
     "conditions": ["meS", "deS", "meV", "deV"],
     "responseCodes": [1, 2],
     "responseNames": ["power", "precision"],

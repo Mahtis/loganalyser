@@ -1,5 +1,6 @@
 package ohha.gui;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -12,9 +13,9 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileFilter;
@@ -22,7 +23,6 @@ import javax.swing.filechooser.FileFilter;
 public class FileOpenHandler extends JPanel implements ActionListener {
 
     private JLabel fileLabel;
-    private JFileChooser fileChooser;
     private List<File> files;
     private DefaultListModel model;
     private JList list;
@@ -112,35 +112,60 @@ public class FileOpenHandler extends JPanel implements ActionListener {
         c.weightx = 0.0;
         this.add(deleteButton, c);
 
-        fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(new LogFilter());
-        fileChooser.setMultiSelectionEnabled(true);
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == fileButton) {
-            int returnVal = fileChooser.showOpenDialog(this);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                for (File file : fileChooser.getSelectedFiles()) {
-                    if (!file.getName().endsWith(".log")) {
-                        System.out.println("THE FILE TYPE IS INCORRECT");
-                    } else {
-                        files.add(file);
-                        model.addElement(file);
-                        //area.append(file.getName() + "\n");
-                    }
-                };
-            }
-        } else if (e.getSource() == deleteButton){
-            for (int i : list.getSelectedIndices()) {
-                model.remove(i);
+            logSelection();
+        } else if (e.getSource() == experimentButton) {
+            ExperimentWindow expHandler = new ExperimentWindow(null);
+//            this.setVisible(false);
+//            for(Component i : this.getComponents()) {
+//                i.setEnabled(false);
+//            }
+        } else if (e.getSource() == deleteButton) {
+            for (Object i : list.getSelectedValuesList()) {
+                model.removeElement(i);
             }
         } else {
             model.addElement("NOT AN ELEMENT!");
         }
 
+    }
+
+    private void logSelection() {
+        File[] logFiles = multiFileSelection(this, new LogFilter());
+        for (File file : logFiles) {
+            if (!file.getName().endsWith(".log")) {
+                JOptionPane.showMessageDialog(this, "Not a .log-file.");
+            } else {
+                files.add(file);
+                model.addElement(file);
+            }
+        }
+    }
+
+    public static File singleFileSelection(Component parent, FileFilter filter) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        fileChooser.setMultiSelectionEnabled(false);
+        int returnVal = fileChooser.showOpenDialog(parent);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            return fileChooser.getSelectedFile();
+        }
+        return null;
+    }
+    
+    public static File[] multiFileSelection(Component parent, FileFilter filter) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        fileChooser.setMultiSelectionEnabled(true);
+        int returnVal = fileChooser.showOpenDialog(parent);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            return fileChooser.getSelectedFiles();
+        }
+        return null;
     }
 
     private class LogFilter extends FileFilter {

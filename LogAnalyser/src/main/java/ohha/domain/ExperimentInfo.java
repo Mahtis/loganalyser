@@ -5,16 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 
- * @author Mikko Tiainen
- * 
  * This class holds the specifications of a single experiment; the conditions,
  * responses and how correct responses are mapped (using ResponseMapping class).
+ * 
+ * @author Mikko Tiainen
  * 
  */
 
 public class ExperimentInfo {
-
+    private String name;
     private List<String> conditions;
     private List<String> responseCodes;
     private List<String> responseNames;
@@ -33,6 +32,15 @@ public class ExperimentInfo {
         responseCodes = new ArrayList<>();
         responseNames = new ArrayList<>();
         responseMappings = new ArrayList<>();
+    }
+    
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<String> getConditions() {
@@ -73,8 +81,8 @@ public class ExperimentInfo {
      * 
      * @param condition name of the condition for which the ResponseMapping
      * is wanted for.
-     * @return ResponseMapping object for the given condition or a new
-     * ResponseMapping object if one is not found.
+     * @return ResponseMapping object for the given condition or null if one
+     * is not found.
      */
     public ResponseMapping getConditionMapping(String condition) {
         if (conditions.contains(condition)) {
@@ -89,7 +97,7 @@ public class ExperimentInfo {
                 }
             }
         }
-        return new ResponseMapping(condition);
+        return null;
     }
 
     public List<ResponseMapping> getResponseMappings() {

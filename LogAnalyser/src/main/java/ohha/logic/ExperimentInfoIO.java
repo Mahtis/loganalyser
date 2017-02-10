@@ -1,6 +1,5 @@
 package ohha.logic;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -83,16 +82,17 @@ public class ExperimentInfoIO {
      * @param filename file to read info from.
      * @return ExperienceInfo object read from file.
      */
-    public ExperimentInfo loadFromJson(String filename) {
+    public static ExperimentInfo loadFromJson(String filename) {
         List<String> lines = FileReader.readFile(filename);
         String join = String.join("", lines);
         JSONObject json = new JSONObject(join);
-
+        String name = (String )json.get("name");
         List<String> conditions = jsonListToStringList(json.getJSONArray("conditions"));
         List<String> responseCodes = jsonListToStringList(json.getJSONArray("responseCodes"));
         List<String> responseNames = jsonListToStringList(json.getJSONArray("responseNames"));
 
         ExperimentInfo info = new ExperimentInfo();
+        info.setName(name);
         info.setConditions(conditions);
         info.setResponseCodes(responseCodes);
         info.setResponseNames(responseNames);
@@ -117,7 +117,7 @@ public class ExperimentInfoIO {
         return info;
     }
 
-    private List<String> jsonListToStringList(JSONArray json) {
+    private static List<String> jsonListToStringList(JSONArray json) {
         List<Object> objectList = json.toList();
         List<String> strings = objectList.stream()
                 .map(object -> Objects.toString(object, null))
@@ -181,11 +181,12 @@ public class ExperimentInfoIO {
      * has conditions.
      * @throws FileNotFoundException 
      */
-    public boolean saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
+    public static boolean saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
         JSONObject json = new JSONObject();
         if (info.getConditions().isEmpty()) {
             return false;
         }
+        json.put("name", info.getName());
         json.put("conditions", info.getConditions());
         json.put("responseCodes", info.getResponseCodes());
         if (info.getResponseNames().isEmpty()) {

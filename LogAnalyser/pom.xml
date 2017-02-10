@@ -42,9 +42,11 @@
                 <configuration>
                     <targetClasses>
                         <param>ohha.logic.*</param>
+                        <param>ohha.domain.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>ohha.logic.*</param>
+                        <param>ohha.domain.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
