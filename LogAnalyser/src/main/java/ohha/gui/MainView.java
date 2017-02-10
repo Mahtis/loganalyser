@@ -20,7 +20,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileFilter;
 
-public class FileOpenHandler extends JPanel implements ActionListener {
+public class MainView extends JPanel implements ActionListener {
 
     private JLabel fileLabel;
     private List<File> files;
@@ -33,7 +33,7 @@ public class FileOpenHandler extends JPanel implements ActionListener {
     private JButton analyseButton;
     private JButton deleteButton;
 
-    public FileOpenHandler() {
+    public MainView() {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
@@ -169,7 +169,6 @@ public class FileOpenHandler extends JPanel implements ActionListener {
     }
 
     private class LogFilter extends FileFilter {
-
         @Override
         public boolean accept(File pathname) {
             return pathname.getName().endsWith(".log") || pathname.isDirectory();

@@ -18,12 +18,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * 
+ * This is a class for loading and saving ExperimentInfo-objects. 
  * @author Mikko Tiainen
  * 
- * This is a class for loading and saving ExperimentInfo-objects. The methods
- * loadFromFile and saveToFile are deprecated, and all experiment data should
- * be handled in json form, which offers better stability and readability.
+ * The methods loadFromFile and saveToFile are deprecated, and all experiment
+ * data should be handled in json form, which offers better stability and
+ * readability.
  * 
  */
 

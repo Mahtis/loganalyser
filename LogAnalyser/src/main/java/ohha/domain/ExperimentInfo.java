@@ -28,6 +28,7 @@ public class ExperimentInfo {
     }
 
     public ExperimentInfo() {
+        name = "empty";
         conditions = new ArrayList<>();
         responseCodes = new ArrayList<>();
         responseNames = new ArrayList<>();

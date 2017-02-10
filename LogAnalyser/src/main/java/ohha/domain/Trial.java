@@ -3,10 +3,10 @@ package ohha.domain;
 import java.util.List;
 
 /**
- * 
+ * This class holds the information of a single trial.
  * @author Mikko Tiainen
  * 
- * This class holds the information of a single trial, including the subject
+ * The information kept in the class include the subject
  * who is responding, number of the trial, condition, responses and the 
  * response/reaction times. This is basically a storage class, with no logic
  * of its own.

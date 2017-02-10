@@ -15,7 +15,7 @@ public class MainWindow {
         
         
         
-        FileOpenHandler panel = new FileOpenHandler();
+        MainView panel = new MainView();
         mainFrame.setContentPane(panel);
         mainFrame.pack();
         mainFrame.setVisible(true);

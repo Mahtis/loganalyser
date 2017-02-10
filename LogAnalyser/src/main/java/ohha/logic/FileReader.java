@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Simple class for reading a file into a list of strings.
  * 
  * @author mikkotiainen
  * 
- * Simple class for reading a file into a list of strings.
  */
 public class FileReader {
 

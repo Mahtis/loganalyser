@@ -55,7 +55,7 @@ public class ExperimentWindow extends JFrame implements ActionListener {
     }
 
     private void experimentSelection() {
-        File file = FileOpenHandler.singleFileSelection(panel, new JsonFilter());
+        File file = MainView.singleFileSelection(panel, new JsonFilter());
         if (!file.getName().endsWith(".json")) {
             JOptionPane.showMessageDialog(this, "Not a JSON file.");
         } else {
@@ -67,7 +67,6 @@ public class ExperimentWindow extends JFrame implements ActionListener {
     }
 
     private class JsonFilter extends FileFilter {
-
         @Override
         public boolean accept(File pathname) {
             return pathname.getName().endsWith(".json") || pathname.isDirectory();

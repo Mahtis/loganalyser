@@ -4,12 +4,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 
+ * This class maps the correct responses of a condition.
  * @author Mikko Tiainen
  * 
- * This class maps the correct responses of a condition. A condition can have
- * multiple separate responses and each response "iteration", so to speak, can
- * have multiple correct answers.
+ * A condition can have multiple separate responses and each response
+ *  "iteration", so to speak, can have multiple correct answers.
  * 
  */
 
@@ -52,6 +51,9 @@ public class ResponseMapping {
      * @return if all responses are correct.
      */
     public boolean isCorrect(List<String> resps) {
+        if (resps.size() != correctResponses.size()) {;
+            return false;
+        }
         for (int i = 0; i < correctResponses.size(); i++) {
             if (!correctResponses.get(i).contains(resps.get(i))) {
                 return false;
