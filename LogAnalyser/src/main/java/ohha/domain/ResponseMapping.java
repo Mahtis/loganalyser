@@ -5,13 +5,13 @@ import java.util.Objects;
 
 /**
  * This class maps the correct responses of a condition.
+ *
  * @author Mikko Tiainen
- * 
+ *
  * A condition can have multiple separate responses and each response
- *  "iteration", so to speak, can have multiple correct answers.
- * 
+ * "iteration", so to speak, can have multiple correct answers.
+ *
  */
-
 public class ResponseMapping {
 
     private String condition;
@@ -43,15 +43,15 @@ public class ResponseMapping {
 
     /**
      * Checks whether the condition was answered correctly.
-     * 
+     *
      * Note that all responses have to be answered correctly for the method to
      * return true.
-     * 
+     *
      * @param resps list of responses.
      * @return if all responses are correct.
      */
     public boolean isCorrect(List<String> resps) {
-        if (resps.size() != correctResponses.size()) {;
+        if (resps.size() != correctResponses.size()) {
             return false;
         }
         for (int i = 0; i < correctResponses.size(); i++) {
@@ -81,10 +81,10 @@ public class ResponseMapping {
 
     /**
      * Equality of mappings is based solely on the condition.
-     * 
-     * So if two mappings have the same condition, they are considered to be
-     * the same mapping. In essence, one condition should only have mapping.
-     * 
+     *
+     * So if two mappings have the same condition, they are considered to be the
+     * same mapping. In essence, one condition should only have mapping.
+     *
      * @param obj ResponseMapping object that the current is compared to.
      * @return true if both specify the same condition.
      */

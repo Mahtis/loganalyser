@@ -18,15 +18,15 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * This is a class for loading and saving ExperimentInfo-objects. 
+ * This is a class for loading and saving ExperimentInfo-objects.
+ *
  * @author Mikko Tiainen
- * 
+ *
  * The methods loadFromFile and saveToFile are deprecated, and all experiment
  * data should be handled in json form, which offers better stability and
  * readability.
- * 
+ *
  */
-
 public class ExperimentInfoIO {
 
     public ExperimentInfoIO() {
@@ -35,6 +35,7 @@ public class ExperimentInfoIO {
     /**
      * Deprecated, use loadFromJson instead. This method is kept for possible
      * future usage in some other form.
+     *
      * @param filename file to read from.
      * @return ExperimentInfo object read from the file.
      */
@@ -79,6 +80,7 @@ public class ExperimentInfoIO {
 
     /**
      * Reads specifications for an ExperimentInfo object from a file.
+     *
      * @param filename file to read info from.
      * @return ExperienceInfo object read from file.
      */
@@ -86,7 +88,7 @@ public class ExperimentInfoIO {
         List<String> lines = FileReader.readFile(filename);
         String join = String.join("", lines);
         JSONObject json = new JSONObject(join);
-        String name = (String )json.get("name");
+        String name = (String) json.get("name");
         List<String> conditions = jsonListToStringList(json.getJSONArray("conditions"));
         List<String> responseCodes = jsonListToStringList(json.getJSONArray("responseCodes"));
         List<String> responseNames = jsonListToStringList(json.getJSONArray("responseNames"));
@@ -128,10 +130,11 @@ public class ExperimentInfoIO {
     /**
      * Deprecated, use saveToJson instead. This method is kept for possible
      * future usage.
+     *
      * @param info ExperimentInfo to be saved.
      * @param location folder which the info is saved to.
      * @param expName name of the experiment, used for filename.
-     * @throws IOException 
+     * @throws IOException
      */
     public void saveToFile(ExperimentInfo info, String location, String expName) throws IOException {
         List<String> lines = new ArrayList<>();
@@ -174,12 +177,13 @@ public class ExperimentInfoIO {
 
     /**
      * Saves given ExperimentInfo to a file in Json-format.
+     *
      * @param info ExperimentInfo to be saved.
      * @param location folder which the file is saved.
      * @param expName name of the experiment, used as the filename.
      * @return true if the file successfully saved and the given ExperimentInfo
      * has conditions.
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException
      */
     public static boolean saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
         JSONObject json = new JSONObject();
