@@ -7,9 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 import ohha.domain.Trial;
 
+/**
+ * Writes a List of trials into a file.
+ * 
+ * @author mikkotiainen
+ */
 public class LogWriter {
     
-    
+    /**
+     * Writes a given set of trials to a specified file.
+     * @param trials trials to be written.
+     * @param filename file where the logfiles should be written to.
+     * @throws IOException 
+     */
     public static void writeLogfile(List<Trial> trials, String filename) throws IOException {
         List<String> lines = new ArrayList<>();
         lines.add("subj\ttrial\tcond\tcode\tresp\trt\tcorrect");

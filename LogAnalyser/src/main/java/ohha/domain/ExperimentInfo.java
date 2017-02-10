@@ -4,15 +4,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 
+ * @author Mikko Tiainen
+ * 
+ * This class holds the specifications of a single experiment; the conditions,
+ * responses and how correct responses are mapped (using ResponseMapping class).
+ * 
+ */
+
 public class ExperimentInfo {
 
     private List<String> conditions;
     private List<String> responseCodes;
     private List<String> responseNames;
-    // this maps condition to correct button code
-    //private Map<String, List<String>> correctResponses;
-    // this maps the button codes to actual definitions
-    //private Map<String, String> responseNames;
 
     private List<ResponseMapping> responseMappings;
 
@@ -54,10 +59,23 @@ public class ExperimentInfo {
         this.responseNames = responseNames;
     }
     
+    /**
+     * Returns the name of the response based on its code.
+     * @param code code of the response option.
+     * @return name of the response with the given code.
+     */
     public String getResponseNameForCode(String code) {
         return responseNames.get(responseCodes.indexOf(code));
     }
 
+    /**
+     * Returns the response mapping of a given condition.
+     * 
+     * @param condition name of the condition for which the ResponseMapping
+     * is wanted for.
+     * @return ResponseMapping object for the given condition or a new
+     * ResponseMapping object if one is not found.
+     */
     public ResponseMapping getConditionMapping(String condition) {
         if (conditions.contains(condition)) {
             ResponseMapping mapping = responseMappings.get(conditions.indexOf(condition));
@@ -90,6 +108,11 @@ public class ExperimentInfo {
         return true;
     }
 
+    /**
+     * Get the number of responses set for a given condition.
+     * @param cond condition to get the number of responses for.
+     * @return number of responses wanted.
+     */
     public int getNumOfResponsesForCond(String cond) {
         return getConditionMapping(cond).getnOfResponses();
     }
@@ -98,6 +121,12 @@ public class ExperimentInfo {
         getConditionMapping(cond).setCorrectResponses(correctResponses);
     }
 
+    /**
+     * If a condition has only one response, the correct responses can be given
+     * as a single list.
+     * @param cond condition for the responses.
+     * @param correctResponses correct responses for the condition.
+     */
     public void setSimpleCorrectResponses(String cond, List<String> correctResponses) {
         ResponseMapping mapping = getConditionMapping(cond);
         if (!responseMappings.contains(mapping)) {
@@ -106,6 +135,18 @@ public class ExperimentInfo {
         mapping.setCorrectResponses(Arrays.asList(correctResponses));
     }
 
+    /**
+     * Check whether a given response to a given condition is correct.
+     * 
+     * This method utilizes the ResponseMapping-class to check for the correct
+     * response. Note that this overloaded version of the method only checks
+     * the correctness of the nResp response.
+     * 
+     * @param cond condition of the response.
+     * @param respCode code of the response.
+     * @param nResp number of response which correctness is checked.
+     * @return true if correct.
+     */
     public boolean isCorrect(String cond, String respCode, int nResp) {
         ResponseMapping mapping = getConditionMapping(cond);
         return mapping.isCorrect(nResp, respCode);

@@ -18,11 +18,27 @@ import ohha.domain.ResponseMapping;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * 
+ * @author Mikko Tiainen
+ * 
+ * This is a class for loading and saving ExperimentInfo-objects. The methods
+ * loadFromFile and saveToFile are deprecated, and all experiment data should
+ * be handled in json form, which offers better stability and readability.
+ * 
+ */
+
 public class ExperimentInfoIO {
 
     public ExperimentInfoIO() {
     }
 
+    /**
+     * Deprecated, use loadFromJson instead. This method is kept for possible
+     * future usage in some other form.
+     * @param filename file to read from.
+     * @return ExperimentInfo object read from the file.
+     */
     public ExperimentInfo loadFromFile(String filename) {
         List<String> lines = FileReader.readFile(filename);
         if (!lines.isEmpty()) {
@@ -62,6 +78,11 @@ public class ExperimentInfoIO {
         return null;
     }
 
+    /**
+     * Reads specifications for an ExperimentInfo object from a file.
+     * @param filename file to read info from.
+     * @return ExperienceInfo object read from file.
+     */
     public ExperimentInfo loadFromJson(String filename) {
         List<String> lines = FileReader.readFile(filename);
         String join = String.join("", lines);
@@ -104,6 +125,14 @@ public class ExperimentInfoIO {
         return strings;
     }
 
+    /**
+     * Deprecated, use saveToJson instead. This method is kept for possible
+     * future usage.
+     * @param info ExperimentInfo to be saved.
+     * @param location folder which the info is saved to.
+     * @param expName name of the experiment, used for filename.
+     * @throws IOException 
+     */
     public void saveToFile(ExperimentInfo info, String location, String expName) throws IOException {
         List<String> lines = new ArrayList<>();
         List<ResponseMapping> mappings = info.getResponseMappings();
@@ -143,6 +172,15 @@ public class ExperimentInfoIO {
 //Files.write(file, lines, Charset.forName("UTF-8"), StandardOpenOption.APPEND);
     }
 
+    /**
+     * Saves given ExperimentInfo to a file in Json-format.
+     * @param info ExperimentInfo to be saved.
+     * @param location folder which the file is saved.
+     * @param expName name of the experiment, used as the filename.
+     * @return true if the file successfully saved and the given ExperimentInfo
+     * has conditions.
+     * @throws FileNotFoundException 
+     */
     public boolean saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
         JSONObject json = new JSONObject();
         if (info.getConditions().isEmpty()) {

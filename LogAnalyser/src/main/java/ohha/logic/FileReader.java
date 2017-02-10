@@ -8,7 +8,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-// Class for reading logfiles.
+/**
+ * 
+ * @author mikkotiainen
+ * 
+ * Simple class for reading a file into a list of strings.
+ */
 public class FileReader {
 
     public static List<String> readFile(String filename) {

@@ -3,6 +3,16 @@ package ohha.domain;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * 
+ * @author Mikko Tiainen
+ * 
+ * This class maps the correct responses of a condition. A condition can have
+ * multiple separate responses and each response "iteration", so to speak, can
+ * have multiple correct answers.
+ * 
+ */
+
 public class ResponseMapping {
 
     private String condition;
@@ -32,6 +42,15 @@ public class ResponseMapping {
         return correctResponses.get(nResp).contains(resp);
     }
 
+    /**
+     * Checks whether the condition was answered correctly.
+     * 
+     * Note that all responses have to be answered correctly for the method to
+     * return true.
+     * 
+     * @param resps list of responses.
+     * @return if all responses are correct.
+     */
     public boolean isCorrect(List<String> resps) {
         for (int i = 0; i < correctResponses.size(); i++) {
             if (!correctResponses.get(i).contains(resps.get(i))) {
@@ -58,6 +77,15 @@ public class ResponseMapping {
         this.nOfResponses = nOfResponses;
     }
 
+    /**
+     * Equality of mappings is based solely on the condition.
+     * 
+     * So if two mappings have the same condition, they are considered to be
+     * the same mapping. In essence, one condition should only have mapping.
+     * 
+     * @param obj ResponseMapping object that the current is compared to.
+     * @return true if both specify the same condition.
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

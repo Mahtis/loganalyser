@@ -2,6 +2,17 @@ package ohha.domain;
 
 import java.util.List;
 
+/**
+ * 
+ * @author Mikko Tiainen
+ * 
+ * This class holds the information of a single trial, including the subject
+ * who is responding, number of the trial, condition, responses and the 
+ * response/reaction times. This is basically a storage class, with no logic
+ * of its own.
+ * 
+ */
+
 public class Trial {
     private String subject;
     private int trialNum;

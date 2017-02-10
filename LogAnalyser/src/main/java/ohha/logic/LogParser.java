@@ -6,7 +6,15 @@ import java.util.List;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.Trial;
 
-//Parses logfile into lists of trials.
+/**
+ * Parses Presentation logfiles into lists of trials according to given
+ * ExperimentInfo.
+ * 
+ * The parser is instantiated with an ExperimentInfo object, which is used for
+ * searching for the conditions and response codes from the logfile.
+ * 
+ * @author Mikko Tiainen
+ */
 public class LogParser {
 
     private List<String> logLines;
@@ -26,6 +34,13 @@ public class LogParser {
         trials = new ArrayList<>();
     }
 
+    /**
+     * Reads a Presentation logfile and parses it into a Trial list.
+     * The method relies on the fact that the given file is a standard
+     * Presentation file. The method is currently quite long and should be
+     * refactored to more manageable size.
+     * @return List of Trials parsed from the logfile.
+     */
     public List<Trial> parseIntoTrials() {
         int trialN = 1;
         List<String> conds = info.getConditions();
