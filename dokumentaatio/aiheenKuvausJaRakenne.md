@@ -19,3 +19,8 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 ###Määrittelyvaiheen luokkakaavio
 
 ![luokkakaavio](/dokumentaatio/luokkakaavio.png)
+
+
+### Käyttöliittymän päänäkymän ja experiment-määritelmän hahmotelma
+
+![käyttöliittymä](/dokumentaatio/Käyttöliittymä_mocup.pdf)
