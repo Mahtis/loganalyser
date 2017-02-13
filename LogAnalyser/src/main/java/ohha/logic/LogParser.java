@@ -11,7 +11,8 @@ import ohha.domain.Trial;
  * ExperimentInfo.
  * 
  * The parser is instantiated with an ExperimentInfo object, which is used for
- * searching for the conditions and response codes from the logfile.
+ * searching for the conditions and response codes from the logfile. The codePos
+ * refers to the column where the codes are on. It should be 3.
  * 
  * @author Mikko Tiainen
  */

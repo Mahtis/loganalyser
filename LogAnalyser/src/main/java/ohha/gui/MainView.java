@@ -6,8 +6,11 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -19,6 +22,9 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileFilter;
+import ohha.domain.ExperimentInfo;
+import ohha.domain.Trial;
+import ohha.logic.LogParser;
 
 public class MainView extends JPanel implements ActionListener {
 
@@ -32,6 +38,7 @@ public class MainView extends JPanel implements ActionListener {
     private JButton parseButton;
     private JButton analyseButton;
     private JButton deleteButton;
+    private ExperimentInfo info;
 
     public MainView() {
         this.setLayout(new GridBagLayout());
@@ -119,7 +126,7 @@ public class MainView extends JPanel implements ActionListener {
         if (e.getSource() == fileButton) {
             logSelection();
         } else if (e.getSource() == experimentButton) {
-            ExperimentWindow expHandler = new ExperimentWindow(null);
+            ExperimentWindow expHandler = new ExperimentWindow(null, this);
 //            this.setVisible(false);
 //            for(Component i : this.getComponents()) {
 //                i.setEnabled(false);
@@ -128,7 +135,21 @@ public class MainView extends JPanel implements ActionListener {
             for (Object i : list.getSelectedValuesList()) {
                 model.removeElement(i);
             }
-        } else {
+        } else if (e.getSource() == parseButton) {
+            // TODO: split this into own method
+            if (info != null) {
+                File f = files.get(list.getSelectedIndex());
+                if (f != null) {
+                    try {
+                        LogParser parser = new LogParser(f.getPath(), info, 3);
+                        List<Trial> trials = parser.parseIntoTrials();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+            else {
             model.addElement("NOT AN ELEMENT!");
         }
 
@@ -168,6 +189,17 @@ public class MainView extends JPanel implements ActionListener {
         return null;
     }
 
+    public ExperimentInfo getInfo() {
+        return info;
+    }
+
+    public void setInfo(ExperimentInfo info) {
+        this.info = info;
+    }
+
+    
+    
+    
     private class LogFilter extends FileFilter {
         @Override
         public boolean accept(File pathname) {

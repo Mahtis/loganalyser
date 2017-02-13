@@ -103,4 +103,11 @@ public class ResponseMapping {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return condition + ": " + correctResponses;
+    }
+    
+    
+
 }
