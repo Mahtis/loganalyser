@@ -20,6 +20,10 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 
 ![luokkakaavio](/dokumentaatio/luokkakaavio.png)
 
+### Sekvenssikaavioita
+
+![Lokitiedoston lataaminen](/dokumentaatio/Lokitiedoston lisääminen.png)
+![Koetietojen lataaminen](/dokumentaatio/Koetietojen lataaminen.png)
 
 ### Käyttöliittymän päänäkymän ja experiment-määritelmän hahmotelma
 

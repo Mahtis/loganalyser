@@ -24,6 +24,13 @@ public class LogParser {
     private int codePos;
     private int timePos;
 
+    /**
+     * Create a new LogParser for a given Experiment and file.
+     * @param filename Name of the file to be parsed.
+     * @param info ExperimentInfo to be used for parsing.
+     * @param codePos Position of the codes in the logfile.
+     * @throws FileNotFoundException If the file cannot be read.
+     */
     public LogParser(String filename, ExperimentInfo info, int codePos) throws FileNotFoundException {
         if (!filename.contains(".log")) {
             throw new FileNotFoundException("The defined file doesn't appear to be a proper Presentation logfile (doesn't end in .log)");

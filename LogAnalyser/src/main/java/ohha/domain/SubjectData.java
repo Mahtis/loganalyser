@@ -10,6 +10,11 @@ public class SubjectData {
     private ExperimentInfo info;
     private List<Trial> trials;
 
+    /**
+     * Create a new SubjectInfo object with the given ExperimentInfo and List of Trials.
+     * @param info ExperimentInfo for which the data is for.
+     * @param trials List of trials for one subject.
+     */
     public SubjectData(ExperimentInfo info, List<Trial> trials) {
         this.info = info;
         this.trials = trials;

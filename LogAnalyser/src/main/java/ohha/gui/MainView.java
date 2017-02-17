@@ -43,6 +43,9 @@ public class MainView extends JPanel implements ActionListener {
     private JButton deleteButton;
     private ExperimentInfo info;
 
+    /**
+     * Creates a new MainView.
+     */
     public MainView() {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -172,10 +175,10 @@ public class MainView extends JPanel implements ActionListener {
                 try {
                     f = (File) list.getSelectedValue();
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Selected file is not a logfile.");
+                    //JOptionPane.showMessageDialog(this, "Selected file is not a logfile.");
                 }
                 if (f == null) {
-                    // do nothing
+                    JOptionPane.showMessageDialog(this, "Selected file is not a logfile.");
                 } else if (!f.getName().endsWith(".log")) {
                     JOptionPane.showMessageDialog(this, "Not a .log-file.");
                 } else {
@@ -193,6 +196,12 @@ public class MainView extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Opens a file selector and returns the selected file.
+     * @param parent The parent component.
+     * @param filter Custom filter to disallow selecting wrong file types.
+     * @return The user selected file.
+     */
     public static File singleFileSelection(Component parent, FileFilter filter) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
@@ -204,6 +213,12 @@ public class MainView extends JPanel implements ActionListener {
         return null;
     }
 
+    /**
+     * Opens a file selector and returns the selected files.
+     * @param parent The parent component.
+     * @param filter Custom filter to disallow selecting wrong file types.
+     * @return The user selected files.
+     */
     public static File[] multiFileSelection(Component parent, FileFilter filter) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);

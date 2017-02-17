@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class FileReader {
 
+    /**
+     * Reads the given file into a list of Strings.
+     * @param filename Full path of the file to be read.
+     * @return List of file contents.
+     */
     public static List<String> readFile(String filename) {
         try {
             Path path = Paths.get(filename);

@@ -9,8 +9,17 @@ import ohha.logic.ExperimentInfoIO;
 import ohha.logic.LogParser;
 import ohha.logic.LogWriter;
 
+/**
+ * Class to start the application.
+ * @author mikkotiainen
+ */
 public class LogAnalyserApplication {
 
+    /**
+     * Starts the application on run.
+     * @param args Not used.
+     * @throws IOException Throws possible IOException.
+     */
     public static void main(String[] args) throws IOException {
         MainWindow window = new MainWindow();
         /*

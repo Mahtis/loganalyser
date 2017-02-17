@@ -44,6 +44,12 @@ public class ExperimentWindow extends JFrame implements ActionListener {
 
     private MainView parent;
 
+    /**
+     * Creates a new ExperimentWindow with the given ExperimentInfo and parent window.
+     * @param info ExperimentInfo for the new window. Can be null.
+     * @param parent Parent view, to where any new loaded or set ExperimentInfo can
+     * be passed on to.
+     */
     public ExperimentWindow(ExperimentInfo info, MainView parent) {
         super("Experiment selector");
         this.info = info;

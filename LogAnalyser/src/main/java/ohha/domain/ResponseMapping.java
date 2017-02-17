@@ -18,11 +18,21 @@ public class ResponseMapping {
     private List<List<String>> correctResponses;
     private int nOfResponses;
 
+    /**
+     * Create a new ResponseMapping with just the condition.
+     * @param condition Condition.
+     */
     public ResponseMapping(String condition) {
         this.condition = condition;
         nOfResponses = 0;
     }
 
+    /**
+     * Create a new ResponseMapping object with all values set.
+     * @param condition Condition.
+     * @param correctResponses Correct responses for the condition.
+     * @param nOfResponses Number of responses wanted.
+     */
     public ResponseMapping(String condition, List<List<String>> correctResponses, int nOfResponses) {
         this.condition = condition;
         this.correctResponses = correctResponses;
@@ -37,6 +47,12 @@ public class ResponseMapping {
         this.condition = condition;
     }
 
+    /**
+     * Checks whether a given response is correct.
+     * @param nResp Number of the response on the trial.
+     * @param resp Response code.
+     * @return True if the response is correct.
+     */
     public boolean isCorrect(int nResp, String resp) {
         return correctResponses.get(nResp).contains(resp);
     }
@@ -66,15 +82,29 @@ public class ResponseMapping {
         return correctResponses;
     }
 
+    /**
+     * Set the correct responses for the condition.
+     * Also automatically sets the number of wanted responses to be equal to
+     * the size of the correct responses list.
+     * @param correctResponses List of correct responses.
+     */
     public void setCorrectResponses(List<List<String>> correctResponses) {
         this.correctResponses = correctResponses;
         this.nOfResponses = correctResponses.size();
     }
 
+    /**
+     * Get the number of responses wanted in the condition.
+     * @return number of wanted responses.
+     */
     public int getnOfResponses() {
         return nOfResponses;
     }
 
+    /**
+     * Set the number of wanted responses.
+     * @param nOfResponses Number of wanted responses.
+     */
     public void setnOfResponses(int nOfResponses) {
         this.nOfResponses = nOfResponses;
     }
