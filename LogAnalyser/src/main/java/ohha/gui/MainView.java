@@ -23,13 +23,16 @@ import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileFilter;
 import ohha.domain.ExperimentInfo;
+import ohha.domain.SubjectData;
 import ohha.domain.Trial;
+import ohha.logic.AnalyseData;
 import ohha.logic.LogParser;
 
 public class MainView extends JPanel implements ActionListener {
 
     private JLabel fileLabel;
     private List<File> files;
+    private List<SubjectData> data;
     private DefaultListModel model;
     private JList list;
     private JScrollPane scroll;
@@ -45,6 +48,7 @@ public class MainView extends JPanel implements ActionListener {
         GridBagConstraints c = new GridBagConstraints();
 
         files = new ArrayList<>();
+        data = new ArrayList<>();
 
         fileLabel = new JLabel("Selected files:");
         //c.fill = GridBagConstraints.HORIZONTAL;
@@ -126,7 +130,7 @@ public class MainView extends JPanel implements ActionListener {
         if (e.getSource() == fileButton) {
             logSelection();
         } else if (e.getSource() == experimentButton) {
-            ExperimentWindow expHandler = new ExperimentWindow(null, this);
+            ExperimentWindow expHandler = new ExperimentWindow(info, this);
 //            this.setVisible(false);
 //            for(Component i : this.getComponents()) {
 //                i.setEnabled(false);
@@ -136,25 +140,17 @@ public class MainView extends JPanel implements ActionListener {
                 model.removeElement(i);
             }
         } else if (e.getSource() == parseButton) {
-            // TODO: split this into own method
-            if (info != null) {
-                File f = files.get(list.getSelectedIndex());
-                if (f != null) {
-                    try {
-                        LogParser parser = new LogParser(f.getPath(), info, 3);
-                        List<Trial> trials = parser.parseIntoTrials();
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        }
-            else {
+            parseSelectedFile();
+        } else if (e.getSource() == analyseButton) {
+            AnalyseData analyse = new AnalyseData(data.get(0));
+            analyse.calculateHistogramValues();
+        } else {
             model.addElement("NOT AN ELEMENT!");
         }
 
     }
 
+    // ACTION EVENTS listed below//
     private void logSelection() {
         File[] logFiles = multiFileSelection(this, new LogFilter());
         for (File file : logFiles) {
@@ -163,6 +159,36 @@ public class MainView extends JPanel implements ActionListener {
             } else {
                 files.add(file);
                 model.addElement(file);
+            }
+        }
+    }
+
+    private void parseSelectedFile() {
+        if (info != null) {
+            if (list.getSelectedValue() == null) {
+                JOptionPane.showMessageDialog(this, "Please select a logfile to parse.");
+            } else {
+                File f = null;
+                try {
+                    f = (File) list.getSelectedValue();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Selected file is not a logfile.");
+                }
+                if (f == null) {
+                    // do nothing
+                } else if (!f.getName().endsWith(".log")) {
+                    JOptionPane.showMessageDialog(this, "Not a .log-file.");
+                } else {
+                    try {
+                        LogParser parser = new LogParser(f.getPath(), info, 3);
+                        List<Trial> trials = parser.parseIntoTrials();
+                        SubjectData subData = new SubjectData(info, trials);
+                        data.add(subData);
+                        model.addElement(subData);
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
         }
     }
@@ -177,7 +203,7 @@ public class MainView extends JPanel implements ActionListener {
         }
         return null;
     }
-    
+
     public static File[] multiFileSelection(Component parent, FileFilter filter) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
@@ -197,10 +223,8 @@ public class MainView extends JPanel implements ActionListener {
         this.info = info;
     }
 
-    
-    
-    
     private class LogFilter extends FileFilter {
+
         @Override
         public boolean accept(File pathname) {
             return pathname.getName().endsWith(".log") || pathname.isDirectory();

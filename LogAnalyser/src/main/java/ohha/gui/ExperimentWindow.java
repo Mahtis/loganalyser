@@ -41,7 +41,7 @@ public class ExperimentWindow extends JFrame implements ActionListener {
     private JButton respNameButton;
     private JButton respMappingButton;
     private JScrollPane scrollMappings;
-    
+
     private MainView parent;
 
     public ExperimentWindow(ExperimentInfo info, MainView parent) {
@@ -50,20 +50,24 @@ public class ExperimentWindow extends JFrame implements ActionListener {
         this.parent = parent;
 
         panel = new JPanel();
-        panel.setLayout(new GridLayout(0,3));
+        panel.setLayout(new GridLayout(0, 3));
         loadText = new JLabel();
         conditionTitle = new JLabel("Conditions: ");
         respCodeTitle = new JLabel("Response codes");
         respNameTitle = new JLabel("Response names");
         respMappingTitle = new JLabel("Correct responses:");
-        conditions = new JLabel("[]");
-        respCodes = new JLabel("[]");
-        respNames = new JLabel("[]");
-        respMappings = new JLabel("[]");
         if (info == null) {
             loadText.setText("No Experiment loaded");
+            conditions = new JLabel("[]");
+            respCodes = new JLabel("[]");
+            respNames = new JLabel("[]");
+            respMappings = new JLabel("[]");
         } else {
             loadText.setText(info.getName());
+            conditions = new JLabel(info.getConditions().toString());
+            respCodes = new JLabel(info.getResponseCodes().toString());
+            respNames = new JLabel(info.getResponseNames().toString());
+            respMappings = new JLabel(info.getResponseMappings().toString());
         }
         loadButton = new JButton("Load Experiment");
         loadButton.addActionListener(this);
@@ -74,7 +78,7 @@ public class ExperimentWindow extends JFrame implements ActionListener {
         respNameButton = new JButton("Names");
         respMappingButton = new JButton("Correct");
         scrollMappings = new JScrollPane(respMappings);
-        
+
         panel.add(loadText);
         panel.add(loadButton);
         panel.add(saveButton);
@@ -126,12 +130,8 @@ public class ExperimentWindow extends JFrame implements ActionListener {
         }
     }
 
-    
-    
-    
-    
-    
     private class JsonFilter extends FileFilter {
+
         @Override
         public boolean accept(File pathname) {
             return pathname.getName().endsWith(".json") || pathname.isDirectory();
