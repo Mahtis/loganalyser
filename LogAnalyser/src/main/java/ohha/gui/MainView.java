@@ -146,7 +146,10 @@ public class MainView extends JPanel implements ActionListener {
             parseSelectedFile();
         } else if (e.getSource() == analyseButton) {
             AnalyseData analyse = new AnalyseData(data.get(0));
-            analyse.calculateHistogramValues();
+            int[] bins = analyse.calculateHistogramValues();
+            for (int i : bins) {
+                System.out.println(i);
+            }
         } else {
             model.addElement("NOT AN ELEMENT!");
         }

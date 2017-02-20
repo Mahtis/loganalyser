@@ -1,10 +1,6 @@
 package ohha.gui;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  * This class holds the main frame of the application. Most of the actual logic
