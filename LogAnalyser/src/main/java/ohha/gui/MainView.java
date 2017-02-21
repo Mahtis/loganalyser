@@ -1,6 +1,7 @@
 package ohha.gui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -26,6 +28,7 @@ import ohha.domain.ExperimentInfo;
 import ohha.domain.SubjectData;
 import ohha.domain.Trial;
 import ohha.logic.AnalyseData;
+import ohha.logic.DrawTimeSeries;
 import ohha.logic.LogParser;
 
 public class MainView extends JPanel implements ActionListener {
@@ -152,6 +155,16 @@ public class MainView extends JPanel implements ActionListener {
             }
             System.out.println("RATES:");
             analyse.calculateResponseRates();
+            JFrame generic = new JFrame("window");
+            JPanel panel = new JPanel();
+            panel.setPreferredSize(new Dimension(500, 500));
+            generic.add(panel);
+            DrawTimeSeries t = new DrawTimeSeries(data.get(0).getTrials(), 10);
+            panel.add(t);
+            t.setPreferredSize(panel.getPreferredSize());
+            generic.setVisible(true);
+            generic.pack();
+            
         } else {
             model.addElement("NOT AN ELEMENT!");
         }
