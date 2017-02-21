@@ -150,6 +150,8 @@ public class MainView extends JPanel implements ActionListener {
             for (int i : bins) {
                 System.out.println(i);
             }
+            System.out.println("RATES:");
+            analyse.calculateResponseRates();
         } else {
             model.addElement("NOT AN ELEMENT!");
         }

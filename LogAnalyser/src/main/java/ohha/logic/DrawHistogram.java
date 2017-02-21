@@ -4,11 +4,20 @@ package ohha.logic;
 import java.awt.Component;
 import java.awt.Graphics;
 
+
+/**
+ * Draws a histogram from the given values.
+ * @author mikkotiainen
+ */
 public class DrawHistogram extends Component{
     
     private int[] bins;
     private int gap;
 
+    /**
+     * Initializes the histogram with a default width of 5.
+     * @param bins The bins used for drawing the histogram.
+     */
     public DrawHistogram(int[] bins) {
         this.bins = bins;
         gap = 5;
