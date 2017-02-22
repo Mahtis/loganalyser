@@ -34,7 +34,7 @@ import ohha.logic.DrawResponseRates;
 import ohha.logic.DrawTimeSeries;
 import ohha.logic.LogParser;
 
-public class MainView extends JPanel implements ActionListener {
+public class MainView extends JPanel {
 
     private JLabel fileLabel;
     private List<File> files;
@@ -60,22 +60,12 @@ public class MainView extends JPanel implements ActionListener {
         data = new ArrayList<>();
 
         fileLabel = new JLabel("Selected files:");
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.0;
+        setElementLocation(c, 0, 0, 1, 1, 0, 0);
         this.add(fileLabel, c);
 
         fileButton = new JButton("Files");
-        fileButton.addActionListener(this);
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 0;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.0;
+        fileButton.addActionListener(new LogSelectionHandler(this));
+        setElementLocation(c, 1, 0, 1, 1, 0, 0);
         this.add(fileButton, c);
 
         model = new DefaultListModel();
@@ -83,158 +73,29 @@ public class MainView extends JPanel implements ActionListener {
         list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         scroll = new JScrollPane(list);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        //c.fill = GridBagConstraints.BOTH;
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 3;
-        c.gridheight = 5;
-        c.weighty = 0.0;
-        c.weightx = 0.0;
+        setElementLocation(c, 0, 1, 3, 5, 0, 0);
         this.add(scroll, c);
 
         experimentButton = new JButton("Set Experiment");
-        experimentButton.addActionListener(this);
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 1;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.0;
+        experimentButton.addActionListener(new ExperimentSettingsHandler(this));
+        setElementLocation(c, 4, 1, 1, 1, 0, 0);
         this.add(experimentButton, c);
 
         parseButton = new JButton("Parse logfile");
-        parseButton.addActionListener(this);
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 2;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.0;
+        parseButton.addActionListener(new ParseHandler(this));
+        setElementLocation(c, 4, 2, 1, 1, 0, 0);
         this.add(parseButton, c);
 
         analyseButton = new JButton("Analyse trials");
-        analyseButton.addActionListener(this);
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 3;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.0;
+        analyseButton.addActionListener(new AnalyseHandler(this));
+        setElementLocation(c, 4, 3, 1, 1, 0, 0);
         this.add(analyseButton, c);
 
         deleteButton = new JButton("Remove selected");
-        deleteButton.addActionListener(this);
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 6;
-        c.gridwidth = 1;
-        c.gridheight = 1;
-        c.weightx = 0.0;
+        deleteButton.addActionListener(new DeletionHandler(this));
+        setElementLocation(c, 0, 6, 1, 1, 0, 0);
         this.add(deleteButton, c);
 
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == fileButton) {
-            logSelection();
-        } else if (e.getSource() == experimentButton) {
-            ExperimentWindow expHandler = new ExperimentWindow(info, this);
-//            this.setVisible(false);
-//            for(Component i : this.getComponents()) {
-//                i.setEnabled(false);
-//            }
-        } else if (e.getSource() == deleteButton) {
-            for (Object i : list.getSelectedValuesList()) {
-                model.removeElement(i);
-            }
-        } else if (e.getSource() == parseButton) {
-            parseSelectedFile();
-        } else if (e.getSource() == analyseButton) {
-            AnalyseData analyse = new AnalyseData(data.get(0));
-            int[] bins = analyse.calculateHistogramValues();
-            for (int i : bins) {
-                System.out.println(i);
-            }
-            JFrame generic = new JFrame("histogram");
-            JPanel panel = new JPanel();
-            panel.setPreferredSize(new Dimension(500, 500));
-            generic.add(panel);
-            DrawHistogram h = new DrawHistogram(bins);
-            panel.add(h);
-            h.setPreferredSize(panel.getPreferredSize());
-            generic.setVisible(true);
-            generic.pack();
-            
-            System.out.println("RATES:");
-            Map<String, Integer> rates = analyse.calculateResponseRates();
-            JFrame generic2 = new JFrame("rates");
-            JPanel panel2 = new JPanel();
-            panel2.setPreferredSize(new Dimension(500, 500));
-            generic2.add(panel2);
-            DrawResponseRates r = new DrawResponseRates(rates);
-            panel2.add(r);
-            r.setPreferredSize(panel2.getPreferredSize());
-            generic2.setVisible(true);
-            generic2.pack();
-            
-            JFrame generic3 = new JFrame("time series");
-            JPanel panel3 = new JPanel();
-            panel3.setPreferredSize(new Dimension(500, 500));
-            generic3.add(panel3);
-            DrawTimeSeries t = new DrawTimeSeries(data.get(0).getTrials(), 10);
-            panel3.add(t);
-            t.setPreferredSize(panel3.getPreferredSize());
-            generic3.setVisible(true);
-            generic3.pack();
-            
-        } else {
-            model.addElement("NOT AN ELEMENT!");
-        }
-
-    }
-
-    // ACTION EVENTS listed below//
-    private void logSelection() {
-        File[] logFiles = multiFileSelection(this, new LogFilter());
-        for (File file : logFiles) {
-            if (!file.getName().endsWith(".log")) {
-                JOptionPane.showMessageDialog(this, "Not a .log-file.");
-            } else {
-                files.add(file);
-                model.addElement(file);
-            }
-        }
-    }
-
-    private void parseSelectedFile() {
-        if (info != null) {
-            if (list.getSelectedValue() == null) {
-                JOptionPane.showMessageDialog(this, "Please select a logfile to parse.");
-            } else {
-                File f = null;
-                try {
-                    f = (File) list.getSelectedValue();
-                } catch (Exception e) {
-                    //JOptionPane.showMessageDialog(this, "Selected file is not a logfile.");
-                }
-                if (f == null) {
-                    JOptionPane.showMessageDialog(this, "Selected file is not a logfile.");
-                } else if (!f.getName().endsWith(".log")) {
-                    JOptionPane.showMessageDialog(this, "Not a .log-file.");
-                } else {
-                    try {
-                        LogParser parser = new LogParser(f.getPath(), info, 3);
-                        List<Trial> trials = parser.parseIntoTrials();
-                        SubjectData subData = new SubjectData(info, trials);
-                        data.add(subData);
-                        model.addElement(subData);
-                    } catch (FileNotFoundException ex) {
-                        Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        }
     }
 
     /**
@@ -279,6 +140,40 @@ public class MainView extends JPanel implements ActionListener {
         this.info = info;
     }
 
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
+    }
+
+    public List<SubjectData> getData() {
+        return data;
+    }
+
+    public void setData(List<SubjectData> data) {
+        this.data = data;
+    }
+
+    public DefaultListModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultListModel model) {
+        this.model = model;
+    }
+
+    public JList getList() {
+        return list;
+    }
+
+    public void setList(JList list) {
+        this.list = list;
+    }
+
+    
+    
     private class LogFilter extends FileFilter {
 
         @Override
@@ -290,6 +185,15 @@ public class MainView extends JPanel implements ActionListener {
         public String getDescription() {
             return "Presentation logfile .log";
         }
+    }
+    
+    private void setElementLocation(GridBagConstraints c, int x, int y, int width, int height, double weightx, double weighty) {
+        c.gridx = x;
+        c.gridy = y;
+        c.gridwidth = width;
+        c.gridheight = height;
+        c.weightx = weightx;
+        c.weighty = weighty;
     }
 
 }
