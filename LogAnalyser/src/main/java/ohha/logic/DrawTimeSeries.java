@@ -63,8 +63,4 @@ public class DrawTimeSeries extends Component {
         return new int[] {min, max};
     }
     
-    private void drawMeanLine(Graphics g, int meanSum, int meanCount, int x) {
-        int mean = meanSum / meanCount;
-        g.drawLine(x, x, x, x);
-    }
 }

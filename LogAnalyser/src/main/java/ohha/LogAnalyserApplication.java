@@ -1,12 +1,7 @@
 package ohha;
 
-import java.awt.Dimension;
 import java.io.IOException;
-import java.util.HashMap;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import ohha.gui.MainWindow;
-import ohha.logic.DrawResponseRates;
 
 /**
  * Class to start the application.
@@ -21,7 +16,7 @@ public class LogAnalyserApplication {
      */
     public static void main(String[] args) throws IOException {
         MainWindow window = new MainWindow();
-        
+        /*
         JFrame win = new JFrame("Histogram");
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(500, 500));

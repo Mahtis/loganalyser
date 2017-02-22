@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -28,6 +29,8 @@ import ohha.domain.ExperimentInfo;
 import ohha.domain.SubjectData;
 import ohha.domain.Trial;
 import ohha.logic.AnalyseData;
+import ohha.logic.DrawHistogram;
+import ohha.logic.DrawResponseRates;
 import ohha.logic.DrawTimeSeries;
 import ohha.logic.LogParser;
 
@@ -153,17 +156,37 @@ public class MainView extends JPanel implements ActionListener {
             for (int i : bins) {
                 System.out.println(i);
             }
-            System.out.println("RATES:");
-            analyse.calculateResponseRates();
-            JFrame generic = new JFrame("window");
+            JFrame generic = new JFrame("histogram");
             JPanel panel = new JPanel();
             panel.setPreferredSize(new Dimension(500, 500));
             generic.add(panel);
-            DrawTimeSeries t = new DrawTimeSeries(data.get(0).getTrials(), 10);
-            panel.add(t);
-            t.setPreferredSize(panel.getPreferredSize());
+            DrawHistogram h = new DrawHistogram(bins);
+            panel.add(h);
+            h.setPreferredSize(panel.getPreferredSize());
             generic.setVisible(true);
             generic.pack();
+            
+            System.out.println("RATES:");
+            Map<String, Integer> rates = analyse.calculateResponseRates();
+            JFrame generic2 = new JFrame("rates");
+            JPanel panel2 = new JPanel();
+            panel2.setPreferredSize(new Dimension(500, 500));
+            generic2.add(panel2);
+            DrawResponseRates r = new DrawResponseRates(rates);
+            panel2.add(r);
+            r.setPreferredSize(panel2.getPreferredSize());
+            generic2.setVisible(true);
+            generic2.pack();
+            
+            JFrame generic3 = new JFrame("time series");
+            JPanel panel3 = new JPanel();
+            panel3.setPreferredSize(new Dimension(500, 500));
+            generic3.add(panel3);
+            DrawTimeSeries t = new DrawTimeSeries(data.get(0).getTrials(), 10);
+            panel3.add(t);
+            t.setPreferredSize(panel3.getPreferredSize());
+            generic3.setVisible(true);
+            generic3.pack();
             
         } else {
             model.addElement("NOT AN ELEMENT!");
