@@ -103,4 +103,21 @@ public class AnalyseData {
         return rates;
     }
 
+    /**
+     * Separates trials according to condition.
+     * @return Map of conditions as keys to their respective trials.
+     */
+    public Map<String, List<Trial>> reactionTimesForConditions() {
+        Map<String, List<Trial>> condRts = new HashMap<>();
+        List<Trial> trials = data.getTrials();
+        ExperimentInfo info = data.getInfo();
+        for (String condition : info.getConditions()) {
+            condRts.put(condition, new ArrayList<>());
+        }
+        for (Trial trial : trials) {
+            condRts.get(trial.getCondition()).add(trial);
+        }
+        return condRts;
+    }
+
 }

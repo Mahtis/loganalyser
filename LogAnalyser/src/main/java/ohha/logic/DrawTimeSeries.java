@@ -5,11 +5,20 @@ import java.awt.Graphics;
 import java.util.List;
 import ohha.domain.Trial;
 
+/**
+ * Draws all trials in order and displays mean values for given window.
+ * @author mikkotiainen
+ */
 public class DrawTimeSeries extends Component {
     
     private List<Trial> trials;
     private int meanWindow;
 
+    /**
+     * Initialize a new draw with the given list of trials and mean window.
+     * @param trials Trials to be displayed.
+     * @param meanWindow Window for means, suggested to be something between 10 and half of trials size.
+     */
     public DrawTimeSeries(List<Trial> trials, int meanWindow) {
         this.trials = trials;
         this.meanWindow = meanWindow;

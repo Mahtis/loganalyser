@@ -2,7 +2,9 @@ package ohha.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Map;
+import ohha.domain.Trial;
 import ohha.logic.AnalyseData;
 import ohha.logic.DrawHistogram;
 import ohha.logic.DrawResponseRates;
@@ -34,6 +36,11 @@ public class AnalyseHandler implements ActionListener {
         AnalysisWindow win2 = new AnalysisWindow(500, 500, "Rates", new DrawResponseRates(rates));
 
         AnalysisWindow win3 = new AnalysisWindow(500, 500, "Time series", new DrawTimeSeries(parent.getData().get(0).getTrials(), 10));
+        
+        Map<String, List<Trial>> condRts = analyse.reactionTimesForConditions();
+        for (String cond : condRts.keySet()) {
+            new AnalysisWindow(500, 500, cond, new DrawTimeSeries(condRts.get(cond), 9));
+        }
     }
 
 }

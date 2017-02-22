@@ -1,25 +1,16 @@
 package ohha.gui;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
@@ -27,12 +18,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.filechooser.FileFilter;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.SubjectData;
-import ohha.domain.Trial;
-import ohha.logic.AnalyseData;
-import ohha.logic.DrawHistogram;
-import ohha.logic.DrawResponseRates;
-import ohha.logic.DrawTimeSeries;
-import ohha.logic.LogParser;
 
 public class MainView extends JPanel {
 
@@ -97,6 +82,15 @@ public class MainView extends JPanel {
         this.add(deleteButton, c);
 
     }
+            
+    private void setElementLocation(GridBagConstraints c, int x, int y, int width, int height, double weightx, double weighty) {
+        c.gridx = x;
+        c.gridy = y;
+        c.gridwidth = width;
+        c.gridheight = height;
+        c.weightx = weightx;
+        c.weighty = weighty;
+    }
 
     /**
      * Opens a file selector and returns the selected file.
@@ -131,6 +125,7 @@ public class MainView extends JPanel {
         }
         return null;
     }
+
 
     public ExperimentInfo getInfo() {
         return info;
@@ -170,30 +165,6 @@ public class MainView extends JPanel {
 
     public void setList(JList list) {
         this.list = list;
-    }
-
-    
-    
-    private class LogFilter extends FileFilter {
-
-        @Override
-        public boolean accept(File pathname) {
-            return pathname.getName().endsWith(".log") || pathname.isDirectory();
-        }
-
-        @Override
-        public String getDescription() {
-            return "Presentation logfile .log";
-        }
-    }
-    
-    private void setElementLocation(GridBagConstraints c, int x, int y, int width, int height, double weightx, double weighty) {
-        c.gridx = x;
-        c.gridy = y;
-        c.gridwidth = width;
-        c.gridheight = height;
-        c.weightx = weightx;
-        c.weighty = weighty;
     }
 
 }
