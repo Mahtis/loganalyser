@@ -75,6 +75,10 @@ public class AnalyseData {
         return bins;
     }
 
+    /**
+     * Calculates the percentage correct response rates for each condition.
+     * @return A map of condition and its response rate.
+     */
     public Map<String, Integer> calculateResponseRates() {
         Map<String, Integer> corrects = new HashMap<>();
         Map<String, Integer> wrongs = new HashMap<>();

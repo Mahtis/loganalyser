@@ -11,7 +11,8 @@ import ohha.logic.DrawResponseRates;
 import ohha.logic.DrawTimeSeries;
 
 /**
- *
+ * Simple ActionListener class to handle analyze-button presses. For now
+ * it runs all created analyses for the first dataset on the list.
  * @author mikkotiainen
  */
 public class AnalyseHandler implements ActionListener {
