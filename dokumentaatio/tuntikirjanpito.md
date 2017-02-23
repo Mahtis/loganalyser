@@ -13,3 +13,6 @@ Päivä | Tunnit | Kuvaus
 10.02.2017 | 8h | GUI:n työstämistä jatkettu, javadoc luotu, lisätty testejä ResponseMappingille.
 13.02.2017 | 5h | GUI:n työstämistä.
 17.02.2017 | 10h | GUI:n työstämistä. Analyysien aloittaminen.
+20.02.2017 | 4h | Analyysien piirron koodausta.
+21.02.2017 | 8h | Analyysien piirron koodausta.
+22.02.2017 | 4h | GUI:n refaktorointia.

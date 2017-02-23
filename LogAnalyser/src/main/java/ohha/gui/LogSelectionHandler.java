@@ -8,10 +8,18 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
-public class LogSelectionHandler implements ActionListener{
+/**
+ * Simple ActionListener class to handle logselection-button presses.
+ * @author Mikko
+ */
+public class LogSelectionHandler implements ActionListener {
     
     private MainView parent;
 
+    /**
+     * Initialize a new LogSelectionHandler.
+     * @param parent The MainView that the handled button is part of.
+     */
     public LogSelectionHandler(MainView parent) {
         this.parent = parent;
     }

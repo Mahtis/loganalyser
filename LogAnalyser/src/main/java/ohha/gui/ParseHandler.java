@@ -8,15 +8,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import ohha.domain.ExperimentInfo;
 import ohha.domain.SubjectData;
 import ohha.domain.Trial;
 import ohha.logic.LogParser;
 
-public class ParseHandler implements  ActionListener{
+/**
+ * Simple ActionListener class to handle parse-button presses.
+ * @author Mikko
+ */
+public class ParseHandler implements  ActionListener {
     
     private MainView parent;
 
+    /**
+     * Initializes a new ParseHandler.
+     * @param parent The MainView that the handled button is part of.
+     */
     public ParseHandler(MainView parent) {
         this.parent = parent;
     }
