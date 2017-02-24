@@ -43,8 +43,18 @@ public class ExperimentInfoIOTest {
         String filename = "src/main/resources/Experiment2.json";
         ExperimentInfo info2 = ExperimentInfoIO.loadFromJson(filename);
         int condSize = info2.getConditions().size();
-        assertEquals(condSize, 4);
+        String name = info2.getName();
+        int codeSize = info2.getResponseCodes().size();
+        assertEquals(4, condSize);
+        assertEquals("exp2", name);
+        assertEquals(2, codeSize);
     }
+    
+    @Test
+    public void loadingNoNameExpResultsInEmptyName() {
+        assertEquals("empty", info.getName());
+    }
+    
     
     @Test
     public void savingSimpleJsonCreatesAFile() throws FileNotFoundException, IOException {

@@ -16,10 +16,14 @@ public class SubjectData {
      * @param info ExperimentInfo for which the data is for.
      * @param trials List of trials for one subject.
      */
-    public SubjectData(ExperimentInfo info, List<Trial> trials, String subject) {
+    public SubjectData(ExperimentInfo info, List<Trial> trials) {
         this.info = info;
         this.trials = trials;
-        this.subject = subject;
+        if (trials != null && !trials.isEmpty()) {
+            this.subject = trials.get(0).getSubject();
+        } else {
+            this.subject = "none";
+        }
     }
     
 

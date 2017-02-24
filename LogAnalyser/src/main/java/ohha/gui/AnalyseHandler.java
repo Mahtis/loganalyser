@@ -8,9 +8,6 @@ import javax.swing.JOptionPane;
 import ohha.domain.SubjectData;
 import ohha.domain.Trial;
 import ohha.logic.AnalyseData;
-import ohha.logic.DrawHistogram;
-import ohha.logic.DrawResponseRates;
-import ohha.logic.DrawTimeSeries;
 
 /**
  * Simple ActionListener class to handle analyze-button presses. For now it runs
@@ -49,7 +46,7 @@ public class AnalyseHandler implements ActionListener {
                 for (String cond : condRts.keySet()) {
                     new AnalysisWindow(500, 500, cond, new DrawTimeSeries(condRts.get(cond), 9));
                 }
-            } catch (Exception Exc) {
+            } catch (Exception exc) {
                 JOptionPane.showMessageDialog(parent, "One of the files was not a proper parsed logfile.");
             }
         }

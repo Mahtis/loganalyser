@@ -91,16 +91,21 @@ public class AnalyseData {
         }
         for (Trial trial : trials) {
             String condition = trial.getCondition();
-            List<String> responses = trial.getResponseCodes();
-            boolean correct = info.isCorrect(condition, responses);
-            if (correct) {
+            if (!corrects.containsKey(condition)) {
+                continue;
+            }
+            if (trial.isCorrect()) {
                 corrects.put(condition, corrects.get(condition) + 1);
             } else {
                 wrongs.put(condition, wrongs.get(condition) + 1);
             }
         }
         for (String condition : info.getConditions()) {
-            int condRate = (corrects.get(condition) * 100) / (corrects.get(condition) + wrongs.get(condition));
+            int sumOfTrials = corrects.get(condition) + wrongs.get(condition);
+            int condRate = 0;
+            if (sumOfTrials > 0) {
+                condRate = (corrects.get(condition) * 100) / sumOfTrials;
+            }
             rates.put(condition, condRate);
             System.out.println(condition + ": " + rates.get(condition));
         }
@@ -119,7 +124,10 @@ public class AnalyseData {
             condRts.put(condition, new ArrayList<>());
         }
         for (Trial trial : trials) {
-            condRts.get(trial.getCondition()).add(trial);
+            String condition = trial.getCondition();
+            if (condRts.containsKey(condition)) {
+                condRts.get(condition).add(trial);
+            }
         }
         return condRts;
     }

@@ -1,6 +1,5 @@
 package ohha.logic;
 
-import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -23,7 +22,7 @@ public class FileReaderTest {
     public void readFileIsCorrectSize() {
         FileReader instance = new FileReader();
         int expResult = 1636;
-        int result = instance.readFile("/Users/mikkotiainen/Documents/test.log").size();
+        int result = instance.readFile("src/main/resources/subj1_exp1.log").size();
         assertEquals(expResult, result);
     }
     

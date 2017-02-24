@@ -1,5 +1,6 @@
 package ohha.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,8 @@ public class Trial {
         this.responseNames = responseNames;
         this.responseCodes = responseCodes;
         this.reactionTimes = reactionTimes;
+        this.respTimes = new ArrayList<>();
+        this.correct = false;
     }
 
     /**
@@ -53,6 +56,11 @@ public class Trial {
         this.subject = subject;
         this.trialNum = trialNum;
         this.condition = condition;
+        this.responseNames = new ArrayList<>();
+        this.responseCodes = new ArrayList<>();
+        this.reactionTimes = new ArrayList<>();
+        this.respTimes = new ArrayList<>();
+        this.correct = false;
     }
     
     

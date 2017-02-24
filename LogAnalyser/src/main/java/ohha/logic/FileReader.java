@@ -27,7 +27,6 @@ public class FileReader {
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
             return lines;
         } catch (IOException e) {
-            e.printStackTrace();
             return new ArrayList<>();
         }
     }

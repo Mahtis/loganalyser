@@ -48,7 +48,7 @@ public class ParseHandler implements  ActionListener {
                     try {
                         LogParser parser = new LogParser(f.getPath(), parent.getInfo(), 3);
                         List<Trial> trials = parser.parseIntoTrials();
-                        SubjectData subData = new SubjectData(parent.getInfo(), trials, trials.get(0).getSubject());
+                        SubjectData subData = new SubjectData(parent.getInfo(), trials);
                         parent.getData().add(subData);
                         parent.getModel().addElement(subData);
                     } catch (FileNotFoundException ex) {

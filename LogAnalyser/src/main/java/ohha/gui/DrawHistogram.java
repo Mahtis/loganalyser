@@ -1,4 +1,4 @@
-package ohha.logic;
+package ohha.gui;
 
 import java.awt.Component;
 import java.awt.Graphics;

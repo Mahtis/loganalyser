@@ -1,0 +1,602 @@
+Scenario - speech_grip_congruency with KA & TI
+Logfile written - 04/17/2013 13:18:38
+
+Subject	Trial	Event Type	Code	Time	TTime	Uncertainty	Duration	Uncertainty	ReqTime	ReqDur	Stim Type	Pair Index
+
+kh01	1	Response	5	103837	83709	1
+kh01	2	Picture	ka	123887	0	2	4011	4	0	4000	other	0
+kh01	2	Sound Recording	rec	123889	2	1			0	24000	other	0
+kh01	2	Picture	kaV	127898	4011	2	6298	4	4000	20000	hit	5
+kh01	2	Response	2	134126	10239	1
+kh01	2	Response	4	135742	11855	1
+kh01	3	Picture	ti	154145	0	1	4016	3	0	4000	other	0
+kh01	3	Sound Recording	rec	154147	2	1			0	24000	other	0
+kh01	3	Picture	tiV	158161	4016	2	5757	4	4000	20000	hit	10
+kh01	4	Picture	ti	183867	0	1	4016	3	0	4000	other	0
+kh01	4	Sound Recording	rec	183869	2	1			0	24000	other	0
+kh01	4	Picture	tiV	187883	4016	2	5222	3	4000	20000	hit	15
+kh01	4	Response	2	192992	9125	1
+kh01	4	Response	4	194997	11130	1
+kh01	5	Picture	ka	213048	0	1	4016	2	0	4000	other	0
+kh01	5	Sound Recording	rec	213049	1	1			0	24000	other	0
+kh01	5	Picture	kaV	217064	4016	1	4954	2	4000	20000	hit	20
+kh01	5	Response	2	221944	8896	1
+kh01	5	Response	4	224141	11093	1
+kh01	6	Picture	ka	241972	0	1	4016	3	0	4000	other	0
+kh01	6	Sound Recording	rec	241974	2	1			0	24000	other	0
+kh01	6	Picture	kaV	245988	4016	2	4686	3	4000	20000	hit	25
+kh01	6	Response	2	250654	8682	1
+kh01	6	Response	4	252586	10614	2
+kh01	7	Picture	ti	270751	0	1	4022	2	0	4000	other	0
+kh01	7	Sound Recording	rec	270753	2	1			0	24000	other	0
+kh01	7	Picture	tiV	274773	4022	1	4547	2	4000	20000	hit	30
+kh01	7	Response	2	279191	8440	2
+kh01	7	Response	4	281007	10256	1
+kh01	8	Picture	ti	299274	0	1	4016	2	0	4000	other	0
+kh01	8	Sound Recording	rec	299276	2	1			0	24000	other	0
+kh01	8	Picture	tiS	303290	4016	1	5489	3	4000	20000	hit	35
+kh01	9	Picture	ti	328728	0	1	4016	3	0	4000	other	0
+kh01	9	Sound Recording	rec	328730	2	1			0	24000	other	0
+kh01	9	Picture	tiV	332744	4016	2	4954	3	4000	20000	hit	40
+kh01	9	Response	2	337680	8952	1
+kh01	9	Response	4	339477	10749	1
+kh01	10	Picture	ti	357780	0	2	4017	3	0	4000	other	0
+kh01	10	Sound Recording	rec	357782	2	1			0	24000	other	0
+kh01	10	Picture	tiS	361797	4017	1	4284	2	4000	20000	hit	45
+kh01	10	Response	1	366027	8247	1
+kh01	10	Response	3	367542	9762	2
+kh01	11	Picture	ti	386164	0	1	4016	2	0	4000	other	0
+kh01	11	Sound Recording	rec	386165	1	1			0	24000	other	0
+kh01	11	Picture	tiS	390180	4016	1	5489	3	4000	20000	hit	50
+kh01	11	Response	1	395614	9450	1
+kh01	11	Response	3	397417	11253	1
+kh01	12	Picture	ka	415746	0	1	4022	2	0	4000	other	0
+kh01	12	Sound Recording	rec	415748	2	1			0	24000	other	0
+kh01	12	Picture	kaV	419768	4022	1	5222	2	4000	20000	hit	55
+kh01	12	Response	2	424920	9174	1
+kh01	12	Response	4	427220	11474	1
+kh01	13	Picture	ti	444938	0	1	4017	2	0	4000	other	0
+kh01	13	Sound Recording	rec	444940	2	1			0	24000	other	0
+kh01	13	Picture	tiS	448955	4017	1	4284	2	4000	20000	hit	60
+kh01	13	Response	1	453139	8201	1
+kh01	13	Response	3	454457	9519	1
+kh01	14	Picture	ka	473187	0	1	4017	2	0	4000	other	0
+kh01	14	Sound Recording	rec	473189	2	1			0	24000	other	0
+kh01	14	Picture	kaS	477204	4017	1	4948	2	4000	20000	hit	65
+kh01	14	Response	1	482047	8860	1
+kh01	14	Response	3	483671	10484	1
+kh01	15	Picture	ka	502106	0	1	4016	3	0	4000	other	0
+kh01	15	Sound Recording	rec	502108	2	1			0	24000	other	0
+kh01	15	Picture	kaV	506122	4016	2	6561	3	4000	20000	hit	70
+kh01	15	Response	2	512647	10541	1
+kh01	15	Response	4	515099	12993	1
+kh01	16	Picture	ka	532765	0	1	4017	2	0	4000	other	0
+kh01	16	Sound Recording	rec	532767	2	1			0	24000	other	0
+kh01	16	Picture	kaS	536782	4017	1	4144	3	4000	20000	hit	75
+kh01	16	Response	1	540878	8113	1
+kh01	16	Response	3	542336	9571	1
+kh01	17	Picture	ka	561014	0	2	4017	3	0	4000	other	0
+kh01	17	Sound Recording	rec	561017	3	1			0	24000	other	0
+kh01	17	Picture	kaS	565031	4017	1	4016	3	4000	20000	hit	80
+kh01	17	Response	1	569023	8009	1
+kh01	17	Response	3	570539	9525	1
+kh01	18	Picture	ka	589130	0	1	4016	3	0	4000	other	0
+kh01	18	Sound Recording	rec	589132	2	1			0	24000	other	0
+kh01	18	Picture	kaS	593146	4016	2	4151	3	4000	20000	hit	85
+kh01	18	Response	1	597240	8110	1
+kh01	18	Response	3	598585	9455	2
+kh01	19	Picture	ka	617373	0	2	4022	4	0	4000	other	0
+kh01	19	Sound Recording	rec	617376	3	1			0	24000	other	0
+kh01	19	Picture	kaV	621395	4022	2	6159	3	4000	20000	hit	90
+kh01	19	Response	2	627465	10092	1
+kh01	19	Response	4	629292	11919	1
+kh01	20	Picture	ka	647503	0	1	4010	3	0	4000	other	0
+kh01	20	Sound Recording	rec	647504	1	1			0	24000	other	0
+kh01	20	Picture	kaV	651513	4010	2	4023	3	4000	20000	hit	95
+kh01	20	Response	2	655463	7960	1
+kh01	20	Response	4	657449	9946	1
+kh01	21	Picture	ka	675478	0	2	4023	3	0	4000	other	0
+kh01	21	Sound Recording	rec	675480	2	1			0	24000	other	0
+kh01	21	Picture	kaS	679501	4023	1	4686	2	4000	20000	hit	100
+kh01	21	Response	1	684098	8620	2
+kh01	21	Response	3	685368	9890	1
+kh01	22	Picture	ti	704135	0	1	4017	2	0	4000	other	0
+kh01	22	Sound Recording	rec	704137	2	1			0	24000	other	0
+kh01	22	Picture	tiV	708152	4017	1	5215	3	4000	20000	hit	105
+kh01	22	Response	2	713338	9203	1
+kh01	22	Response	4	715165	11030	1
+kh01	23	Picture	ti	733455	0	1	4011	2	0	4000	other	0
+kh01	23	Sound Recording	rec	733457	2	1			0	24000	other	0
+kh01	23	Picture	tiV	737466	4011	1	4017	2	4000	20000	hit	110
+kh01	23	Response	2	741387	7932	2
+kh01	23	Response	4	743059	9604	1
+kh01	24	Picture	ti	761431	0	1	4022	2	0	4000	other	0
+kh01	24	Sound Recording	rec	761433	2	1			0	24000	other	0
+kh01	24	Picture	tiV	765453	4022	1	4284	3	4000	20000	hit	115
+kh01	24	Response	2	769594	8163	1
+kh01	24	Response	4	771577	10146	2
+kh01	25	Picture	ka	789686	0	1	4017	2	0	4000	other	0
+kh01	25	Sound Recording	rec	789688	2	1			0	24000	other	0
+kh01	25	Picture	kaV	793703	4017	1	4819	3	4000	20000	hit	120
+kh01	25	Response	2	798391	8705	1
+kh01	25	Response	4	800488	10802	1
+kh01	26	Picture	ti	818471	0	1	4016	3	0	4000	other	0
+kh01	26	Sound Recording	rec	818473	2	1			0	24000	other	0
+kh01	26	Picture	tiS	822487	4016	2	4017	3	4000	20000	hit	125
+kh01	26	Response	1	826453	7982	1
+kh01	26	Response	3	827737	9266	1
+kh01	27	Picture	ti	846581	0	1	4022	2	0	4000	other	0
+kh01	27	Sound Recording	rec	846582	1	1			0	24000	other	0
+kh01	27	Picture	tiS	850603	4022	1	5355	2	4000	20000	hit	130
+kh01	27	Response	1	855870	9289	1
+kh01	27	Response	3	857519	10938	1
+kh01	28	Picture	ti	875906	0	2	4017	3	0	4000	other	0
+kh01	28	Sound Recording	rec	875908	2	1			0	24000	other	0
+kh01	28	Picture	tiV	879923	4017	1	4954	2	4000	20000	hit	135
+kh01	28	Response	2	884740	8834	1
+kh01	28	Response	4	886790	10884	1
+kh01	29	Picture	ti	904825	0	1	4017	2	0	4000	other	0
+kh01	29	Sound Recording	rec	904827	2	1			0	24000	other	0
+kh01	29	Picture	tiS	908842	4017	1	5355	2	4000	20000	hit	140
+kh01	29	Response	1	914141	9316	1
+kh01	29	Response	3	915435	10610	1
+kh01	30	Picture	ti	934279	0	2	4017	3	0	4000	other	0
+kh01	30	Sound Recording	rec	934281	2	1			0	24000	other	0
+kh01	30	Picture	tiV	938296	4017	1	4814	2	4000	20000	hit	145
+kh01	30	Response	2	942983	8704	2
+kh01	30	Response	4	945125	10846	2
+kh01	31	Picture	ti	963058	0	2	4023	3	0	4000	other	0
+kh01	31	Sound Recording	rec	963060	2	1			0	24000	other	0
+kh01	31	Picture	tiS	967081	4023	1	5355	2	4000	20000	hit	150
+kh01	31	Response	1	972314	9256	1
+kh01	31	Response	3	973870	10812	1
+kh01	32	Picture	ka	992384	0	2	4017	3	0	4000	other	0
+kh01	32	Sound Recording	rec	992386	2	1			0	24000	other	0
+kh01	32	Picture	kaS	996401	4017	1	5617	3	4000	20000	hit	155
+kh01	32	Response	1	1001982	9598	1
+kh01	32	Response	3	1003484	11100	1
+kh01	33	Picture	ti	1022106	0	2	4017	3	0	4000	other	0
+kh01	33	Sound Recording	rec	1022108	2	1			0	24000	other	0
+kh01	33	Picture	tiV	1026123	4017	1	4418	2	4000	20000	hit	160
+kh01	33	Response	2	1030404	8298	2
+kh01	33	Response	4	1032577	10471	1
+kh01	34	Picture	ti	1050489	0	2	4017	3	0	4000	other	0
+kh01	34	Sound Recording	rec	1050491	2	1			0	24000	other	0
+kh01	34	Picture	tiS	1054506	4017	1	5221	3	4000	20000	hit	165
+kh01	34	Response	1	1059647	9158	1
+kh01	34	Response	3	1061593	11104	2
+kh01	35	Picture	ka	1079676	0	1	4016	3	0	4000	other	0
+kh01	35	Sound Recording	rec	1079678	2	1			0	24000	other	0
+kh01	35	Picture	kaS	1083692	4016	2	6159	3	4000	20000	hit	170
+kh01	35	Response	1	1089718	10042	1
+kh01	35	Response	3	1091380	11704	2
+kh01	36	Picture	ti	1109800	0	1	4016	2	0	4000	other	0
+kh01	36	Sound Recording	rec	1109801	1	1			0	24000	other	0
+kh01	36	Picture	tiV	1113816	4016	1	4284	3	4000	20000	hit	175
+kh01	36	Response	2	1117987	8187	1
+kh01	36	Response	4	1119846	10046	2
+kh01	37	Picture	ka	1138049	0	1	4011	2	0	4000	other	0
+kh01	37	Sound Recording	rec	1138051	2	1			0	24000	other	0
+kh01	37	Picture	kaV	1142060	4011	1	4691	3	4000	20000	hit	180
+kh01	37	Response	2	1146627	8578	1
+kh01	37	Response	4	1148786	10737	1
+kh01	38	Picture	ka	1166700	0	1	4016	2	0	4000	other	0
+kh01	38	Sound Recording	rec	1166701	1	1			0	24000	other	0
+kh01	38	Picture	kaV	1170716	4016	1	4552	2	4000	20000	hit	185
+kh01	38	Response	2	1175155	8455	1
+kh01	38	Response	4	1176828	10128	1
+kh01	39	Picture	ka	1195217	0	1	4011	2	0	4000	other	0
+kh01	39	Sound Recording	rec	1195218	1	1			0	24000	other	0
+kh01	39	Picture	kaV	1199228	4011	1	4423	3	4000	20000	hit	190
+kh01	39	Response	2	1203557	8340	1
+kh01	39	Response	4	1205418	10201	1
+kh01	40	Picture	ka	1223594	0	2	4022	4	0	4000	other	0
+kh01	40	Sound Recording	rec	1223596	2	1			0	24000	other	0
+kh01	40	Picture	kaV	1227616	4022	2	3347	4	4000	20000	hit	195
+kh01	40	Response	2	1230864	7270	2
+kh01	40	Response	4	1232581	8987	2
+kh01	41	Picture	ti	1250912	0	1	4016	3	0	4000	other	0
+kh01	41	Sound Recording	rec	1250914	2	1			0	24000	other	0
+kh01	41	Picture	tiS	1254928	4016	2	4145	3	4000	20000	hit	200
+kh01	41	Response	1	1258993	8081	2
+kh01	41	Response	3	1260309	9397	1
+kh01	42	Picture	ti	1279027	0	2	4017	3	0	4000	other	0
+kh01	42	Sound Recording	rec	1279029	2	1			0	24000	other	0
+kh01	42	Picture	tiS	1283044	4017	1	3615	2	4000	20000	hit	205
+kh01	42	Response	1	1286510	7483	1
+kh01	42	Response	3	1287781	8754	1
+kh01	43	Picture	ka	1306607	0	1	4017	2	0	4000	other	0
+kh01	43	Sound Recording	rec	1306609	2	1			0	24000	other	0
+kh01	43	Picture	kaV	1310624	4017	1	3481	2	4000	20000	hit	210
+kh01	43	Response	2	1314038	7431	1
+kh01	43	Response	4	1316121	9514	1
+kh01	44	Picture	ti	1334053	0	1	4017	2	0	4000	other	0
+kh01	44	Sound Recording	rec	1334055	2	1			0	24000	other	0
+kh01	44	Picture	tiV	1338070	4017	1	3877	2	4000	20000	hit	215
+kh01	44	Response	2	1341930	7877	2
+kh01	44	Response	4	1344270	10217	1
+kh01	45	Picture	ti	1362034	0	2	4017	3	0	4000	other	0
+kh01	45	Sound Recording	rec	1362036	2	1			0	24000	other	0
+kh01	45	Picture	tiV	1366051	4017	1	3749	2	4000	20000	hit	220
+kh01	45	Response	2	1369679	7645	1
+kh01	45	Response	4	1371701	9667	1
+kh01	46	Picture	ti	1389748	0	2	4011	3	0	4000	other	0
+kh01	46	Sound Recording	rec	1389750	2	1			0	24000	other	0
+kh01	46	Picture	tiV	1393759	4011	1	3085	2	4000	20000	hit	225
+kh01	46	Response	2	1396769	7021	1
+kh01	46	Response	4	1398784	9036	1
+kh01	47	Picture	ti	1416793	0	1	4016	2	0	4000	other	0
+kh01	47	Sound Recording	rec	1416794	1	1			0	24000	other	0
+kh01	47	Picture	tiV	1420809	4016	1	3213	3	4000	20000	hit	230
+kh01	47	Response	2	1423988	7195	2
+kh01	47	Response	4	1427144	10351	2
+kh01	48	Picture	ka	1444105	0	1	4010	3	0	4000	other	0
+kh01	48	Sound Recording	rec	1444106	1	1			0	24000	other	0
+kh01	48	Picture	kaV	1448115	4010	2	5094	3	4000	20000	hit	235
+kh01	48	Response	2	1453098	8993	2
+kh01	48	Response	4	1455247	11142	1
+kh01	49	Picture	ti	1473157	0	1	4011	2	0	4000	other	0
+kh01	49	Sound Recording	rec	1473159	2	1			0	24000	other	0
+kh01	49	Picture	tiV	1477168	4011	1	4686	2	4000	20000	hit	240
+kh01	49	Response	2	1481781	8624	1
+kh01	49	Response	4	1483924	10767	2
+kh01	50	Picture	ti	1501808	0	1	4017	2	0	4000	other	0
+kh01	50	Sound Recording	rec	1501810	2	1			0	24000	other	0
+kh01	50	Picture	tiV	1505825	4017	1	4418	2	4000	20000	hit	245
+kh01	50	Response	2	1510201	8393	1
+kh01	50	Response	4	1512264	10456	2
+kh01	51	Picture	ka	1530319	0	2	4017	3	0	4000	other	0
+kh01	51	Sound Recording	rec	1530321	2	1			0	24000	other	0
+kh01	51	Picture	kaS	1534336	4017	1	4424	2	4000	20000	hit	250
+kh01	51	Response	1	1538623	8304	1
+kh01	51	Response	3	1539874	9555	1
+kh01	52	Picture	ti	1558703	0	1	4022	2	0	4000	other	0
+kh01	52	Sound Recording	rec	1558704	1	1			0	24000	other	0
+kh01	52	Picture	tiS	1562725	4022	1	4284	2	4000	20000	hit	255
+kh01	52	Response	1	1566910	8207	1
+kh01	52	Response	3	1568757	10054	1
+kh01	53	Picture	ti	1586957	0	2	4011	4	0	4000	other	0
+kh01	53	Sound Recording	rec	1586959	2	1			0	24000	other	0
+kh01	53	Picture	tiS	1590968	4011	2	4017	3	4000	20000	hit	260
+kh01	53	Response	1	1594880	7923	1
+kh01	53	Response	3	1595554	8597	1
+kh01	54	Picture	ti	1614933	0	2	4022	4	0	4000	other	0
+kh01	54	Sound Recording	rec	1614935	2	1			0	24000	other	0
+kh01	54	Picture	tiS	1618955	4022	2	5082	4	4000	20000	hit	265
+kh01	54	Response	1	1623904	8971	1
+kh01	54	Response	3	1625357	10424	2
+kh01	55	Picture	ti	1643992	0	1	4016	2	0	4000	other	0
+kh01	55	Sound Recording	rec	1643993	1	1			0	24000	other	0
+kh01	55	Picture	tiV	1648008	4016	1	4552	2	4000	20000	hit	270
+kh01	55	Response	2	1652439	8447	1
+kh01	55	Response	4	1654371	10379	1
+kh01	56	Picture	ti	1672509	0	1	4016	2	0	4000	other	0
+kh01	56	Sound Recording	rec	1672510	1	1			0	24000	other	0
+kh01	56	Picture	tiV	1676525	4016	1	3481	2	4000	20000	hit	275
+kh01	56	Response	2	1679920	7411	2
+kh01	56	Response	4	1681720	9211	1
+kh01	57	Picture	ka	1699955	0	1	4016	2	0	4000	other	0
+kh01	57	Sound Recording	rec	1699956	1	1			0	24000	other	0
+kh01	57	Picture	kaV	1703971	4016	1	4686	2	4000	20000	hit	280
+kh01	57	Response	2	1708630	8675	1
+kh01	57	Response	4	1710738	10783	2
+kh01	58	Picture	ka	1728739	0	1	4017	2	0	4000	other	0
+kh01	58	Sound Recording	rec	1728741	2	1			0	24000	other	0
+kh01	58	Picture	kaS	1732756	4017	1	4814	2	4000	20000	hit	285
+kh01	58	Response	1	1737440	8701	2
+kh01	58	Response	3	1738839	10100	1
+kh01	59	Picture	ka	1757524	0	1	4017	2	0	4000	other	0
+kh01	59	Sound Recording	rec	1757526	2	1			0	24000	other	0
+kh01	59	Picture	kaV	1761541	4017	1	4412	2	4000	20000	hit	290
+kh01	59	Response	2	1765905	8381	1
+kh01	59	Response	4	1767936	10412	1
+kh01	60	Picture	ka	1786041	0	1	4017	2	0	4000	other	0
+kh01	60	Sound Recording	rec	1786043	2	1			0	24000	other	0
+kh01	60	Picture	kaS	1790058	4017	1	6688	2	4000	20000	hit	295
+kh01	60	Response	1	1796698	10657	2
+kh01	60	Response	3	1798434	12393	1
+kh01	61	Picture	ka	1816834	0	1	4017	2	0	4000	other	0
+kh01	61	Sound Recording	rec	1816836	2	1			0	24000	other	0
+kh01	61	Picture	kaV	1820851	4017	1	4150	2	4000	20000	hit	300
+kh01	61	Response	2	1824883	8049	1
+kh01	61	Response	4	1826818	9984	1
+kh01	62	Picture	ka	1844949	0	2	4017	3	0	4000	other	0
+kh01	62	Sound Recording	rec	1844951	2	1			0	24000	other	0
+kh01	62	Picture	kaV	1848966	4017	1	4412	3	4000	20000	hit	305
+kh01	62	Response	2	1853250	8301	1
+kh01	62	Response	4	1855043	10094	1
+kh01	63	Picture	ka	1873327	0	1	4016	3	0	4000	other	0
+kh01	63	Sound Recording	rec	1873329	2	1			0	24000	other	0
+kh01	63	Picture	kaS	1877343	4016	2	9779	4	4000	20000	incorrect	310
+kh01	63	Response	2	1886902	13575	2
+kh01	63A	Response	4	1888683	1579	1
+kh01	64	Picture	ka	1908276	0	1	4016	3	0	4000	other	0
+kh01	64	Sound Recording	rec	1908278	2	1			0	24000	other	0
+kh01	64	Picture	kaS	1912292	4016	2	5757	4	4000	20000	hit	315
+kh01	64	Response	1	1918012	9736	1
+kh01	64	Response	3	1919490	11214	2
+kh01	65	Picture	ti	1938132	0	1	4011	2	0	4000	other	0
+kh01	65	Sound Recording	rec	1938134	2	1			0	24000	other	0
+kh01	65	Picture	tiV	1942143	4011	1	4819	3	4000	20000	hit	320
+kh01	65	Response	2	1946942	8810	1
+kh01	65	Response	4	1948613	10481	1
+kh01	66	Picture	ti	1967051	0	1	4016	2	0	4000	other	0
+kh01	66	Sound Recording	rec	1967052	1	1			0	24000	other	0
+kh01	66	Picture	tiS	1971067	4016	1	5885	2	4000	20000	hit	325
+kh01	66	Response	1	1976818	9767	1
+kh01	66	Response	3	1978041	10990	1
+kh01	67	Picture	ka	1996906	0	1	4017	2	0	4000	other	0
+kh01	67	Sound Recording	rec	1996908	2	1			0	24000	other	0
+kh01	67	Picture	kaS	2000923	4017	1	6024	3	4000	20000	hit	330
+kh01	67	Response	1	2006826	9920	1
+kh01	67	Response	3	2008604	11698	1
+kh01	68	Picture	ti	2026896	0	1	4016	3	0	4000	other	0
+kh01	68	Sound Recording	rec	2026898	2	1			0	24000	other	0
+kh01	68	Picture	tiV	2030912	4016	2	4553	3	4000	20000	hit	335
+kh01	68	Response	2	2035429	8533	1
+kh01	68	Response	4	2037383	10487	2
+kh01	69	Picture	ti	2055547	0	1	4011	2	0	4000	other	0
+kh01	69	Sound Recording	rec	2055549	2	1			0	24000	other	0
+kh01	69	Picture	tiS	2059558	4011	1	4424	2	4000	20000	hit	340
+kh01	69	Response	1	2063949	8402	2
+kh01	69	Response	3	2065753	10206	1
+kh01	70	Picture	ti	2084064	0	1	4011	2	0	4000	other	0
+kh01	70	Sound Recording	rec	2084066	2	1			0	24000	other	0
+kh01	70	Picture	tiS	2088075	4011	1	4156	2	4000	20000	hit	345
+kh01	70	Response	1	2092167	8103	1
+kh01	70	Response	3	2093676	9612	1
+kh01	71	Picture	ti	2112179	0	1	4017	2	0	4000	other	0
+kh01	71	Sound Recording	rec	2112181	2	1			0	24000	other	0
+kh01	71	Picture	tiV	2116196	4017	1	4552	2	4000	20000	hit	350
+kh01	71	Response	2	2120730	8551	1
+kh01	71	Response	4	2122368	10189	1
+kh01	72	Picture	ka	2140830	0	1	4017	2	0	4000	other	0
+kh01	72	Sound Recording	rec	2140832	2	1			0	24000	other	0
+kh01	72	Picture	kaS	2144847	4017	1	6560	2	4000	20000	hit	355
+kh01	72	Response	1	2151338	10508	1
+kh01	72	Response	3	2153080	12250	1
+kh01	73	Picture	ti	2171355	0	2	4011	4	0	4000	other	0
+kh01	73	Sound Recording	rec	2171357	2	1			0	24000	other	0
+kh01	73	Picture	tiS	2175366	4011	2	5088	3	4000	20000	hit	360
+kh01	73	Response	1	2180386	9031	1
+kh01	73	Response	3	2181739	10384	1
+kh01	74	Picture	ka	2200408	0	1	4016	3	0	4000	other	0
+kh01	74	Sound Recording	rec	2200410	2	1			0	24000	other	0
+kh01	74	Picture	kaV	2204424	4016	2	4552	4	4000	20000	hit	365
+kh01	74	Response	2	2208881	8473	1
+kh01	74	Response	4	2210812	10404	1
+kh01	75	Picture	ka	2228925	0	1	4011	2	0	4000	other	0
+kh01	75	Sound Recording	rec	2228927	2	1			0	24000	other	0
+kh01	75	Picture	kaV	2232936	4011	1	3620	3	4000	20000	hit	370
+kh01	75	Response	2	2236520	7595	1
+kh01	75	Response	4	2238182	9257	2
+kh01	76	Picture	ka	2256639	0	1	4016	2	0	4000	other	0
+kh01	76	Sound Recording	rec	2256640	1	1			0	24000	other	0
+kh01	76	Picture	kaS	2260655	4016	1	4948	3	4000	20000	hit	375
+kh01	76	Response	1	2265511	8872	1
+kh01	76	Response	3	2266812	10173	2
+kh01	77	Picture	ti	2285557	0	2	4017	3	0	4000	other	0
+kh01	77	Sound Recording	rec	2285559	2	1			0	24000	other	0
+kh01	77	Picture	tiS	2289574	4017	1	3609	2	4000	20000	hit	380
+kh01	77	Response	1	2293126	7569	1
+kh01	77	Response	3	2294436	8879	1
+kh01	78	Picture	ka	2313137	0	1	4017	2	0	4000	other	0
+kh01	78	Sound Recording	rec	2313139	2	1			0	24000	other	0
+kh01	78	Picture	kaV	2317154	4017	1	4016	2	4000	20000	hit	385
+kh01	78	Response	2	2321064	7927	2
+kh01	78	Response	4	2322563	9426	1
+kh01	79	Picture	ti	2341119	0	1	4011	2	0	4000	other	0
+kh01	79	Sound Recording	rec	2341120	1	1			0	24000	other	0
+kh01	79	Picture	tiS	2345130	4011	1	4022	2	4000	20000	hit	390
+kh01	79	Response	1	2349085	7966	1
+kh01	79	Response	3	2350522	9403	1
+kh01	80	Picture	ka	2369100	0	1	4017	2	0	4000	other	0
+kh01	80	Sound Recording	rec	2369102	2	1			0	24000	other	0
+kh01	80	Picture	kaS	2373117	4017	1	3614	3	4000	20000	hit	395
+kh01	80	Response	1	2376607	7507	2
+kh01	80	Response	3	2378213	9113	1
+kh01	81	Picture	ka	2396680	0	1	4017	2	0	4000	other	0
+kh01	81	Sound Recording	rec	2396682	2	1			0	24000	other	0
+kh01	81	Picture	kaV	2400697	4017	1	5349	2	4000	20000	hit	400
+kh01	81	Response	2	2405965	9285	1
+kh01	81	Response	4	2407885	11205	2
+kh01	82	Picture	ti	2426000	0	2	4017	3	0	4000	other	0
+kh01	82	Sound Recording	rec	2426002	2	1			0	24000	other	0
+kh01	82	Picture	tiS	2430017	4017	1	3877	2	4000	20000	hit	405
+kh01	82	Response	1	2433807	7807	2
+kh01	82	Response	3	2434572	8572	1
+kh01	83	Picture	ka	2453848	0	1	4016	3	0	4000	other	0
+kh01	83	Sound Recording	rec	2453850	2	1			0	24000	other	0
+kh01	83	Picture	kaS	2457864	4016	2	4151	3	4000	20000	hit	410
+kh01	83	Response	1	2461935	8087	1
+kh01	83	Response	3	2463195	9347	1
+kh01	84	Picture	ka	2481958	0	1	4016	2	0	4000	other	0
+kh01	84	Sound Recording	rec	2481960	2	1			0	24000	other	0
+kh01	84	Picture	kaS	2485974	4016	1	4022	2	4000	20000	hit	415
+kh01	84	Response	1	2489889	7931	2
+kh01	84	Response	3	2491041	9083	1
+kh01	85	Picture	ka	2509945	0	1	4016	2	0	4000	other	0
+kh01	85	Sound Recording	rec	2509947	2	1			0	24000	other	0
+kh01	85	Picture	kaS	2513961	4016	1	4011	2	4000	20000	hit	420
+kh01	85	Response	1	2517889	7944	2
+kh01	85	Response	3	2519186	9241	1
+kh01	86	Picture	ti	2537921	0	1	4022	2	0	4000	other	0
+kh01	86	Sound Recording	rec	2537923	2	1			0	24000	other	0
+kh01	86	Picture	tiV	2541943	4022	1	4418	2	4000	20000	hit	425
+kh01	86	Response	2	2546224	8303	2
+kh01	86	Response	4	2547959	10038	1
+kh01	87	Picture	ka	2566304	0	1	4016	3	0	4000	other	0
+kh01	87	Sound Recording	rec	2566306	2	1			0	24000	other	0
+kh01	87	Picture	kaV	2570320	4016	2	3888	4	4000	20000	incorrect	430
+kh01	87	Response	1	2573928	7624	2
+kh01	87A	Response	3	2574584	454	1
+kh01	88	Picture	ka	2595356	0	2	4022	4	0	4000	other	0
+kh01	88	Sound Recording	rec	2595358	2	1			0	24000	other	0
+kh01	88	Picture	kaS	2599378	4022	2	4285	3	4000	20000	hit	435
+kh01	88	Response	1	2603524	8168	1
+kh01	88	Response	3	2605145	9789	1
+kh01	89	Picture	ti	2623611	0	1	4017	2	0	4000	other	0
+kh01	89	Sound Recording	rec	2623613	2	1			0	24000	other	0
+kh01	89	Picture	tiV	2627628	4017	1	3882	3	4000	20000	hit	440
+kh01	89	Response	2	2631417	7806	1
+kh01	89	Response	4	2633265	9654	1
+kh01	90	Picture	ka	2651459	0	1	4016	3	0	4000	other	0
+kh01	90	Sound Recording	rec	2651461	2	1			0	24000	other	0
+kh01	90	Picture	kaS	2655475	4016	2	5484	3	4000	20000	hit	445
+kh01	90	Response	1	2660943	9484	1
+kh01	90	Response	3	2662364	10905	2
+kh01	91	Picture	ti	2681041	0	2	4022	4	0	4000	other	0
+kh01	91	Sound Recording	rec	2681043	2	1			0	24000	other	0
+kh01	91	Picture	tiS	2685063	4022	2	5216	3	4000	20000	hit	450
+kh01	91	Response	1	2690164	9123	1
+kh01	91	Response	3	2691560	10519	2
+kh01	92	Picture	ka	2710233	0	2	4017	3	0	4000	other	0
+kh01	92	Sound Recording	rec	2710235	2	1			0	24000	other	0
+kh01	92	Picture	kaV	2714250	4017	1	4016	2	4000	20000	hit	455
+kh01	92	Response	2	2718171	7938	1
+kh01	92	Response	4	2719958	9725	1
+kh01	93	Picture	ti	2738209	0	1	4022	3	0	4000	other	0
+kh01	93	Sound Recording	rec	2738211	2	1			0	24000	other	0
+kh01	93	Picture	tiS	2742231	4022	2	5350	3	4000	20000	hit	460
+kh01	93	Response	1	2747492	9283	1
+kh01	93	Response	3	2748411	10202	1
+kh01	94	Picture	ti	2767535	0	1	4017	2	0	4000	other	0
+kh01	94	Sound Recording	rec	2767537	2	1			0	24000	other	0
+kh01	94	Picture	tiV	2771552	4017	1	4552	2	4000	20000	incorrect	465
+kh01	94	Response	1	2775779	8244	1
+kh01	94A	Response	3	2777118	1138	1
+kh01	95	Picture	ka	2797257	0	1	4017	2	0	4000	other	0
+kh01	95	Sound Recording	rec	2797259	2	1			0	24000	other	0
+kh01	95	Picture	kaS	2801274	4017	1	7095	2	4000	20000	hit	470
+kh01	95	Response	1	2808322	11065	1
+kh01	95	Response	3	2810011	12754	1
+kh01	96	Picture	ti	2828452	0	1	4016	2	0	4000	other	0
+kh01	96	Sound Recording	rec	2828453	1	1			0	24000	other	0
+kh01	96	Picture	tiS	2832468	4016	1	4820	2	4000	20000	hit	475
+kh01	96	Response	1	2837238	8786	1
+kh01	96	Response	3	2839119	10667	1
+kh01	97	Picture	ka	2857365	0	1	4022	2	0	4000	other	0
+kh01	97	Sound Recording	rec	2857367	2	1			0	24000	other	0
+kh01	97	Picture	kaV	2861387	4022	1	4814	2	4000	20000	hit	480
+kh01	97	Response	2	2866157	8792	2
+kh01	97	Response	4	2867926	10561	2
+kh01	98	Picture	ka	2886289	0	1	4016	3	0	4000	other	0
+kh01	98	Sound Recording	rec	2886291	2	1			0	24000	other	0
+kh01	98	Picture	kaS	2890305	4016	2	6427	3	4000	20000	hit	485
+kh01	98	Response	1	2896694	10405	1
+kh01	98	Response	3	2898313	12024	1
+kh01	99	Picture	ka	2916814	0	2	4017	3	0	4000	other	0
+kh01	99	Sound Recording	rec	2916816	2	1			0	24000	other	0
+kh01	99	Picture	kaS	2920831	4017	1	5623	2	4000	20000	hit	490
+kh01	99	Response	1	2926370	9556	1
+kh01	99	Response	3	2928107	11293	1
+kh01	100	Picture	ka	2946402	0	2	4017	3	0	4000	other	0
+kh01	100	Sound Recording	rec	2946404	2	1			0	24000	other	0
+kh01	100	Picture	kaS	2950419	4017	1	4418	2	4000	20000	hit	495
+kh01	100	Response	1	2954727	8325	2
+kh01	100	Response	3	2956495	10093	1
+kh01	101	Picture	ka	2974780	0	1	4022	2	0	4000	other	0
+kh01	101	Sound Recording	rec	2974782	2	1			0	24000	other	0
+kh01	101	Picture	kaS	2978802	4022	1	3475	3	4000	20000	hit	500
+kh01	101	Response	1	2982193	7413	2
+kh01	101	Response	3	2983847	9067	1
+kh01	102	Picture	ka	3002231	0	2	4017	3	0	4000	other	0
+kh01	102	Sound Recording	rec	3002233	2	1			0	24000	other	0
+kh01	102	Picture	kaS	3006248	4017	1	4011	2	4000	20000	hit	505
+kh01	102	Response	1	3010128	7897	1
+kh01	102	Response	3	3011256	9025	2
+kh01	103	Picture	ti	3030213	0	1	4016	3	0	4000	other	0
+kh01	103	Sound Recording	rec	3030215	2	1			0	24000	other	0
+kh01	103	Picture	tiS	3034229	4016	2	5624	3	4000	20000	hit	510
+kh01	103	Response	1	3039727	9514	1
+kh01	103	Response	3	3041428	11215	1
+kh01	104	Picture	ka	3059801	0	1	4010	3	0	4000	other	0
+kh01	104	Sound Recording	rec	3059803	2	1			0	24000	other	0
+kh01	104	Picture	kaS	3063811	4010	2	5763	4	4000	20000	hit	515
+kh01	104	Response	1	3069463	9662	1
+kh01	104	Response	3	3071584	11783	1
+kh01	105	Picture	ti	3089523	0	1	4016	3	0	4000	other	0
+kh01	105	Sound Recording	rec	3089525	2	1			0	24000	other	0
+kh01	105	Picture	tiV	3093539	4016	2	4017	3	4000	20000	hit	520
+kh01	105	Response	2	3097506	7983	1
+kh01	105	Response	4	3099092	9569	1
+kh01	106	Picture	ka	3117638	0	2	4017	3	0	4000	other	0
+kh01	106	Sound Recording	rec	3117640	2	1			0	24000	other	0
+kh01	106	Picture	kaS	3121655	4017	1	4418	2	4000	20000	hit	525
+kh01	106	Response	1	3125979	8341	1
+kh01	106	Response	3	3127142	9504	2
+kh01	107	Picture	ti	3146022	0	1	4010	3	0	4000	other	0
+kh01	107	Sound Recording	rec	3146023	1	1			0	24000	other	0
+kh01	107	Picture	tiV	3150032	4010	2	3749	3	4000	20000	hit	530
+kh01	107	Response	2	3153764	7742	2
+kh01	107	Response	4	3155483	9461	1
+kh01	108	Picture	ti	3173869	0	1	4017	2	0	4000	other	0
+kh01	108	Sound Recording	rec	3173871	2	1			0	24000	other	0
+kh01	108	Picture	tiS	3177886	4017	1	4552	2	4000	20000	hit	535
+kh01	108	Response	1	3182408	8539	1
+kh01	108	Response	3	3183287	9418	1
+kh01	109	Picture	ka	3202520	0	1	4016	3	0	4000	other	0
+kh01	109	Sound Recording	rec	3202522	2	1			0	24000	other	0
+kh01	109	Picture	kaV	3206536	4016	2	4017	3	4000	20000	hit	540
+kh01	109	Response	2	3210441	7921	1
+kh01	109	Response	4	3212337	9817	1
+kh01	110	Picture	ka	3230501	0	2	4011	4	0	4000	other	0
+kh01	110	Sound Recording	rec	3230503	2	1			0	24000	other	0
+kh01	110	Picture	kaS	3234512	4011	2	3755	3	4000	20000	hit	545
+kh01	110	Response	1	3238213	7712	2
+kh01	110	Response	3	3239908	9407	1
+kh01	111	Picture	ka	3258343	0	2	4022	4	0	4000	other	0
+kh01	111	Sound Recording	rec	3258345	2	1			0	24000	other	0
+kh01	111	Picture	kaV	3262365	4022	2	4145	4	4000	20000	hit	550
+kh01	111	Response	2	3266414	8071	1
+kh01	111	Response	4	3268118	9775	1
+kh01	112	Picture	ka	3286464	0	2	4017	3	0	4000	other	0
+kh01	112	Sound Recording	rec	3286466	2	1			0	24000	other	0
+kh01	112	Picture	kaV	3290481	4017	1	4284	2	4000	20000	hit	555
+kh01	112	Response	2	3294615	8151	2
+kh01	112	Response	4	3296224	9760	1
+kh01	113	Picture	ti	3314714	0	1	4016	2	0	4000	other	0
+kh01	113	Sound Recording	rec	3314715	1	1			0	24000	other	0
+kh01	113	Picture	tiS	3318730	4016	1	3347	2	4000	20000	hit	560
+kh01	113	Response	1	3321943	7229	1
+kh01	113	Response	3	3323495	8781	1
+kh01	114	Picture	ka	3342026	0	1	4016	2	0	4000	other	0
+kh01	114	Sound Recording	rec	3342027	1	1			0	24000	other	0
+kh01	114	Picture	kaV	3346042	4016	1	5489	3	4000	20000	hit	565
+kh01	114	Response	2	3351391	9365	1
+kh01	114	Response	4	3353234	11208	1
+kh01	115	Picture	ti	3371480	0	1	4011	2	0	4000	other	0
+kh01	115	Sound Recording	rec	3371482	2	1			0	24000	other	0
+kh01	115	Picture	tiS	3375491	4011	1	3620	2	4000	20000	hit	570
+kh01	115	Response	1	3378984	7504	2
+kh01	115	Response	3	3380604	9124	1
+kh01	116	Picture	ti	3399060	0	1	4016	2	0	4000	other	0
+kh01	116	Sound Recording	rec	3399062	2	1			0	24000	other	0
+kh01	116	Picture	tiS	3403076	4016	1	4686	2	4000	20000	hit	575
+kh01	116	Response	1	3407723	8663	2
+kh01	116	Response	3	3409645	10585	1
+kh01	117	Picture	ti	3427845	0	1	4010	3	0	4000	other	0
+kh01	117	Sound Recording	rec	3427846	1	1			0	24000	other	0
+kh01	117	Picture	tiV	3431855	4010	2	4558	3	4000	20000	hit	580
+kh01	117	Response	2	3436296	8451	2
+kh01	117	Response	4	3437831	9986	1
+kh01	118	Picture	ti	3456362	0	1	4016	2	0	4000	other	0
+kh01	118	Sound Recording	rec	3456363	1	1			0	24000	other	0
+kh01	118	Picture	tiV	3460378	4016	1	4284	3	4000	20000	hit	585
+kh01	118	Response	2	3464573	8211	1
+kh01	118	Response	4	3466295	9933	1
+kh01	119	Picture	ti	3484611	0	1	4016	3	0	4000	other	0
+kh01	119	Sound Recording	rec	3484613	2	1			0	24000	other	0
+kh01	119	Picture	tiV	3488627	4016	2	2946	3	4000	20000	hit	590
+kh01	119	Response	2	3491547	6936	1
+kh01	119	Response	4	3492988	8377	1
+kh01	120	Picture	ka	3511655	0	1	4017	2	0	4000	other	0
+kh01	120	Sound Recording	rec	3511657	2	1			0	24000	other	0
+kh01	120	Picture	kaV	3515672	4017	1	5087	2	4000	20000	hit	595
+kh01	120	Response	2	3520658	9003	2
+kh01	120	Response	4	3522676	11021	1
+kh01	121	Picture	ti	3540708	0	1	4011	2	0	4000	other	0
+kh01	121	Sound Recording	rec	3540709	1	1			0	24000	other	0
+kh01	121	Picture	tiS	3544719	4011	1	4016	2	4000	20000	hit	600
+kh01	121	Response	1	3548675	7967	2
+kh01	121	Response	3	3550502	9794	1
