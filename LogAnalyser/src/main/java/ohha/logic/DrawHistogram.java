@@ -1,29 +1,29 @@
-
 package ohha.logic;
 
 import java.awt.Component;
 import java.awt.Graphics;
 
-
 /**
  * Draws a histogram from the given values.
+ *
  * @author mikkotiainen
  */
-public class DrawHistogram extends Component{
-    
+public class DrawHistogram extends Component {
+
     private int[] bins;
     private int gap;
 
     /**
      * Initializes the histogram with a default width of 5.
+     *
      * @param bins The bins used for drawing the histogram.
      */
     public DrawHistogram(int[] bins) {
         this.bins = bins;
         gap = 5;
-        
+
     }
-    
+
     @Override
     public void paint(Graphics g) {
         int panelHeight = this.getParent().getHeight();
@@ -31,11 +31,11 @@ public class DrawHistogram extends Component{
         int barHeight = 0;
         int max = findMax();
         int scaler = panelHeight / max;
-        
+
         drawVerticalAxis(g, panelHeight, max, scaler);
-        
+
         int y = 0;
-        int x = - barWidth + gap * 3;
+        int x = -barWidth + gap * 3;
         for (int i = 0; i < bins.length; i++) {
             x += barWidth + gap;
             barHeight = bins[i] * scaler;
@@ -43,7 +43,7 @@ public class DrawHistogram extends Component{
             g.drawRect(x, y, barWidth, barHeight);
         }
     }
-    
+
     private int findMax() {
         int max = 0;
         for (int i : bins) {
@@ -53,7 +53,7 @@ public class DrawHistogram extends Component{
         }
         return max;
     }
-    
+
     private void drawVerticalAxis(Graphics g, int panelHeight, int max, int scaler) {
         int numPos = panelHeight;
         for (int i = 0; i <= max; i += 5) {
@@ -61,5 +61,5 @@ public class DrawHistogram extends Component{
             numPos -= scaler * 5;
         }
     }
-    
+
 }

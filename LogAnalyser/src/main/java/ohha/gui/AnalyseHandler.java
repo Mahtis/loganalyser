@@ -22,6 +22,10 @@ public class AnalyseHandler implements ActionListener {
 
     private MainView parent;
 
+    /**
+     * Initialize a new AnalyseHandler.
+     * @param parent The MainView that the handled button is part of.
+     */
     public AnalyseHandler(MainView parent) {
         this.parent = parent;
     }

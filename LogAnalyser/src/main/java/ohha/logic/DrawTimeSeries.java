@@ -32,7 +32,7 @@ public class DrawTimeSeries extends Component {
         int min = minMax[0];
         int max = minMax[1];
         double scaler = (double) panelHeight / (max - min);
-        int x = - gap;
+        int x = -gap;
         int meanCount = 0;
         int meanSum = 0;
         for (Trial trial : trials) {
@@ -41,7 +41,7 @@ public class DrawTimeSeries extends Component {
             if (meanCount == meanWindow) {
                 int mean = meanSum / meanCount;
                 int linePos = (int) (panelHeight - (mean * scaler - min * scaler));
-                g.drawLine((x - meanCount * gap), linePos, x-1, linePos);
+                g.drawLine((x - meanCount * gap), linePos, x - 1, linePos);
                 meanCount = 0;
                 meanSum = 0;
             }

@@ -4,9 +4,17 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.util.Map;
 
+/**
+ * Class to draw rate of correct responses.
+ * @author Mikko
+ */
 public class DrawResponseRates extends Component {
     private Map<String, Integer> rates;
 
+    /**
+     * Initializes a new DrawResponseRates drawing.
+     * @param rates Map of the rates to be drawn.
+     */
     public DrawResponseRates(Map<String, Integer> rates) {
         this.rates = rates;
     }
@@ -18,7 +26,7 @@ public class DrawResponseRates extends Component {
         int gap = barWidth / 2;
         int scaler = panelHeight / 100;
         int y = 0;
-        int x = - barWidth + gap;
+        int x = -barWidth + gap;
         
         drawVerticalAxis(g, panelHeight, scaler);
         
