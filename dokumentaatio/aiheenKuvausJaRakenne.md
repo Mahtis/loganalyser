@@ -62,3 +62,4 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 ```
 
 ### Rakennekuvaus
+Ohjelman toiminta nojaa rakenteeltaan vahvasti MainView-luokkaan, joka on siis sovelluksen päänäkymä. Tämä luokka sisältää nappeja, listat käsiteltävistä datoista/tiedostoita, sekä sillä hetkellä käytössä olevan kokeen tiedot. Napinpainallukset käsitellään erillisissä handler-luokissa, jotka perivät ActionListener-rajapinnan. Osa handlereista vastaa lähinnä GUI-toiminnoista (tiedostojen valinta ja poisto), mutta osa kutsuu edelleen ohjelman toiminnan kannalta keskeisiä logiikkaluokkia. Logiikkaluokat toimivat ns. taustalla, ja käyttävät hyväkseen domain-paketin säilytysluokkia. Logiikkaluokat (tärkeimpänä todennäköisesti ParseTrials-luokka) palauttavat sitten handlereille takaisin esim. käsiteltyä dataa, joka syötetään edelleen MainView:n käytettäväksi, tai sitten vain prosessoidaan ja tulostetaan uuteen ikkunaan kuvana.
