@@ -53,7 +53,7 @@ public class SubjectData {
     
     @Override
     public String toString() {
-        return subject + " " + info.getName() + " data";
+        return subject + "_" + info.getName() + "_data";
     }
     
     

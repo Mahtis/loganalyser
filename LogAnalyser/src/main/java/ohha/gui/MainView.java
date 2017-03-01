@@ -22,6 +22,7 @@ import ohha.domain.SubjectData;
 public class MainView extends JPanel {
 
     private JLabel fileLabel;
+    private JLabel expLabel;
     private List<File> files;
     private List<SubjectData> data;
     private DefaultListModel model;
@@ -31,6 +32,7 @@ public class MainView extends JPanel {
     private JButton experimentButton;
     private JButton parseButton;
     private JButton analyseButton;
+    private JButton writeButton;
     private JButton deleteButton;
     private ExperimentInfo info;
 
@@ -52,6 +54,10 @@ public class MainView extends JPanel {
         fileButton.addActionListener(new LogSelectionHandler(this));
         setElementLocation(c, 1, 0, 1, 1, 0, 0);
         this.add(fileButton, c);
+        
+        expLabel = new JLabel("no experiment set");
+        setElementLocation(c, 4, 0, 1, 1, 0, 0);
+        this.add(expLabel, c);
 
         model = new DefaultListModel();
         list = new JList(model);
@@ -75,6 +81,11 @@ public class MainView extends JPanel {
         analyseButton.addActionListener(new AnalyseHandler(this));
         setElementLocation(c, 4, 3, 1, 1, 0, 0);
         this.add(analyseButton, c);
+        
+        writeButton = new JButton("Save parsed log");
+        writeButton.addActionListener(new LogWriterHandler(this));
+        setElementLocation(c, 4, 4, 1, 1, 0, 0);
+        this.add(writeButton, c);
 
         deleteButton = new JButton("Remove selected");
         deleteButton.addActionListener(new DeletionHandler(this));
@@ -133,6 +144,14 @@ public class MainView extends JPanel {
 
     public void setInfo(ExperimentInfo info) {
         this.info = info;
+    }
+    
+    public JLabel getExpLabel() {
+        return expLabel;
+    }
+
+    public void setExpLabel(JLabel expLabel) {
+        this.expLabel = expLabel;
     }
 
     public List<File> getFiles() {

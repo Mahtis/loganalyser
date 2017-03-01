@@ -132,6 +132,7 @@ public class ExperimentWindow extends JFrame implements ActionListener {
                 text += "</html>";
                 respMappings.setText(text);
                 parent.setInfo(info);
+                parent.getExpLabel().setText(info.getName());
             }
         }
     }
