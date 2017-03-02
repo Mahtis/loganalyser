@@ -1,7 +1,8 @@
-package ohha.gui;
+package ohha.gui.mainviewhandlers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import ohha.gui.MainView;
 
 public class DeletionHandler implements ActionListener {
     

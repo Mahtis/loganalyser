@@ -1,12 +1,12 @@
-package ohha.gui;
+package ohha.gui.mainviewhandlers;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ohha.domain.SubjectData;
+import ohha.gui.ExtraInputHandler;
+import ohha.gui.InputWindow;
+import ohha.gui.MainView;
 import ohha.logic.LogWriter;
 
 /**
@@ -14,10 +14,9 @@ import ohha.logic.LogWriter;
  *
  * @author mikkotiainen
  */
-class LogWriterHandler implements ExtraInputHandler {
+public class LogWriterHandler implements ExtraInputHandler {
 
     private MainView parent;
-    private String input;
 
     /**
      *
@@ -25,7 +24,6 @@ class LogWriterHandler implements ExtraInputHandler {
      */
     public LogWriterHandler(MainView parent) {
         this.parent = parent;
-        this.input = "";
     }
 
     @Override
@@ -38,13 +36,13 @@ class LogWriterHandler implements ExtraInputHandler {
         }
     }
     
-    public void save() {
+    @Override
+    public void process(String input) {
         Object o = parent.getList().getSelectedValue();
         if (o.getClass() == SubjectData.class) {
             SubjectData data = (SubjectData) o;
             if (!input.isEmpty()) {
                 try {
-                    System.out.println("got it");
                     LogWriter.writeLogfile(data.getTrials(), input + "/" + data.toString() + ".txt");
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(parent, "Couldn't save the file, maybe the file path was incorrect?");
@@ -53,16 +51,6 @@ class LogWriterHandler implements ExtraInputHandler {
                 JOptionPane.showMessageDialog(parent, "Please provide a file path.");
             }
         }
-    }
-
-    @Override
-    public String getInput() {
-        return input;
-    }
-
-    @Override
-    public void setInput(String input) {
-        this.input = input;
     }
 
 }

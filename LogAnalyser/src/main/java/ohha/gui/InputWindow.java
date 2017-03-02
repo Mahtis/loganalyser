@@ -18,11 +18,10 @@ public class InputWindow extends JFrame implements ActionListener {
     private JLabel instructionLabel;
     private JTextField inputField;
     private JButton setButton;
-    private String input;
     private JPanel panel;
-    private LogWriterHandler parent;
+    private ExtraInputHandler parent;
 
-    public InputWindow(String instruction, String title, LogWriterHandler parent) throws HeadlessException {
+    public InputWindow(String instruction, String title, ExtraInputHandler parent) throws HeadlessException {
         super(title);
         this.instructionLabel = new JLabel(instruction);
         this.parent = parent;
@@ -40,12 +39,40 @@ public class InputWindow extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        input = inputField.getText();
-        parent.setInput(input);
-        parent.save();
+        parent.process(inputField.getText());
         this.dispose();
     }
-    
-    
+
+    public JLabel getInstructionLabel() {
+        return instructionLabel;
+    }
+
+    public void setInstructionLabel(JLabel instructionLabel) {
+        this.instructionLabel = instructionLabel;
+    }
+
+    public JTextField getInputField() {
+        return inputField;
+    }
+
+    public void setInputField(JTextField inputField) {
+        this.inputField = inputField;
+    }
+
+    public JButton getSetButton() {
+        return setButton;
+    }
+
+    public void setSetButton(JButton setButton) {
+        this.setButton = setButton;
+    }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
     
 }

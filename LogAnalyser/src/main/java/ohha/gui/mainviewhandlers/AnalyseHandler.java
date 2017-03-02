@@ -1,4 +1,4 @@
-package ohha.gui;
+package ohha.gui.mainviewhandlers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,6 +7,11 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import ohha.domain.SubjectData;
 import ohha.domain.Trial;
+import ohha.gui.AnalysisWindow;
+import ohha.gui.DrawHistogram;
+import ohha.gui.DrawResponseRates;
+import ohha.gui.DrawTimeSeries;
+import ohha.gui.MainView;
 import ohha.logic.AnalyseData;
 
 /**

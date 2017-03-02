@@ -1,7 +1,9 @@
-package ohha.gui;
+package ohha.gui.expwindow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import ohha.gui.ExperimentWindow;
+import ohha.gui.MainView;
 
 /**
  * Simple ActionListener class to handle Experiment-button presses.

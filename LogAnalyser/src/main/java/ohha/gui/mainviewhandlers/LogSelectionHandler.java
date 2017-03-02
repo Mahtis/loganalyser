@@ -1,10 +1,11 @@
-package ohha.gui;
+package ohha.gui.mainviewhandlers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
+import ohha.gui.MainView;
 
 /**
  * Simple ActionListener class to handle logselection-button presses.

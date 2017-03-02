@@ -1,5 +1,11 @@
 package ohha.gui;
 
+import ohha.gui.mainviewhandlers.AnalyseHandler;
+import ohha.gui.mainviewhandlers.LogWriterHandler;
+import ohha.gui.mainviewhandlers.ParseHandler;
+import ohha.gui.mainviewhandlers.LogSelectionHandler;
+import ohha.gui.mainviewhandlers.DeletionHandler;
+import ohha.gui.expwindow.ExperimentSettingsHandler;
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

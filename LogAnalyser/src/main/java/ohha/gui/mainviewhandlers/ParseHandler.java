@@ -1,4 +1,4 @@
-package ohha.gui;
+package ohha.gui.mainviewhandlers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ohha.domain.SubjectData;
 import ohha.domain.Trial;
+import ohha.gui.MainView;
 import ohha.logic.LogParser;
 
 /**
