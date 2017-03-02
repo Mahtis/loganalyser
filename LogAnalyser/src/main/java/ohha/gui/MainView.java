@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileFilter;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.SubjectData;
@@ -29,6 +30,7 @@ import ohha.domain.SubjectData;
 public class MainView extends JPanel {
 
     private JLabel fileLabel;
+    private JLabel expTitle;
     private JLabel expLabel;
     private List<File> files;
     private List<SubjectData> data;
@@ -49,11 +51,12 @@ public class MainView extends JPanel {
     public MainView() {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-
+        c.fill = GridBagConstraints.BOTH;
+        
         files = new ArrayList<>();
         data = new ArrayList<>();
 
-        fileLabel = new JLabel("Selected files:");
+        fileLabel = new JLabel("Selected files:", SwingConstants.CENTER);
         setElementLocation(c, 0, 0, 1, 1, 0, 0);
         this.add(fileLabel, c);
 
@@ -62,41 +65,47 @@ public class MainView extends JPanel {
         setElementLocation(c, 1, 0, 1, 1, 0, 0);
         this.add(fileButton, c);
         
-        expLabel = new JLabel("no experiment set");
+        expTitle = new JLabel("Current experiment", SwingConstants.CENTER);
         setElementLocation(c, 4, 0, 1, 1, 0, 0);
+        this.add(expTitle, c);
+        
+        expLabel = new JLabel("None", SwingConstants.CENTER);
+        setElementLocation(c, 4, 1, 1, 1, 0, 0);
         this.add(expLabel, c);
-
+        
         model = new DefaultListModel();
         list = new JList(model);
         list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         scroll = new JScrollPane(list);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        setElementLocation(c, 0, 1, 3, 5, 0, 0);
+        setElementLocation(c, 0, 1, 3, 6, 1.0, 1.0);
+        c.ipady = 150;
         this.add(scroll, c);
 
         experimentButton = new JButton("Set Experiment");
         experimentButton.addActionListener(new ExperimentSettingsHandler(this));
-        setElementLocation(c, 4, 1, 1, 1, 0, 0);
+        setElementLocation(c, 4, 2, 1, 1, 0, 0);
+        c.ipady = 0;
         this.add(experimentButton, c);
 
         parseButton = new JButton("Parse logfile");
         parseButton.addActionListener(new ParseHandler(this));
-        setElementLocation(c, 4, 2, 1, 1, 0, 0);
+        setElementLocation(c, 4, 3, 1, 1, 0, 0);
         this.add(parseButton, c);
 
         analyseButton = new JButton("Analyse trials");
         analyseButton.addActionListener(new AnalyseHandler(this));
-        setElementLocation(c, 4, 3, 1, 1, 0, 0);
+        setElementLocation(c, 4, 4, 1, 1, 0, 0);
         this.add(analyseButton, c);
         
         writeButton = new JButton("Save parsed log");
         writeButton.addActionListener(new LogWriterHandler(this));
-        setElementLocation(c, 4, 4, 1, 1, 0, 0);
+        setElementLocation(c, 4, 5, 1, 1, 0, 0);
         this.add(writeButton, c);
 
         deleteButton = new JButton("Remove selected");
         deleteButton.addActionListener(new DeletionHandler(this));
-        setElementLocation(c, 0, 6, 1, 1, 0, 0);
+        setElementLocation(c, 0, 7, 1, 1, 0, 0);
         this.add(deleteButton, c);
 
     }

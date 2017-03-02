@@ -162,6 +162,7 @@ public class ExperimentWindow extends JFrame {
         respCodeButton.setText("Codes");
         respNameButton.setText("Names");
         respMappingButton.setText("Correct");
+        nameTitle.setText("Name: ");
         conditionTitle.setText("Conditions: ");
         respCodeTitle.setText("Response codes");
         respNameTitle.setText("Response names");
