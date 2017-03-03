@@ -1,6 +1,7 @@
 package ohha.gui.expwindow;
 
 import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
@@ -32,11 +33,16 @@ public class ExperimentNameHandler implements ExtraInputHandler {
         info.setResponseMappings(oldInfo.getResponseMappings());
         info.setResponseCodes(oldInfo.getResponseCodes());
         parent.setInfo(info);
+        parent.getLoadText().setText("not saved");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new InputWindow("Enter a name for the experiment","Set experiment name",this);
+        String input = JOptionPane.showInputDialog(parent, "Set a name for the experiment", "Experiment name", JOptionPane.PLAIN_MESSAGE);
+        if(input != null) {
+            process(input);
+        }
+        //new InputWindow("Enter a name for the experiment","Set experiment name",this);
     }
     
     

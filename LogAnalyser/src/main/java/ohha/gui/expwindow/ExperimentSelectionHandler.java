@@ -32,6 +32,7 @@ public class ExperimentSelectionHandler implements ActionListener{
         } else {
             info = ExperimentInfoIO.loadFromJson(file.getPath());
             parent.setInfo(info);
+            parent.getLoadText().setText("saved");
         }
     }
     

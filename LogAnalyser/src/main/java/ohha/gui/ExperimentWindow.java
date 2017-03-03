@@ -1,5 +1,6 @@
 package ohha.gui;
 
+import java.awt.Component;
 import ohha.gui.expwindow.ExperimentSelectionHandler;
 import ohha.gui.expwindow.ExperimentRespNameHandler;
 import ohha.gui.expwindow.ExperimentConditionHandler;
@@ -8,13 +9,12 @@ import ohha.gui.expwindow.ExperimentRespCodeHandler;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.filechooser.FileFilter;
+import javax.swing.SwingConstants;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.expwindow.ExperimentNameHandler;
 import ohha.gui.expwindow.ExperimentSaveHandler;
@@ -46,7 +46,11 @@ public class ExperimentWindow extends JFrame {
     private JButton respCodeButton;
     private JButton respNameButton;
     private JButton respMappingButton;
+    private JScrollPane scrollName;
+    private JScrollPane scrollCodes;
+    private JScrollPane scrollNames;
     private JScrollPane scrollMappings;
+    private JScrollPane scrollConds;
 
     private MainView parent;
 
@@ -69,47 +73,51 @@ public class ExperimentWindow extends JFrame {
         }
         panel = new JPanel();
         panel.setLayout(new GridLayout(0, 3));
-        loadText = new JLabel();
-        nameTitle = new JLabel();
-        conditionTitle = new JLabel();
-        respCodeTitle = new JLabel();
-        respNameTitle = new JLabel();
-        respMappingTitle = new JLabel();
+        loadText = new JLabel("not saved", SwingConstants.CENTER);
+        nameTitle = new JLabel("Name: ", SwingConstants.RIGHT);
+        conditionTitle = new JLabel("Conditions: ", SwingConstants.RIGHT);
+        respCodeTitle = new JLabel("Response codes: ", SwingConstants.RIGHT);
+        respNameTitle = new JLabel("Response names: ", SwingConstants.RIGHT);
+        respMappingTitle = new JLabel("Correct respones: ", SwingConstants.RIGHT);
         name = new JLabel();
         conditions = new JLabel();
         respCodes = new JLabel();
         respNames = new JLabel();
         respMappings = new JLabel();
-        loadButton = new JButton();
+        loadButton = new JButton("Load Experiment");
         loadButton.addActionListener(new ExperimentSelectionHandler(this));
-        saveButton = new JButton();
+        saveButton = new JButton("Save Experiment");
         saveButton.addActionListener(new ExperimentSaveHandler(this));
-        nameButton = new JButton();
+        nameButton = new JButton("Experiment Name");
         nameButton.addActionListener(new ExperimentNameHandler(this));
-        condButton = new JButton();
+        condButton = new JButton("Conditions");
         condButton.addActionListener(new ExperimentConditionHandler(this));
-        respCodeButton = new JButton();
+        respCodeButton = new JButton("Codes");
         respCodeButton.addActionListener(new ExperimentRespCodeHandler(this));
-        respNameButton = new JButton();
+        respNameButton = new JButton("Names");
         respNameButton.addActionListener(new ExperimentRespNameHandler(this));
-        respMappingButton = new JButton();
+        respMappingButton = new JButton("Correct");
         respMappingButton.addActionListener(new ExperimentRespMappingHandler(this));
+        scrollName = new JScrollPane(name);
+        scrollConds = new JScrollPane(conditions);
+        scrollCodes = new JScrollPane(respCodes);
+        scrollNames = new JScrollPane(respNames);
         scrollMappings = new JScrollPane(respMappings);
 
         panel.add(loadText);
         panel.add(loadButton);
         panel.add(saveButton);
         panel.add(nameTitle);
-        panel.add(name);
+        panel.add(scrollName);
         panel.add(nameButton);
         panel.add(conditionTitle);
-        panel.add(conditions);
+        panel.add(scrollConds);
         panel.add(condButton);
         panel.add(respCodeTitle);
-        panel.add(respCodes);
+        panel.add(scrollCodes);
         panel.add(respCodeButton);
         panel.add(respNameTitle);
-        panel.add(respNames);
+        panel.add(scrollNames);
         panel.add(respNameButton);
         panel.add(respMappingTitle);
         panel.add(scrollMappings);
@@ -117,7 +125,7 @@ public class ExperimentWindow extends JFrame {
 
         this.setContentPane(panel);
         this.setVisible(true);
-        this.setResizable(false);
+        //this.setResizable(false);
         this.setPreferredSize(new Dimension(500, 250));
         this.pack();
 
@@ -125,11 +133,11 @@ public class ExperimentWindow extends JFrame {
 
     @Override
     public void paint(Graphics g) {
-        if (info.getName() == null) {
-            loadText.setText("No Experiment loaded");
-        } else {
-            loadText.setText(info.getName() + " loaded");
-        }
+        //if (info.getName() == null) {
+        //    loadText.setText("No Experiment loaded");
+        //} else {
+        //    loadText.setText(info.getName() + " loaded");
+        //}
         if (info.getName() == null) {
             name.setText("no name");
         } else {
@@ -155,18 +163,21 @@ public class ExperimentWindow extends JFrame {
         } else {
             respMappings.setText(info.getResponseMappings().toString());
         }
-        loadButton.setText("Load Experiment");
-        saveButton.setText("Save Experiment");
-        nameButton.setText("Experiment Name");
-        condButton.setText("Conditions");
-        respCodeButton.setText("Codes");
-        respNameButton.setText("Names");
-        respMappingButton.setText("Correct");
-        nameTitle.setText("Name: ");
-        conditionTitle.setText("Conditions: ");
-        respCodeTitle.setText("Response codes");
-        respNameTitle.setText("Response names");
-        respMappingTitle.setText("Correct responses:");
+        //loadButton.setText("Load Experiment");
+        //saveButton.setText("Save Experiment");
+        //nameButton.setText("Experiment Name");
+        //condButton.setText("Conditions");
+        //respCodeButton.setText("Codes");
+        //respNameButton.setText("Names");
+        //respMappingButton.setText("Correct");
+        //nameTitle.setText("Name: ");
+        //conditionTitle.setText("Conditions: ");
+        //respCodeTitle.setText("Response codes");
+        //respNameTitle.setText("Response names");
+        //respMappingTitle.setText("Correct responses:");
+        for (Component component : this.getComponents()){
+            component.repaint();
+        }
     }
 
     public ExperimentInfo getInfo() {
@@ -180,17 +191,12 @@ public class ExperimentWindow extends JFrame {
         this.repaint();
     }
 
-    private class JsonFilter extends FileFilter {
+    public JLabel getLoadText() {
+        return loadText;
+    }
 
-        @Override
-        public boolean accept(File pathname) {
-            return pathname.getName().endsWith(".json") || pathname.isDirectory();
-        }
-
-        @Override
-        public String getDescription() {
-            return "JSON file .json";
-        }
+    public void setLoadText(JLabel loadText) {
+        this.loadText = loadText;
     }
 
 }

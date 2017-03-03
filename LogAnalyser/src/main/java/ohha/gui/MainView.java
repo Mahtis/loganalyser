@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class MainView extends JPanel {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
+        c.insets = new Insets(2, 2, 2, 2);
         
         files = new ArrayList<>();
         data = new ArrayList<>();
@@ -86,6 +88,7 @@ public class MainView extends JPanel {
         experimentButton.addActionListener(new ExperimentSettingsHandler(this));
         setElementLocation(c, 4, 2, 1, 1, 0, 0);
         c.ipady = 0;
+        c.insets = new Insets(7, 2, 7, 2);
         this.add(experimentButton, c);
 
         parseButton = new JButton("Parse logfile");

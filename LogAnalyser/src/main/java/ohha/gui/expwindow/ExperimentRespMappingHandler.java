@@ -42,6 +42,8 @@ public class ExperimentRespMappingHandler implements ExtraInputHandler {
         info.setConditions(oldInfo.getConditions());
         info.setResponseCodes(oldInfo.getResponseCodes());
         info.setResponseNames(oldInfo.getResponseNames());
+        parent.setInfo(info);
+        parent.getLoadText().setText("saved");
     }
 
     @Override

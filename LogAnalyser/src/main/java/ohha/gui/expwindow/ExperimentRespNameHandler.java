@@ -3,6 +3,7 @@ package ohha.gui.expwindow;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
@@ -31,11 +32,16 @@ public class ExperimentRespNameHandler implements ExtraInputHandler {
         info.setResponseMappings(oldInfo.getResponseMappings());
         info.setResponseCodes(oldInfo.getResponseCodes());
         parent.setInfo(info);
+        parent.getLoadText().setText("not saved");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new InputWindow("Enter experiment response names (separated with comma)","Set response names",this);
+        String input = JOptionPane.showInputDialog(parent, "<HTML> Enter names for the response codes, <br> separated by commas </HTML>", "Response names", JOptionPane.PLAIN_MESSAGE);
+        if(input != null) {
+            process(input);
+        }
+        //new InputWindow("Enter experiment response names (separated with comma)","Set response names",this);
     }
     
     

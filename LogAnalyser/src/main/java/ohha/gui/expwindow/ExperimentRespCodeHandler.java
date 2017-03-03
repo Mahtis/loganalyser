@@ -4,6 +4,7 @@ package ohha.gui.expwindow;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
@@ -32,11 +33,16 @@ public class ExperimentRespCodeHandler implements ExtraInputHandler {
         info.setResponseMappings(oldInfo.getResponseMappings());
         info.setResponseNames(oldInfo.getResponseNames());
         parent.setInfo(info);
+        parent.getLoadText().setText("saved");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new InputWindow("Enter experiment response codes (separated with comma)","Set response codes",this);
+        String input = JOptionPane.showInputDialog(parent, "<HTML> Enter experiment response codes, <br> separated by commas </HTML>", "Response codes", JOptionPane.PLAIN_MESSAGE);
+        if(input != null) {
+            process(input);
+        }
+        //new InputWindow("Enter experiment response codes (separated with comma)","Set response codes",this);
     }
     
 }

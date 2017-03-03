@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import ohha.gui.ExtraInputHandler;
 
 /**
@@ -21,9 +22,6 @@ public class SetCorrResponsesWindow extends JFrame implements ActionListener {
     
     private JLabel instructionLabel;
     private JLabel instructionLabel2;
-    private JLabel instructionLabel3;
-    private JLabel instructionLabel4;
-    private JTextField inputField;
     private JButton setButton;
     private JPanel panel;
     private ExtraInputHandler parent;
@@ -41,24 +39,20 @@ public class SetCorrResponsesWindow extends JFrame implements ActionListener {
     
     private void initComponents() {
         this.panel = new JPanel(new GridLayout(0, 2));
-        this.instructionLabel = new JLabel("Set correct responses for each condition");
-        this.instructionLabel2 = new JLabel("separate codes for one response with comma");
-        this.instructionLabel3 = new JLabel("use 0 for no response");
-        this.instructionLabel4 = new JLabel("and separate responses with semicolon");
+        this.instructionLabel = new JLabel("<HTML> Set correct responses for each condition <br> use 0 for no response </HTML>", SwingConstants.CENTER);
+        this.instructionLabel2 = new JLabel("<HTML> Separate codes for one response with comma <br> and separate responses with semicolon </HTML>", SwingConstants.CENTER);
         panel.add(instructionLabel);
         panel.add(instructionLabel2);
-        panel.add(instructionLabel3);
-        panel.add(instructionLabel4);
 
         condNames = new ArrayList<>();
         inputs = new ArrayList<>();
         for (int i = 0; i < conditions.size(); i++) {
-            condNames.add(new JLabel(conditions.get(i)));
+            condNames.add(new JLabel(conditions.get(i),SwingConstants.CENTER));
             inputs.add(new JTextField(20));
             panel.add(condNames.get(i));
             panel.add(inputs.get(i));
         }
-        this.setButton = new JButton("set");
+        this.setButton = new JButton("save");
         setButton.addActionListener(this);
         panel.add(setButton);
         this.add(panel);

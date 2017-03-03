@@ -1,6 +1,8 @@
 package ohha;
 
 import java.io.IOException;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import ohha.gui.MainWindow;
 
 /**
@@ -14,7 +16,8 @@ public class LogAnalyserApplication {
      * @param args Not used.
      * @throws IOException Throws possible IOException.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         MainWindow window = new MainWindow();
         /*
         JFrame win = new JFrame("Histogram");
