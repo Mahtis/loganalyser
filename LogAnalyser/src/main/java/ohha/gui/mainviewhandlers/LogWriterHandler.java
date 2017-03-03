@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 import ohha.domain.SubjectData;
 import ohha.gui.ExtraInputHandler;
-import ohha.gui.InputWindow;
+import ohha.gui.FileSelectorUtil;
 import ohha.gui.MainView;
 import ohha.logic.LogWriter;
 
@@ -19,8 +19,9 @@ public class LogWriterHandler implements ExtraInputHandler {
     private MainView parent;
 
     /**
-     *
-     * @param parent
+     * Initializes a LogWriterHandler for the given parent MainView.
+     * 
+     * @param parent MainView that the handler is part of.
      */
     public LogWriterHandler(MainView parent) {
         this.parent = parent;
@@ -31,11 +32,13 @@ public class LogWriterHandler implements ExtraInputHandler {
         // create new input window, get filename from there and run writeLogfile.
         Object o = parent.getList().getSelectedValue();
         if (o.getClass() == SubjectData.class) {
-            SubjectData data = (SubjectData) o;
-            new InputWindow("Enter folder where to save new log", "Set file destination", this);
+            String path = FileSelectorUtil.selectSaveFolder(parent);
+            if (path != null) {
+                process(path);
+            }
         }
     }
-    
+
     @Override
     public void process(String input) {
         Object o = parent.getList().getSelectedValue();

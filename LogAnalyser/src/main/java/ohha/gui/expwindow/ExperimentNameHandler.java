@@ -5,16 +5,22 @@ import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
-import ohha.gui.InputWindow;
 
 /**
+ * An ActionListener class to allow user to manually set the name of the Experiment.
  *
  * @author mikkotiainen
  */
 public class ExperimentNameHandler implements ExtraInputHandler {
-    
+
     private ExperimentWindow parent;
 
+    /**
+     * Initializes an ExperimentNameHandler with the given ExperimentWindow
+     * parent.
+     *
+     * @param parent ExperimentWindow whose ExperimentInfo is edited.
+     */
     public ExperimentNameHandler(ExperimentWindow parent) {
         this.parent = parent;
     }
@@ -39,11 +45,9 @@ public class ExperimentNameHandler implements ExtraInputHandler {
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = JOptionPane.showInputDialog(parent, "Set a name for the experiment", "Experiment name", JOptionPane.PLAIN_MESSAGE);
-        if(input != null) {
+        if (input != null) {
             process(input);
         }
-        //new InputWindow("Enter a name for the experiment","Set experiment name",this);
     }
-    
-    
+
 }

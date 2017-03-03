@@ -14,7 +14,7 @@ public class LogAnalyserApplication {
     /**
      * Starts the application on run.
      * @param args Not used.
-     * @throws IOException Throws possible IOException.
+     * @throws Exception Throws possible Exception.
      */
     public static void main(String[] args) throws Exception {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

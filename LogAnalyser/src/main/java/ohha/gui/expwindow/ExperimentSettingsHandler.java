@@ -7,14 +7,16 @@ import ohha.gui.MainView;
 
 /**
  * Simple ActionListener class to handle Experiment-button presses.
+ *
  * @author mikkotiainen
  */
 public class ExperimentSettingsHandler implements ActionListener {
-    
+
     private MainView parent;
 
     /**
      * Initialize a new ExperimentSettingsHandler.
+     *
      * @param parent The MainView that the handled button is part of.
      */
     public ExperimentSettingsHandler(MainView parent) {
@@ -29,5 +31,5 @@ public class ExperimentSettingsHandler implements ActionListener {
 //                i.setEnabled(false);
 //            }
     }
-    
+
 }

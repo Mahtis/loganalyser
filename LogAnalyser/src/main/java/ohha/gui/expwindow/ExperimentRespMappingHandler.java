@@ -10,6 +10,11 @@ import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
 
 /**
+ * An ActionListener class to allow user to manually set an Experiment's correct
+ * responses. Unlike the other similar ExperimentWindow-handlers, this class
+ * requires a dynamically generated window and also some more complex input parsing.
+ * Note regardless of the added complexity, the class still implements the 
+ * ExtraInputHandler interface.
  *
  * @author mikkotiainen
  */
@@ -17,6 +22,12 @@ public class ExperimentRespMappingHandler implements ExtraInputHandler {
     
     private ExperimentWindow parent;
 
+    /**
+     * Initializes an ExperimentRespMappingHandler with the given ExperimentWindow
+     * parent.
+     *
+     * @param parent ExperimentWindow whose ExperimentInfo is edited.
+     */
     public ExperimentRespMappingHandler(ExperimentWindow parent) {
         this.parent = parent;
     }
@@ -43,7 +54,7 @@ public class ExperimentRespMappingHandler implements ExtraInputHandler {
         info.setResponseCodes(oldInfo.getResponseCodes());
         info.setResponseNames(oldInfo.getResponseNames());
         parent.setInfo(info);
-        parent.getLoadText().setText("saved");
+        parent.getLoadText().setText("not saved");
     }
 
     @Override

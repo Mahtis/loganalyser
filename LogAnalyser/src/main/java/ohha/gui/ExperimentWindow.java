@@ -166,6 +166,11 @@ public class ExperimentWindow extends JFrame {
         return info;
     }
 
+    /**
+     * Sets the ExperimentInfo for the ExperimentWindow and passes it on to the
+     * MainView. Also updates the loaded experiment text on MainView.
+     * @param info The ExperimentInfo to be set.
+     */
     public void setInfo(ExperimentInfo info) {
         this.info = info;
         parent.setInfo(info);

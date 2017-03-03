@@ -7,16 +7,23 @@ import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
-import ohha.gui.InputWindow;
 
 /**
+ * An ActionListener class to allow user to manually set Experiment response
+ * names.
  *
  * @author mikkotiainen
  */
 public class ExperimentRespNameHandler implements ExtraInputHandler {
-    
+
     private ExperimentWindow parent;
 
+    /**
+     * Initializes an ExperimentRespNameHandler with the given ExperimentWindow
+     * parent.
+     *
+     * @param parent ExperimentWindow whose ExperimentInfo is edited.
+     */
     public ExperimentRespNameHandler(ExperimentWindow parent) {
         this.parent = parent;
     }
@@ -38,11 +45,9 @@ public class ExperimentRespNameHandler implements ExtraInputHandler {
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = JOptionPane.showInputDialog(parent, "<HTML> Enter names for the response codes, <br> separated by commas </HTML>", "Response names", JOptionPane.PLAIN_MESSAGE);
-        if(input != null) {
+        if (input != null) {
             process(input);
         }
-        //new InputWindow("Enter experiment response names (separated with comma)","Set response names",this);
     }
-    
-    
+
 }

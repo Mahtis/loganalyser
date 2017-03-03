@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
+import ohha.gui.FileSelectorUtil;
 import ohha.gui.MainView;
 
 /**
@@ -25,7 +26,7 @@ public class LogSelectionHandler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        File[] logFiles = MainView.multiFileSelection(parent, new LogFilter());
+        File[] logFiles = FileSelectorUtil.multiFileSelection(parent, new LogFilter());
         for (File file : logFiles) {
             if (!file.getName().endsWith(".log")) {
                 JOptionPane.showMessageDialog(parent, "Not a .log-file.");

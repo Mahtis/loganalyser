@@ -10,8 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- *
+ * Class to open a simple window for querying input from the user.
+ * 
  * @author mikkotiainen
+ * @deprecated This class has currently been replaced by JOptionPane usage.
  */
 public class InputWindow extends JFrame implements ActionListener {
     
@@ -21,7 +23,13 @@ public class InputWindow extends JFrame implements ActionListener {
     private JPanel panel;
     private ExtraInputHandler parent;
 
-    public InputWindow(String instruction, String title, ExtraInputHandler parent) throws HeadlessException {
+    /**
+     * Initializes a new InputWindow.
+     * @param instruction The instructions for the input.
+     * @param title Title of the window.
+     * @param parent The parent for whose process-method the input is passed on.
+     */
+    public InputWindow(String instruction, String title, ExtraInputHandler parent) {
         super(title);
         this.instructionLabel = new JLabel(instruction);
         this.parent = parent;

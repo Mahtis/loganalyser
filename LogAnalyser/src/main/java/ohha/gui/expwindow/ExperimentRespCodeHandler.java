@@ -1,4 +1,3 @@
-
 package ohha.gui.expwindow;
 
 import java.awt.event.ActionEvent;
@@ -8,16 +7,22 @@ import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
-import ohha.gui.InputWindow;
 
 /**
+ * An ActionListener class to allow user to manually set Experiment response codes.
  *
  * @author mikkotiainen
  */
 public class ExperimentRespCodeHandler implements ExtraInputHandler {
-    
+
     private ExperimentWindow parent;
 
+    /**
+     * Initializes an ExperimentRespCodeHandler with the given ExperimentWindow
+     * parent.
+     *
+     * @param parent ExperimentWindow whose ExperimentInfo is edited.
+     */
     public ExperimentRespCodeHandler(ExperimentWindow parent) {
         this.parent = parent;
     }
@@ -39,10 +44,9 @@ public class ExperimentRespCodeHandler implements ExtraInputHandler {
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = JOptionPane.showInputDialog(parent, "<HTML> Enter experiment response codes, <br> separated by commas </HTML>", "Response codes", JOptionPane.PLAIN_MESSAGE);
-        if(input != null) {
+        if (input != null) {
             process(input);
         }
-        //new InputWindow("Enter experiment response codes (separated with comma)","Set response codes",this);
     }
-    
+
 }

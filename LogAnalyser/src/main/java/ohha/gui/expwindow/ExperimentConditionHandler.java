@@ -7,20 +7,25 @@ import javax.swing.JOptionPane;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.ExtraInputHandler;
-import ohha.gui.InputWindow;
 
 /**
+ * An ActionListener class to allow user to manually set Experiment conditions.
  *
  * @author mikkotiainen
  */
 public class ExperimentConditionHandler implements ExtraInputHandler {
-    
+
     private ExperimentWindow parent;
 
+    /**
+     * Initializes an ExperimentConditionHandler with the given ExperimentWindow
+     * parent.
+     *
+     * @param parent ExperimentWindow whose ExperimentInfo is edited.
+     */
     public ExperimentConditionHandler(ExperimentWindow parent) {
         this.parent = parent;
     }
-    
 
     @Override
     public void process(String input) {
@@ -39,10 +44,9 @@ public class ExperimentConditionHandler implements ExtraInputHandler {
     @Override
     public void actionPerformed(ActionEvent e) {
         String input = JOptionPane.showInputDialog(parent, "<HTML> Enter experiment conditions, <br> separated by commas </HTML>", "Set conditions", JOptionPane.PLAIN_MESSAGE);
-        if(input != null) {
+        if (input != null) {
             process(input);
         }
-        //new InputWindow("Enter experiment conditions (separated with comma)","Set conditions",this);
     }
-    
+
 }

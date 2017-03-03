@@ -7,10 +7,12 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import ohha.domain.ExperimentInfo;
 import ohha.gui.ExperimentWindow;
-import ohha.gui.MainView;
+import ohha.gui.FileSelectorUtil;
 import ohha.logic.ExperimentInfoIO;
 
 /**
+ * An ActionListener class to allow user load an Experiment from file.
+ * Note that this class does not implement the ExtreInputHandler interface.
  *
  * @author mikkotiainen
  */
@@ -19,13 +21,19 @@ public class ExperimentSelectionHandler implements ActionListener {
     private ExperimentWindow parent;
     private ExperimentInfo info;
 
+    /**
+     * Initializes an ExperimentSelectionHandler with the given ExperimentWindow
+     * parent.
+     *
+     * @param parent ExperimentWindow to where the ExperimentInfo is loaded to.
+     */
     public ExperimentSelectionHandler(ExperimentWindow parent) {
         this.parent = parent;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        File file = MainView.singleFileSelection(parent, new JsonFilter());
+        File file = FileSelectorUtil.singleFileSelection(parent, new JsonFilter());
         if (!file.getName().endsWith(".json")) {
             JOptionPane.showMessageDialog(parent, "Not a JSON file.");
         } else {

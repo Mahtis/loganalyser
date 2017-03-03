@@ -17,3 +17,4 @@ Päivä | Tunnit | Kuvaus
 21.02.2017 | 8h | Analyysien piirron koodausta.
 22.02.2017 | 4h | GUI:n refaktorointia.
 23.02.2017 | 8h | Testejä ja dokumentaatiota.
+02.03.2017 | 8h | ExperimentWindow toiminnot.

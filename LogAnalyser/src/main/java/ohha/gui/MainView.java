@@ -6,18 +6,14 @@ import ohha.gui.mainviewhandlers.ParseHandler;
 import ohha.gui.mainviewhandlers.LogSelectionHandler;
 import ohha.gui.mainviewhandlers.DeletionHandler;
 import ohha.gui.expwindow.ExperimentSettingsHandler;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -25,7 +21,6 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
-import javax.swing.filechooser.FileFilter;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.SubjectData;
 
@@ -121,44 +116,6 @@ public class MainView extends JPanel {
         c.gridheight = height;
         c.weightx = weightx;
         c.weighty = weighty;
-    }
-
-    /**
-     * Opens a file selector and returns the selected file.
-     *
-     * @param parent The parent component.
-     * @param filter Custom filter to disallow selecting wrong file types.
-     * @return The user selected file.
-     */
-    public static File singleFileSelection(Component parent, FileFilter filter) {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(filter);
-        fileChooser.setMultiSelectionEnabled(false);
-        fileChooser.setCurrentDirectory(Paths.get("").toAbsolutePath().toFile());
-        int returnVal = fileChooser.showOpenDialog(parent);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            return fileChooser.getSelectedFile();
-        }
-        return null;
-    }
-
-    /**
-     * Opens a file selector and returns the selected files.
-     *
-     * @param parent The parent component.
-     * @param filter Custom filter to disallow selecting wrong file types.
-     * @return The user selected files.
-     */
-    public static File[] multiFileSelection(Component parent, FileFilter filter) {
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(filter);
-        fileChooser.setMultiSelectionEnabled(true);
-        fileChooser.setCurrentDirectory(Paths.get("").toAbsolutePath().toFile());
-        int returnVal = fileChooser.showOpenDialog(parent);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            return fileChooser.getSelectedFiles();
-        }
-        return null;
     }
 
     public ExperimentInfo getInfo() {
