@@ -6,7 +6,6 @@ import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import ohha.domain.ExperimentInfo;
-import ohha.domain.ResponseMapping;
 import ohha.gui.ExperimentWindow;
 import ohha.gui.MainView;
 import ohha.logic.ExperimentInfoIO;
@@ -15,8 +14,8 @@ import ohha.logic.ExperimentInfoIO;
  *
  * @author mikkotiainen
  */
-public class ExperimentSelectionHandler implements ActionListener{
-    
+public class ExperimentSelectionHandler implements ActionListener {
+
     private ExperimentWindow parent;
     private ExperimentInfo info;
 
@@ -35,7 +34,7 @@ public class ExperimentSelectionHandler implements ActionListener{
             parent.getLoadText().setText("saved");
         }
     }
-    
+
     private class JsonFilter extends FileFilter {
 
         @Override
@@ -48,5 +47,5 @@ public class ExperimentSelectionHandler implements ActionListener{
             return "JSON file .json";
         }
     }
-    
+
 }

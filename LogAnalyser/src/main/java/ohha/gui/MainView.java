@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -54,7 +55,7 @@ public class MainView extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         c.insets = new Insets(2, 2, 2, 2);
-        
+
         files = new ArrayList<>();
         data = new ArrayList<>();
 
@@ -66,15 +67,15 @@ public class MainView extends JPanel {
         fileButton.addActionListener(new LogSelectionHandler(this));
         setElementLocation(c, 1, 0, 1, 1, 0, 0);
         this.add(fileButton, c);
-        
+
         expTitle = new JLabel("Current experiment", SwingConstants.CENTER);
         setElementLocation(c, 4, 0, 1, 1, 0, 0);
         this.add(expTitle, c);
-        
+
         expLabel = new JLabel("None", SwingConstants.CENTER);
         setElementLocation(c, 4, 1, 1, 1, 0, 0);
         this.add(expLabel, c);
-        
+
         model = new DefaultListModel();
         list = new JList(model);
         list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -100,7 +101,7 @@ public class MainView extends JPanel {
         analyseButton.addActionListener(new AnalyseHandler(this));
         setElementLocation(c, 4, 4, 1, 1, 0, 0);
         this.add(analyseButton, c);
-        
+
         writeButton = new JButton("Save parsed log");
         writeButton.addActionListener(new LogWriterHandler(this));
         setElementLocation(c, 4, 5, 1, 1, 0, 0);
@@ -112,7 +113,7 @@ public class MainView extends JPanel {
         this.add(deleteButton, c);
 
     }
-            
+
     private void setElementLocation(GridBagConstraints c, int x, int y, int width, int height, double weightx, double weighty) {
         c.gridx = x;
         c.gridy = y;
@@ -124,6 +125,7 @@ public class MainView extends JPanel {
 
     /**
      * Opens a file selector and returns the selected file.
+     *
      * @param parent The parent component.
      * @param filter Custom filter to disallow selecting wrong file types.
      * @return The user selected file.
@@ -132,6 +134,7 @@ public class MainView extends JPanel {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
         fileChooser.setMultiSelectionEnabled(false);
+        fileChooser.setCurrentDirectory(Paths.get("").toAbsolutePath().toFile());
         int returnVal = fileChooser.showOpenDialog(parent);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             return fileChooser.getSelectedFile();
@@ -141,6 +144,7 @@ public class MainView extends JPanel {
 
     /**
      * Opens a file selector and returns the selected files.
+     *
      * @param parent The parent component.
      * @param filter Custom filter to disallow selecting wrong file types.
      * @return The user selected files.
@@ -149,13 +153,13 @@ public class MainView extends JPanel {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(filter);
         fileChooser.setMultiSelectionEnabled(true);
+        fileChooser.setCurrentDirectory(Paths.get("").toAbsolutePath().toFile());
         int returnVal = fileChooser.showOpenDialog(parent);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             return fileChooser.getSelectedFiles();
         }
         return null;
     }
-
 
     public ExperimentInfo getInfo() {
         return info;
@@ -164,7 +168,7 @@ public class MainView extends JPanel {
     public void setInfo(ExperimentInfo info) {
         this.info = info;
     }
-    
+
     public JLabel getExpLabel() {
         return expLabel;
     }

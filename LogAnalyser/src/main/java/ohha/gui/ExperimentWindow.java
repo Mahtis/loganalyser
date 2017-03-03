@@ -74,11 +74,11 @@ public class ExperimentWindow extends JFrame {
         panel = new JPanel();
         panel.setLayout(new GridLayout(0, 3));
         loadText = new JLabel("not saved", SwingConstants.CENTER);
-        nameTitle = new JLabel("Name: ", SwingConstants.RIGHT);
-        conditionTitle = new JLabel("Conditions: ", SwingConstants.RIGHT);
-        respCodeTitle = new JLabel("Response codes: ", SwingConstants.RIGHT);
-        respNameTitle = new JLabel("Response names: ", SwingConstants.RIGHT);
-        respMappingTitle = new JLabel("Correct respones: ", SwingConstants.RIGHT);
+        nameTitle = new JLabel("Name: ");
+        conditionTitle = new JLabel("Conditions: ");
+        respCodeTitle = new JLabel("Response codes: ");
+        respNameTitle = new JLabel("Response names: ");
+        respMappingTitle = new JLabel("Correct respones: ");
         name = new JLabel();
         conditions = new JLabel();
         respCodes = new JLabel();
@@ -125,7 +125,6 @@ public class ExperimentWindow extends JFrame {
 
         this.setContentPane(panel);
         this.setVisible(true);
-        //this.setResizable(false);
         this.setPreferredSize(new Dimension(500, 250));
         this.pack();
 
@@ -133,11 +132,6 @@ public class ExperimentWindow extends JFrame {
 
     @Override
     public void paint(Graphics g) {
-        //if (info.getName() == null) {
-        //    loadText.setText("No Experiment loaded");
-        //} else {
-        //    loadText.setText(info.getName() + " loaded");
-        //}
         if (info.getName() == null) {
             name.setText("no name");
         } else {
@@ -163,19 +157,7 @@ public class ExperimentWindow extends JFrame {
         } else {
             respMappings.setText(info.getResponseMappings().toString());
         }
-        //loadButton.setText("Load Experiment");
-        //saveButton.setText("Save Experiment");
-        //nameButton.setText("Experiment Name");
-        //condButton.setText("Conditions");
-        //respCodeButton.setText("Codes");
-        //respNameButton.setText("Names");
-        //respMappingButton.setText("Correct");
-        //nameTitle.setText("Name: ");
-        //conditionTitle.setText("Conditions: ");
-        //respCodeTitle.setText("Response codes");
-        //respNameTitle.setText("Response names");
-        //respMappingTitle.setText("Correct responses:");
-        for (Component component : this.getComponents()){
+        for (Component component : this.getComponents()) {
             component.repaint();
         }
     }
