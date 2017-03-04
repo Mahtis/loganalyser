@@ -127,7 +127,6 @@ public class ExperimentWindow extends JFrame {
         this.setVisible(true);
         this.setPreferredSize(new Dimension(500, 250));
         this.pack();
-
     }
 
     @Override
@@ -169,6 +168,7 @@ public class ExperimentWindow extends JFrame {
     /**
      * Sets the ExperimentInfo for the ExperimentWindow and passes it on to the
      * MainView. Also updates the loaded experiment text on MainView.
+     *
      * @param info The ExperimentInfo to be set.
      */
     public void setInfo(ExperimentInfo info) {

@@ -7,11 +7,13 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
 /**
- * Class that provides static functions for file selection for saving and loading.
+ * Class that provides static functions for file selection for saving and
+ * loading.
+ *
  * @author mikkotiainen
  */
 public class FileSelectorUtil {
-    
+
     /**
      * Opens a file selector and returns the selected file.
      *
@@ -49,9 +51,11 @@ public class FileSelectorUtil {
         }
         return null;
     }
-    
+
     /**
-     * Opens a file selector and returns the path of the folder for saving a file.
+     * Opens a file selector and returns the path of the folder for saving a
+     * file.
+     *
      * @param parent Parent component that the selector is associated with.
      * @return The path as a string.
      */
@@ -65,8 +69,8 @@ public class FileSelectorUtil {
             File file = chooser.getSelectedFile();
             String path = file.getAbsolutePath();
             return path;
-        } 
+        }
         return null;
     }
-    
+
 }

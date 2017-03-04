@@ -107,7 +107,6 @@ public class AnalyseData {
                 condRate = (corrects.get(condition) * 100) / sumOfTrials;
             }
             rates.put(condition, condRate);
-            System.out.println(condition + ": " + rates.get(condition));
         }
         return rates;
     }

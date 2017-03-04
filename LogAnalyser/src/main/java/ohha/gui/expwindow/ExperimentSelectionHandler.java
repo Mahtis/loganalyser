@@ -11,8 +11,8 @@ import ohha.gui.FileSelectorUtil;
 import ohha.logic.ExperimentInfoIO;
 
 /**
- * An ActionListener class to allow user load an Experiment from file.
- * Note that this class does not implement the ExtreInputHandler interface.
+ * An ActionListener class to allow user load an Experiment from file. Note that
+ * this class does not implement the ExtreInputHandler interface.
  *
  * @author mikkotiainen
  */
@@ -34,12 +34,14 @@ public class ExperimentSelectionHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         File file = FileSelectorUtil.singleFileSelection(parent, new JsonFilter());
-        if (!file.getName().endsWith(".json")) {
-            JOptionPane.showMessageDialog(parent, "Not a JSON file.");
-        } else {
-            info = ExperimentInfoIO.loadFromJson(file.getPath());
-            parent.setInfo(info);
-            parent.getLoadText().setText("saved");
+        if (file != null) {
+            if (!file.getName().endsWith(".json")) {
+                JOptionPane.showMessageDialog(parent, "Not a JSON file.");
+            } else {
+                info = ExperimentInfoIO.loadFromJson(file.getPath());
+                parent.setInfo(info);
+                parent.getLoadText().setText("saved");
+            }
         }
     }
 

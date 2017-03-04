@@ -7,23 +7,26 @@ import ohha.domain.Trial;
 
 /**
  * Draws all trials in order and displays mean values for given window.
+ *
  * @author mikkotiainen
  */
 public class DrawTimeSeries extends Component {
-    
+
     private List<Trial> trials;
     private int meanWindow;
 
     /**
      * Initialize a new draw with the given list of trials and mean window.
+     *
      * @param trials Trials to be displayed.
-     * @param meanWindow Window for means, suggested to be something between 10 and half of trials size.
+     * @param meanWindow Window for means, suggested to be something between 10
+     * and half of trials size.
      */
     public DrawTimeSeries(List<Trial> trials, int meanWindow) {
         this.trials = trials;
         this.meanWindow = meanWindow;
     }
-    
+
     @Override
     public void paint(Graphics g) {
         int panelHeight = this.getParent().getHeight();
@@ -48,7 +51,6 @@ public class DrawTimeSeries extends Component {
             meanCount++;
             meanSum += rt;
             int y = (int) Math.floor(panelHeight - (rt * scaler - min * scaler));
-            System.out.println(y + " scaler: " + scaler + " min: " + min + " max: " + max);
             if (trial.isCorrect()) {
                 g.drawString("o", x, y);
             } else {
@@ -56,7 +58,7 @@ public class DrawTimeSeries extends Component {
             }
         }
     }
-    
+
     private int[] findMinMax() {
         int max = 0;
         int min = trials.get(0).getReactionTimes().get(0);
@@ -69,7 +71,7 @@ public class DrawTimeSeries extends Component {
                 min = rt;
             }
         }
-        return new int[] {min, max};
+        return new int[]{min, max};
     }
-    
+
 }

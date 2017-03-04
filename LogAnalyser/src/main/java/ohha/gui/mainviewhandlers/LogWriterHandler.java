@@ -2,6 +2,7 @@ package ohha.gui.mainviewhandlers;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.List;
 import javax.swing.JOptionPane;
 import ohha.domain.SubjectData;
 import ohha.gui.ExtraInputHandler;
@@ -20,7 +21,7 @@ public class LogWriterHandler implements ExtraInputHandler {
 
     /**
      * Initializes a LogWriterHandler for the given parent MainView.
-     * 
+     *
      * @param parent MainView that the handler is part of.
      */
     public LogWriterHandler(MainView parent) {
@@ -30,30 +31,41 @@ public class LogWriterHandler implements ExtraInputHandler {
     @Override
     public void actionPerformed(ActionEvent e) {
         // create new input window, get filename from there and run writeLogfile.
-        Object o = parent.getList().getSelectedValue();
-        if (o.getClass() == SubjectData.class) {
+        List<Object> files = parent.getList().getSelectedValuesList();
+        int notData = 0;
+        for (Object o : files) {
+            if (o.getClass() != SubjectData.class) {
+                notData++;
+            }
+        }
+        if (notData == 0) {
             String path = FileSelectorUtil.selectSaveFolder(parent);
             if (path != null) {
                 process(path);
             }
+        } else {
+            JOptionPane.showMessageDialog(parent, notData + " of the selected files are not processed log data, please select only processed data.");
         }
     }
 
     @Override
     public void process(String input) {
-        Object o = parent.getList().getSelectedValue();
-        if (o.getClass() == SubjectData.class) {
-            SubjectData data = (SubjectData) o;
-            if (!input.isEmpty()) {
-                try {
-                    LogWriter.writeLogfile(data.getTrials(), input + "/" + data.toString() + ".txt");
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(parent, "Couldn't save the file, maybe the file path was incorrect?");
+        List<Object> files = parent.getList().getSelectedValuesList();
+        for (Object o : files) {
+            if (o.getClass() == SubjectData.class) {
+                SubjectData data = (SubjectData) o;
+                if (!input.isEmpty()) {
+                    try {
+                        LogWriter.writeLogfile(data.getTrials(), input + "/" + data.toString() + ".txt");
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(parent, "Couldn't save the file, maybe the file path was incorrect?");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(parent, "Please provide a file path.");
                 }
-            } else {
-                JOptionPane.showMessageDialog(parent, "Please provide a file path.");
             }
         }
+
     }
 
 }

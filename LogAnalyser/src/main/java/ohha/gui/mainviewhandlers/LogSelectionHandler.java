@@ -10,14 +10,16 @@ import ohha.gui.MainView;
 
 /**
  * Simple ActionListener class to handle logselection-button presses.
+ *
  * @author Mikko
  */
 public class LogSelectionHandler implements ActionListener {
-    
+
     private MainView parent;
 
     /**
      * Initialize a new LogSelectionHandler.
+     *
      * @param parent The MainView that the handled button is part of.
      */
     public LogSelectionHandler(MainView parent) {
@@ -27,17 +29,18 @@ public class LogSelectionHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         File[] logFiles = FileSelectorUtil.multiFileSelection(parent, new LogFilter());
-        for (File file : logFiles) {
-            if (!file.getName().endsWith(".log")) {
-                JOptionPane.showMessageDialog(parent, "Not a .log-file.");
-            } else {
-                parent.getFiles().add(file);
-                parent.getModel().addElement(file);
+        if (logFiles != null) {
+            for (File file : logFiles) {
+                if (!file.getName().endsWith(".log")) {
+                    JOptionPane.showMessageDialog(parent, "Not a .log-file.");
+                } else {
+                    parent.getFiles().add(file);
+                    parent.getModel().addElement(file);
+                }
             }
         }
     }
 
-    
     private class LogFilter extends FileFilter {
 
         @Override
@@ -50,5 +53,5 @@ public class LogSelectionHandler implements ActionListener {
             return "Presentation logfile .log";
         }
     }
-    
+
 }

@@ -75,8 +75,8 @@ public class SetCorrResponsesWindow extends JFrame implements ActionListener {
         }
         if (!input.isEmpty()) {
             input = input.substring(0, input.length() - 1);
+            parent.process(input);
         }
-        parent.process(input);
         this.dispose();
     }
 

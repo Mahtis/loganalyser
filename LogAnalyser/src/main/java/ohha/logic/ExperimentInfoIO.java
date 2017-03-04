@@ -103,7 +103,6 @@ public class ExperimentInfoIO {
             return false;
         }
     }
-
     
     private static List<String> jsonListToStringList(JSONArray json) {
         List<Object> objectList = json.toList();
@@ -113,5 +112,4 @@ public class ExperimentInfoIO {
         return strings;
     }
 
-    
 }

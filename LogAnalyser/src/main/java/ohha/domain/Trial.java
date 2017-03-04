@@ -195,8 +195,5 @@ public class Trial {
     @Override
     public String toString() {
         return subject + "\t" + trialNum + "\t" + condition + "\t" + responseCodes + "\t" + responseNames + "\t" + reactionTimes + "\t" + correct;
-    }
-    
-    
-    
+    }   
 }

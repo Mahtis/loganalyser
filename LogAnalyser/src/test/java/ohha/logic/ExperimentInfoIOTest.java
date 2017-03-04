@@ -99,6 +99,7 @@ public class ExperimentInfoIOTest {
         String location = null;
         String exp = "EmptyTest";
         assertFalse(ExperimentInfoIO.saveToJson(new ExperimentInfo(), location, exp));
+        Files.deleteIfExists(Paths.get("src/main/resources/nullList.txt"));
     }
     
     @Test
