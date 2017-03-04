@@ -105,6 +105,8 @@ public class Trial {
     public void setSingleResponseName(int i, String responseName) {
         if (i < responseNames.size() && i >= 0) {
             responseNames.set(i, responseName);
+        } else if (responseNames.isEmpty() && i == 0) {
+            responseNames.add(responseName);
         }
     }
 
@@ -125,6 +127,8 @@ public class Trial {
     public void setSingleResponseCode(int i, String response) {
         if (i < responseCodes.size() && i >= 0) {
             responseCodes.set(i, response);
+        } else if (responseCodes.isEmpty() && i == 0) {
+            responseCodes.add(response);
         }
     }
 
@@ -145,6 +149,8 @@ public class Trial {
     public void setSingleReactionTime(int i, int rt) {
         if (i < reactionTimes.size() && i >= 0) {
             reactionTimes.set(i, rt);
+        } else if (reactionTimes.isEmpty() && i == 0) {
+            reactionTimes.add(rt);
         }
     }
 
@@ -173,6 +179,8 @@ public class Trial {
     public void setSingleRespTime(int i, int respTime) {
         if (i < respTimes.size() && i >= 0) {
             respTimes.set(i, respTime);
+        } else if (respTimes.isEmpty() && i == 0) {
+            respTimes.add(respTime);
         }
     }
 
@@ -186,7 +194,7 @@ public class Trial {
 
     @Override
     public String toString() {
-        return "Trial{" + "subject=" + subject + ", trialNum=" + trialNum + ", condition=" + condition + ", responses=" + responseNames + ", responseCodes=" + responseCodes + ", reactionTimes=" + reactionTimes + ", correct=" + correct + '}';
+        return subject + "\t" + trialNum + "\t" + condition + "\t" + responseCodes + "\t" + responseNames + "\t" + reactionTimes + "\t" + correct;
     }
     
     

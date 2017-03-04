@@ -41,6 +41,12 @@ public class ResponseMappingTest {
     }
     
     @Test
+    public void wrongSizeResponseListReturnsFalse() {
+        List<String> resps = Arrays.asList("2","2","1");
+        assertFalse(mapping1.isCorrect(resps));
+    }
+    
+    @Test
     public void oneFalseResponseReturnsFalse() {
         List<String> resps = Arrays.asList("1","1","1");
         assertFalse(mapping2.isCorrect(resps));
@@ -53,9 +59,28 @@ public class ResponseMappingTest {
     }
     
     @Test
+    public void nullMappingIsNotEqual() {
+        ResponseMapping instance = null;
+        assertFalse(mapping1.equals(instance));
+    }
+    
+    @Test
+    public void objectNotMappingIsNotEqual() {
+        String instance = "Test";
+        assertFalse(mapping1.equals(instance));
+    }
+    
+    @Test
     public void mappingsWithDiffeerentConditionsAreConsideredEqual() {
         ResponseMapping instance = new ResponseMapping("NOT TEST");
         assertFalse(instance.equals(mapping1));
+    }
+    
+    @Test
+    public void mappingWrittenToStringCorrectly() {
+        String expResult = "Test: [[1]]";
+        String result = mapping1.toString();
+        assertEquals(expResult, result);
     }
     
 }

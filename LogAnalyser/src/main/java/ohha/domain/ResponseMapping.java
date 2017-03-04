@@ -1,5 +1,7 @@
 package ohha.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,16 +21,20 @@ public class ResponseMapping {
     private int nOfResponses;
 
     /**
-     * Create a new ResponseMapping with just the condition.
+     * Create a new ResponseMapping with just the condition. By default, the
+     * number of responses is 1, but it is coded as no-response (0).
+     *
      * @param condition Condition.
      */
     public ResponseMapping(String condition) {
         this.condition = condition;
-        nOfResponses = 0;
+        correctResponses = Arrays.asList(Arrays.asList("0"));
+        nOfResponses = 1;
     }
 
     /**
      * Create a new ResponseMapping object with all values set.
+     *
      * @param condition Condition.
      * @param correctResponses Correct responses for the condition.
      * @param nOfResponses Number of responses wanted.
@@ -49,6 +55,7 @@ public class ResponseMapping {
 
     /**
      * Checks whether a given response is correct.
+     *
      * @param nResp Number of the response on the trial.
      * @param resp Response code.
      * @return True if the response is correct.
@@ -83,9 +90,10 @@ public class ResponseMapping {
     }
 
     /**
-     * Set the correct responses for the condition.
-     * Also automatically sets the number of wanted responses to be equal to
-     * the size of the correct responses list.
+     * Set the correct responses for the condition. Also automatically sets the
+     * number of wanted responses to be equal to the size of the correct
+     * responses list.
+     *
      * @param correctResponses List of correct responses.
      */
     public void setCorrectResponses(List<List<String>> correctResponses) {
@@ -95,18 +103,11 @@ public class ResponseMapping {
 
     /**
      * Get the number of responses wanted in the condition.
+     *
      * @return number of wanted responses.
      */
     public int getnOfResponses() {
         return nOfResponses;
-    }
-
-    /**
-     * Set the number of wanted responses.
-     * @param nOfResponses Number of wanted responses.
-     */
-    public void setnOfResponses(int nOfResponses) {
-        this.nOfResponses = nOfResponses;
     }
 
     /**
@@ -137,7 +138,5 @@ public class ResponseMapping {
     public String toString() {
         return condition + ": " + correctResponses;
     }
-    
-    
 
 }

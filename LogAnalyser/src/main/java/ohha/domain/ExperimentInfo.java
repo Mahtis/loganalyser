@@ -3,14 +3,16 @@ package ohha.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /**
  * This class holds the specifications of a single experiment; the conditions,
  * responses and how correct responses are mapped (using ResponseMapping class).
- * 
+ *
  * @author Mikko Tiainen
- * 
+ *
  */
 public class ExperimentInfo {
+
     private String name;
     private List<String> conditions;
     private List<String> responseCodes;
@@ -19,16 +21,39 @@ public class ExperimentInfo {
 
     /**
      * Initialize a new ExperimentInfo with given values.
+     *
+     * @param name Name of the Experiment.
      * @param conditions List of conditions in the Experiment.
      * @param responseCodes List of response codes.
      * @param responseNames List of response names.
      * @param responseMappings List of Response mappings in the Experiment.
      */
-    public ExperimentInfo(List<String> conditions, List<String> responseCodes, List<String> responseNames, List<ResponseMapping> responseMappings) {
-        this.conditions = conditions;
-        this.responseCodes = responseCodes;
-        this.responseNames = responseNames;
-        this.responseMappings = responseMappings;
+    public ExperimentInfo(String name, List<String> conditions, List<String> responseCodes, List<String> responseNames, List<ResponseMapping> responseMappings) {
+        if (name != null) {
+            this.name = name;
+        } else {
+            this.name = "empty";
+        }
+        if (conditions != null) {
+            this.conditions = conditions;
+        } else {
+            this.conditions = new ArrayList<>();
+        }
+        if (responseCodes != null) {
+            this.responseCodes = responseCodes;
+        } else {
+            this.responseCodes = new ArrayList<>();
+        }
+        if (responseNames != null) {
+            this.responseNames = responseNames;
+        } else {
+            this.responseNames = new ArrayList<>();
+        }
+        if (responseMappings != null) {
+            this.responseMappings = responseMappings;
+        } else {
+            this.responseMappings = new ArrayList<>();
+        }
     }
 
     /**
@@ -41,7 +66,7 @@ public class ExperimentInfo {
         responseNames = new ArrayList<>();
         responseMappings = new ArrayList<>();
     }
-    
+
     public String getName() {
         return name;
     }
@@ -73,34 +98,38 @@ public class ExperimentInfo {
     public void setResponseNames(List<String> responseNames) {
         this.responseNames = responseNames;
     }
-    
+
     /**
-     * Returns the name of the response based on its code.
+     * Returns the name of the response based on its code. If the name for the
+     * code does not exist, returns the code itself. If the code is wrong,
+     * returns "invalid code".
+     *
      * @param code code of the response option.
      * @return name of the response with the given code.
      */
     public String getResponseNameForCode(String code) {
-        return responseNames.get(responseCodes.indexOf(code));
+        if (responseCodes.contains(code)) {
+            if (responseCodes.indexOf(code) < responseNames.size()) {
+                return responseNames.get(responseCodes.indexOf(code));
+            }
+            return code;
+        }
+        return "invalid code";
     }
 
     /**
      * Returns the response mapping of a given condition.
-     * 
-     * @param condition name of the condition for which the ResponseMapping
-     * is wanted for.
-     * @return ResponseMapping object for the given condition or null if one
-     * is not found.
+     *
+     * @param condition name of the condition for which the ResponseMapping is
+     * wanted for.
+     * @return ResponseMapping object for the given condition or null if one is
+     * not found.
      */
     public ResponseMapping getConditionMapping(String condition) {
         if (conditions.contains(condition)) {
-            ResponseMapping mapping = responseMappings.get(conditions.indexOf(condition));
-            if (mapping.getCondition().equals(condition)) {
-                return mapping;
-            } else {
-                for (ResponseMapping m : responseMappings) {
-                    if (m.getCondition().equals(condition)) {
-                        return m;
-                    }
+            for (ResponseMapping m : responseMappings) {
+                if (m.getCondition().equals(condition)) {
+                    return m;
                 }
             }
         }
@@ -116,13 +145,14 @@ public class ExperimentInfo {
     }
 
     /**
-     * Add a new ResponseMapping object to the Experiment.
-     * Checks if a similar mapping has already been declared.
+     * Add a new ResponseMapping object to the Experiment. Checks if a similar
+     * mapping has already been declared.
+     *
      * @param mapping Mapping to be added.
      * @return true if the mapping was successfully added.
      */
     public boolean addResponseMapping(ResponseMapping mapping) {
-        if (responseMappings.contains(mapping)) {
+        if (mapping == null || responseMappings.contains(mapping)) {
             return false;
         }
         responseMappings.add(mapping);
@@ -131,6 +161,7 @@ public class ExperimentInfo {
 
     /**
      * Get the number of responses set for a given condition.
+     *
      * @param cond condition to get the number of responses for.
      * @return number of responses wanted.
      */
@@ -139,9 +170,10 @@ public class ExperimentInfo {
     }
 
     /**
-     * Set correct responses for a given condition.
-     * This method skips the need to manually retrieve the specific ResponseMapping
-     * before setting the correct responses.
+     * Set correct responses for a given condition. This method skips the need
+     * to manually retrieve the specific ResponseMapping before setting the
+     * correct responses.
+     *
      * @param cond Condition that the correct responses are for.
      * @param correctResponses List of lists of correct responses.
      */
@@ -152,6 +184,7 @@ public class ExperimentInfo {
     /**
      * If a condition has only one response, the correct responses can be given
      * as a single list.
+     *
      * @param cond condition for the responses.
      * @param correctResponses correct responses for the condition.
      */
@@ -165,11 +198,11 @@ public class ExperimentInfo {
 
     /**
      * Check whether a given response to a given condition is correct.
-     * 
+     *
      * This method utilizes the ResponseMapping-class to check for the correct
-     * response. Note that this overloaded version of the method only checks
-     * the correctness of the nResp response.
-     * 
+     * response. Note that this overloaded version of the method only checks the
+     * correctness of the nResp response.
+     *
      * @param cond condition of the response.
      * @param respCode code of the response.
      * @param nResp number of response which correctness is checked.
@@ -181,9 +214,9 @@ public class ExperimentInfo {
     }
 
     /**
-     * Checks if a response is correct.
-     * Skips have to call for the specific ResponseMapping. Checks the correctness
-     * of all given responses.
+     * Checks if a response is correct. Skips have to call for the specific
+     * ResponseMapping. Checks the correctness of all given responses.
+     *
      * @param cond Condition.
      * @param respCodes Response codes for the condition.
      * @return True if all responses are correct, otherwise false.
@@ -194,6 +227,6 @@ public class ExperimentInfo {
 
     @Override
     public String toString() {
-        return "ExperimentInfo{" + "conditions=" + conditions + ", responseCodes=" + responseCodes + ", responseNames=" + responseNames + ", responseMappings=" + responseMappings + '}';
+        return name + "\n" + conditions + "\n" + responseCodes + "\n" + responseNames + "\n" + responseMappings;
     }
 }

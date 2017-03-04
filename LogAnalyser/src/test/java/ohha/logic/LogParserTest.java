@@ -2,9 +2,7 @@ package ohha.logic;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import ohha.domain.ExperimentInfo;
 import ohha.domain.ResponseMapping;
 import ohha.domain.Trial;
@@ -97,6 +95,13 @@ public class LogParserTest {
         Integer expResult = 0;
         assertEquals(expResult, trials2.get(1).getReactionTimes().get(0));
         assertEquals(expResult, trials2.get(1).getRespTimes().get(0));
+    }
+    
+    @Test
+    public void reactionTimeCalulatedCorrectly() {
+        int expResult = 622;
+        int result = trials.get(0).getReactionTimes().get(0);
+        assertEquals(expResult, result);
     }
     
 }

@@ -73,9 +73,8 @@ public class ExperimentInfoIO {
      * @param expName name of the experiment, used as the filename.
      * @return true if the file successfully saved and the given ExperimentInfo
      * has conditions.
-     * @throws FileNotFoundException Excpetion if the file cannot be opened.
      */
-    public static boolean saveToJson(ExperimentInfo info, String location, String expName) throws FileNotFoundException {
+    public static boolean saveToJson(ExperimentInfo info, String location, String expName) {
         JSONObject json = new JSONObject();
         if (info.getConditions().isEmpty()) {
             return false;
@@ -99,8 +98,10 @@ public class ExperimentInfoIO {
         json.put("responseMappings", corrects);
         try (PrintWriter out = new PrintWriter(location + expName + ".json")) {
             json.write(out, 4, 0);
+            return true;
+        } catch (FileNotFoundException e) {
+            return false;
         }
-        return true;
     }
 
     

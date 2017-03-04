@@ -1,0 +1,39 @@
+{
+    "responseCodes": [
+        "1",
+        "2"
+    ],
+    "responseMappings": [
+        {
+            "condition": "kaS",
+            "nOfResponses": 1,
+            "correctResponses": [["1"]]
+        },
+        {
+            "condition": "tiS",
+            "nOfResponses": 1,
+            "correctResponses": [["1"]]
+        },
+        {
+            "condition": "kaV",
+            "nOfResponses": 1,
+            "correctResponses": [["2"]]
+        },
+        {
+            "condition": "tiV",
+            "nOfResponses": 1,
+            "correctResponses": [["2"]]
+        }
+    ],
+    "name": "kati_exp",
+    "conditions": [
+        "kaS",
+        "tiS",
+        "kaV",
+        "tiV"
+    ],
+    "responseNames": [
+        "1",
+        "2"
+    ]
+}

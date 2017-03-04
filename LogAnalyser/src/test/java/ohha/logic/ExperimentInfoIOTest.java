@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import ohha.domain.ExperimentInfo;
@@ -25,7 +26,8 @@ public class ExperimentInfoIOTest {
         info.setConditions(conds);
         
         List<String> responseCodes = Arrays.asList("1","2");
-        info.setResponseNames(responseCodes);
+        List<String> responseNames = Arrays.asList("power","precision");
+        info.setResponseNames(responseNames);
         info.setResponseCodes(responseCodes);
         info.addResponseMapping(new ResponseMapping("meS"));
         info.addResponseMapping(new ResponseMapping("deS"));
@@ -55,6 +57,13 @@ public class ExperimentInfoIOTest {
         assertEquals("empty", info.getName());
     }
     
+    @Test
+    public void savingSimpleJsonReturnsTrue() throws FileNotFoundException, IOException {
+        String location = "src/main/resources/";
+        String exp = "JUnitTest";
+        assertTrue(ExperimentInfoIO.saveToJson(info, location, exp));
+        Files.deleteIfExists(Paths.get("src/main/resources/JUnitTest.json"));
+    }
     
     @Test
     public void savingSimpleJsonCreatesAFile() throws FileNotFoundException, IOException {
@@ -83,6 +92,26 @@ public class ExperimentInfoIOTest {
         String exp = "EmptyTest";
         assertFalse(ExperimentInfoIO.saveToJson(new ExperimentInfo(), location, exp));
         Files.deleteIfExists(Paths.get("src/main/resources/EmptyTest.json"));
+    }
+    
+    @Test
+    public void savingToNullReturnsFalse() throws IOException {
+        String location = null;
+        String exp = "EmptyTest";
+        assertFalse(ExperimentInfoIO.saveToJson(new ExperimentInfo(), location, exp));
+    }
+    
+    @Test
+    public void savingJsonWithoutResponseNamesUsesCodes() throws FileNotFoundException, IOException {
+        String location = "src/main/resources/";
+        String exp = "JUnitTest";
+        info.setResponseNames(new ArrayList<>());
+        ExperimentInfoIO.saveToJson(info, location, exp);
+        ExperimentInfo info2 = ExperimentInfoIO.loadFromJson(location + exp + ".json");
+        assertTrue(info.getConditions().containsAll(info2.getConditions()));
+        assertTrue(info.getResponseCodes().containsAll(info2.getResponseCodes()));
+        assertTrue(info.getResponseCodes().containsAll(info2.getResponseNames()));
+        Files.deleteIfExists(Paths.get("src/main/resources/JUnitTest.json"));
     }
     
 }
