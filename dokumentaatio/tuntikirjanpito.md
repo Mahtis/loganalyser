@@ -18,3 +18,5 @@ Päivä | Tunnit | Kuvaus
 22.02.2017 | 4h | GUI:n refaktorointia.
 23.02.2017 | 8h | Testejä ja dokumentaatiota.
 02.03.2017 | 8h | ExperimentWindow toiminnot.
+03.03.2017 | 8h | Javadocia ja gui:n hienosäätöä.
+04.03.2017 | 8h | Testejä ja sovelluksen viimeistelyä.

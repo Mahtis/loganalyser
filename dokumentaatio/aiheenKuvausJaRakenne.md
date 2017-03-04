@@ -21,9 +21,6 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 ![Lokitiedoston lataaminen](/dokumentaatio/Lokitiedoston lisääminen.png)
 ![Koetietojen lataaminen](/dokumentaatio/Koetietojen lataaminen.png)
 
-### Käyttöliittymän päänäkymän ja experiment-määritelmän hahmotelma
-
-![käyttöliittymä](/dokumentaatio/Käyttöliittymä_mocup.pdf)
 
 ### Luokkakaavio
 
@@ -40,9 +37,12 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 [MainView]1-1[ParseHandler]
 [MainView]1-1[ExperimentSettingsHandler]
 [MainView]1-1[ParseHandler]
+[MainView]1-1[LogWriterHandler]
+[LogSelectionHandler]1-1[FileSelectorUtil]
 [ParseHandler]1-1[LogParser]
 [ParseHandler]1-1[SubjectData]
-[ExperimentSettingsHandler]1-1[ExperimentWindow]
+[LogWriterHandler]1-1[LogWriter]
+[LogWriterHandler]1-1[FileSelectorUtil]
 [AnalyseHandler]1-*[AnalyseData]
 [AnalyseHandler]1-*[AnalysisWindow]
 [AnalyseHandler]1-*[DrawHistogram]
@@ -59,6 +59,18 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 [SubjectData]1-1[ExperimentInfo]
 [SubjectData]1-*[Trial]
 [ExperimentInfo]1-*[ResponseMapping]
+[ExperimentInfo]1-1[ExperimentWindow]
+[ExperimentWindow]1-1[ExperimentSettingsHandler]
+[ExperimentWindow]1-1[ExperimentConditionHandler]
+[ExperimentWindow]1-1[ExperimentNameHandler]
+[ExperimentWindow]1-1[ExperimentRespCodeHandler]
+[ExperimentWindow]1-1[ExperimentRespMappingHandler]
+[ExperimentWindow]1-1[ExperimentRespNameHandler]
+[ExperimentWindow]1-1[ExperimentSaveHandler]
+[ExperimentWindow]1-1[ExperimentSelectionHandler]
+[ExperimentSaveHandler]1-1[FileSelectorUtil]
+[ExperimentSelectionHandler]1-1[FileSelectorUtil]
+[ExperimentRespMappingHandler]1-1[SetCorrResponsesWindow]]
 ```
 
 ### Rakennekuvaus
