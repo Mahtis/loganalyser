@@ -20,3 +20,4 @@ Päivä | Tunnit | Kuvaus
 02.03.2017 | 8h | ExperimentWindow toiminnot.
 03.03.2017 | 8h | Javadocia ja gui:n hienosäätöä.
 04.03.2017 | 8h | Testejä ja sovelluksen viimeistelyä.
+05.03.2017 | 3h | Releasen teko. Dokumentaation viimeistelyä.
