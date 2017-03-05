@@ -1,12 +1,12 @@
 # Aihemäärittely: loganalyser
 
-**Aihe:** Lokitiedostojen analysointisovellus. Toteutetaan sovellus, jonka avulla voidaan analysoida [Presentation](http://www.neurobs.com)-sovelluksen lokitiedostoja. Presentation-ohjelmaa käytetään laajalti psykologian/neurotieteen alan tutkimuksissa. Sen tuottamat oletuslokitiedostot ovat rakenteeltaan melko sekavia ja sisältävät paljon epäolennaisia merkintöjä. Tämä vaikeuttaa datan analyysia ja vaatii yleensä aina lokitiedoston parsimisen ennen varsinaista data-analyysiä. Koska kokeet poikkeavat yleensä toisistaan, joten lokitiedostot pitää aina jäsentää hieman eri tavalla.
+**Aihe:** Lokitiedostojen analysointisovellus. Toteutetaan sovellus, jonka avulla voidaan analysoida [Presentation](http://www.neurobs.com)-sovelluksen lokitiedostoja. Presentation-ohjelmaa käytetään laajalti psykologian/neurotieteen alan tutkimuksissa. Sen tuottamat oletuslokitiedostot ovat rakenteeltaan melko sekavia ja sisältävät paljon epäolennaisia merkintöjä. Tämä vaikeuttaa datan analyysia ja vaatii lokitiedoston parsimisen selkeämpään muotoon ennen varsinaista data-analyysiä. Koska kokeet poikkeavat yleensä toisistaan, lokitiedostot pitää aina jäsentää hieman eri tavalla.
 
-Tämän sovelluksen on tarkoitus helpottaa lokitiedostojen käsittelyä ja tarjota mahdollisuus monien erilaisten Presentation-lokitiedostojen analysoimiseen. Sovelluksesta voi tulostaa ulos lokitiedoston helpommin hallittavassa muodossa, mutta siinä voi myös tehdä yksinkertaista datan esikatselua, esim. reaktioaikojen jakaumaa, virheiden määrää.
+Tämän sovelluksen on tarkoitus helpottaa lokitiedostojen käsittelyä ja tarjota mahdollisuus monien erilaisten Presentation-lokitiedostojen analysoimiseen. Sovelluksesta voi tulostaa ulos lokitiedoston helpommin hallittavassa muodossa, mutta siinä voi myös tehdä yksinkertaista datan esikatselua, esim. reaktioaikojen jakaumaa ja virheiden määrää.
 
-Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan analysoimiseen kerralla, jolloin sovelluksesta voidaan tulostaa suoraan tilasto-ohjelmaan syötettävää keskiarvodataa.  (Tämä ominaisuus ei välttämättä valmistu tämän kurssin puitteissa, mutta sovellus suunnitellaan tätä silmällä pitäen. Tässä vaiheessa sovellukseen lisätään myös mahdollisuus muunlaisten lokitiedostojen analysoimiseen)
+Sovellukseen ei tämän kurssin aikana ehtinyt valmistua mahdollisuus kaikkien kokeen koehenkilöiden datan analysoimiseen kerralla, mutta tämä toteuteteaan kurssin jälkeen. Sovellus jäi melko pieneksi, koska sovelluksen suunnittelu, sekä käyttöliittymän ohjelmoiminen veivät odotettua enemmän aikaa ja vaivaa. Esimerkiksi koetietojen tallennusmuoto vaihtui itse kehitellystä tekstimuotoisesta määrittelystä json-muotoon, joka on huomattavasti selkeämpi ja helpompi käyttää. Myös käyttöliittymän rakenne muuttui pariin kertaan ja koki huomattavaa refaktorointia. Eniten aikaa meni todennäköisesti kuitenkin siihen, että koeparametreista saatiin tarpeeksi joustavia, jotta sovellus voi tukea monentyylisiä kokeita (kokeita joissa on eri määrä vastauksia). Tähän meni paljon aikaa, koska muutokset vaikuttivat aina melkeinpä kaikkeen sovelluksen toimintaan. Tätä joustavuutta pitää kuitenkin vielä edelleen kehittää, jotta saadaan tuki esim. kokeille, joissa on alussa harjoitus-trialeita, joita ei haluta mukaan lopulliseen analyysiin/lokiin. Tällaisenaan sovellus kuitenkin tukee yksinkertaisten kokeiden purkamista ja karkeaa analysointia.
 
-**Käyttäjät:** Presentation-ohjelmaa käyttävät tutkijat
+**Käyttäjät:** Presentation-ohjelmaa käyttävät tutkijat.
 
 **Sovelluksen toiminnot:**
 * kokeen rakenteen määrittäminen
@@ -15,6 +15,7 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 * selkeämmän lokitiedoston tulostaminen
 * reaktioaikojen visualisoiminen histogrammina
 * vastausosuuksien visualisoiminen pylväsdiagrammeilla
+* kokeen trialien visualisoiminen aikasarjana, sekä yhteisesti että erikseen jokaiselle kokeen tilanteelle
 
 ### Sekvenssikaavioita
 
@@ -74,4 +75,8 @@ Sovellukseen tulee myös mahdollisuus kaikkien kokeen koehenkilöiden datan anal
 ```
 
 ### Rakennekuvaus
-Ohjelman toiminta nojaa rakenteeltaan vahvasti MainView-luokkaan, joka on siis sovelluksen päänäkymä. Tämä luokka sisältää nappeja, listat käsiteltävistä datoista/tiedostoita, sekä sillä hetkellä käytössä olevan kokeen tiedot. Napinpainallukset käsitellään erillisissä handler-luokissa, jotka perivät ActionListener-rajapinnan. Osa handlereista vastaa lähinnä GUI-toiminnoista (tiedostojen valinta ja poisto), mutta osa kutsuu edelleen ohjelman toiminnan kannalta keskeisiä logiikkaluokkia. Logiikkaluokat toimivat ns. taustalla, ja käyttävät hyväkseen domain-paketin säilytysluokkia. Logiikkaluokat (tärkeimpänä todennäköisesti ParseTrials-luokka) palauttavat sitten handlereille takaisin esim. käsiteltyä dataa, joka syötetään edelleen MainView:n käytettäväksi, tai sitten vain prosessoidaan ja tulostetaan uuteen ikkunaan kuvana.
+Ohjelman toiminta nojaa rakenteeltaan vahvasti MainView-luokkaan, joka on siis sovelluksen päänäkymä. Tämä luokka sisältää nappeja, listat käsiteltävistä datoista/tiedostoita, sekä sillä hetkellä käytössä olevan kokeen tiedot. Napinpainallukset käsitellään erillisissä handler-luokissa, jotka perivät ActionListener-rajapinnan. Osa handlereista vastaa lähinnä GUI-toiminnoista (tiedostojen valinta ja poisto), mutta osa kutsuu edelleen ohjelman toiminnan kannalta keskeisiä logiikkaluokkia. Logiikkaluokat toimivat ns. taustalla, ja käyttävät hyväkseen domain-paketin säilytysluokkia. Logiikkaluokat (tärkeimpänä todennäköisesti ParseTrials-luokka) palauttavat sitten handlereille takaisin esim. käsiteltyä dataa, joka syötetään edelleen MainView:n käytettäväksi, tai sitten vain prosessoidaan ja tulostetaan uuteen ikkunaan kuvana. Keskeisin GUI-luokka MainView'n lisäksi on ExperimentWindow, jonka kautta voidaan määritellä käytössä olevaa koetta. Se sisältää myös joukon omia handler-luokkiaan, jotka vastaavat eri koetietojen asettamisesta, ja päivittämisestä. Nämä handlerit implementoivat ExtraInputHandler-nimisen rajapinnan, joka puolestaan on ActionListener-rajapinnan laajennus. Tämä on jätetty kaaviosta pois selkeyden vuoksi, sekä siksi, ettei tämän rajapinnan käytöstä ole tällä hetkellä erityistä etua.
+
+Koska GUIin liittyvien luokkien määrä kasvoi niin suureksi, on pakkausrakenetta laajennettu niin, että MainView'hyn liittyvät handlerit ovat omassa alipakkauksessaan ja ExperimentView'n handlerit omassaan.
+
+Jatkossa tarkoitus on refaktoroida logiikkaluokkia vielä pienempiin osiin. Myös analyysit on tarkoitus niiden kehittyessä jakaa erillisiin luokkiin ja tehdä niille samantyylinen oma käyttöliittymäikkuna kuin Experiment selector. Nämä eivät kuitenkaan ehtineet valmistua tämän kurssin aikana.
